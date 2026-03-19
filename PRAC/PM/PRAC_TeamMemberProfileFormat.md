@@ -6,5 +6,5 @@ A profile file represents a team member and must be formatted as follows:\
 
 Example:
 
-File Name: OFCLeoS.md
+File Name: OFCLeoS.md\
 File Contents: Leandro Sousa, OFCLeoS, leandroptfr123@outlook.com, leos_s
