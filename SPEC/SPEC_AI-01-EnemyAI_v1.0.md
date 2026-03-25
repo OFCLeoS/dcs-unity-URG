@@ -1,6 +1,8 @@
 # AI-01 - Enemy AI Specifications
-## Map Navigation
-Enemies will navigate the map by using Unity's built-in NavMesh Agent Component.
+## Movement
+Enemies will navigate the map by using Unity's built-in NavMesh Agent Component
+### Movement Module
+A Movement Module script will be used to give an Agent movement commands.
 ## Attacking
 Enemies 
 ## Health
