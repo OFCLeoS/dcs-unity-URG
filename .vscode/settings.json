@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "dcs-unity-URG.slnx"
+    "dotnet.defaultSolution": "Unknown Roguelike game.slnx"
 }
