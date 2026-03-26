@@ -7,4 +7,4 @@ Enemies must be able to navigate throughout the map. They should be able to go a
 ### Attacking
 Enemies must be able to attack the player, either with a short or long ranged weapon.
 ### Health
-Enemies should have limited health, and should be able to take damage, eventually leading to their deaths.
+Enemies must have limited health, and should be able to take damage, eventually leading to their deaths.

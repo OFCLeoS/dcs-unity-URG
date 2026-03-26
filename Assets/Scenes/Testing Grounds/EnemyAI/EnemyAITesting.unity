@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 139998294}
   - component: {fileID: 139998293}
   - component: {fileID: 139998292}
+  - component: {fileID: 139998297}
   - component: {fileID: 139998291}
   m_Layer: 0
   m_Name: Enemy
@@ -174,7 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3f037b069cd140876ee3f7ce7a3fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIMovementModule
-  speed: 0
+  speed: 5
+  DEBUG_POS: {x: 5, y: 0, z: 5}
 --- !u!136 &139998293
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -270,6 +272,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139998297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139998290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb5cb55d8438744da974affa5eb8f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIFollowModule
+  target: {fileID: 1846261686}
+  stoppingDistance: 0.3
 --- !u!1 &505182430
 GameObject:
   m_ObjectHideFlags: 0
