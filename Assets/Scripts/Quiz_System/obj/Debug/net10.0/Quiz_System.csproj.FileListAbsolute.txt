@@ -1,0 +1,15 @@
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.GeneratedMSBuildEditorConfig.editorconfig
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.AssemblyInfoInputs.cache
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.AssemblyInfo.cs
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.csproj.CoreCompileInputs.cache
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.sourcelink.json
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/bin/Debug/net10.0/Quiz_System
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/bin/Debug/net10.0/Quiz_System.deps.json
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/bin/Debug/net10.0/Quiz_System.runtimeconfig.json
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/bin/Debug/net10.0/Quiz_System.dll
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/bin/Debug/net10.0/Quiz_System.pdb
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.dll
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/refint/Quiz_System.dll
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.pdb
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/Quiz_System.genruntimeconfig.cache
+/home/rebbelz/Desktop/SoftwareEngineeringProject/dcs-unity-URG/Assets/Scripts/Quiz_System/obj/Debug/net10.0/ref/Quiz_System.dll
