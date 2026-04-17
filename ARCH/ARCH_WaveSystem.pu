@@ -1,0 +1,49 @@
+@startuml Wave System
+
+class MonoBehaviour {
+    ...
+}
+
+class WaveManager {
+- waveNumber: int
+- currentWave: Wave
+- defendWaveObjectsManager: DefendWaveObjectsManager
+
++ StartNextWave(): void
++ OnEnemyKilled(): delegate void
+}
+
+abstract class Wave {
+
+{abstract} # InitializeWave(): void
+{abstract} + GetCompletionPercentage(): float
+- CompleteWave(): void
+}
+
+class DefendWave {
+- objectives: HashSet<DefendWaveObjective>
+
+# InitializeWave(): void
++ ObjectiveDestroyed(destroyedObjective: DefendWaveObjective): void
++ GetCompletionPercentage(): float
+}
+
+class DefendWaveObjectsManager {
+...
+}
+
+class KillWave {
+
+# InitializeWave(): void
++ GetCompletionPercentage(): float
+}
+
+' WaveManager uses Waves
+WaveManager ..> Wave
+WaveManager ..> DefendWaveObjectsManager
+DefendWave ..> DefendWaveObjectsManager
+
+Wave <|-- DefendWave
+Wave <|-- KillWave
+MonoBehaviour <|-- WaveManager
+@enduml

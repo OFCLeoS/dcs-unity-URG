@@ -2,3 +2,5 @@
 ## Difficulty Scaling
 
 ## Wave Objectives
+
+### Defend Objective
