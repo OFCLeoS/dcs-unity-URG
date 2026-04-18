@@ -32,4 +32,9 @@ public class WaveManager : MonoBehaviour
     }
 
     public delegate void OnEnemyKilled();
+
+    public void FinishWave()
+    {
+        Debug.Log("Wave " + wave + " was Completed!");
+    }
 }

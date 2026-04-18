@@ -11,6 +11,7 @@ class WaveManager {
 
 + StartNextWave(): void
 + OnEnemyKilled(): delegate void
++ FinishWave(): void
 }
 
 abstract class Wave {
@@ -23,6 +24,7 @@ abstract class Wave {
 
 class DefendWave {
 - objectives: HashSet<DefendWaveObjective>
+- destroyedObjectives: int
 
 # InitializeWave(): void
 + ObjectiveDestroyed(destroyedObjective: DefendWaveObjective): void

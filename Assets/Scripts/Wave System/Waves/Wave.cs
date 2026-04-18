@@ -11,8 +11,5 @@ public abstract class Wave {
     abstract protected void InitializeWave();
     abstract public float GetCompletionPercentage();
 
-    protected void CompleteWave()
-    {
-       Debug.Log("Wave was Completed!");
-    }
+    protected void CompleteWave() => waveManager.FinishWave();
 }
