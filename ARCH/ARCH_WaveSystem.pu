@@ -14,10 +14,11 @@ class WaveManager {
 }
 
 abstract class Wave {
+# waveManager: WaveManager
 
 {abstract} # InitializeWave(): void
 {abstract} + GetCompletionPercentage(): float
-- CompleteWave(): void
+# CompleteWave(): void
 }
 
 class DefendWave {

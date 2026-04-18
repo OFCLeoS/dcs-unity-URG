@@ -6,6 +6,8 @@ public class WaveManager : MonoBehaviour
     Wave currentWave;
     [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
 
+    public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
+
     #region Initialization
     void Awake()
     {
@@ -25,7 +27,7 @@ public class WaveManager : MonoBehaviour
     public void StartNextWave()
     {
         wave++;
-        currentWave = WaveFactory.CreateRandomWave();
+        currentWave = WaveFactory.CreateRandomWave(this);
         // TODO: CHOOSE WAVE TYPE
     }
 
