@@ -45,6 +45,7 @@ public class DefendWave : Wave
     {
         AIBehaviourGraphManager enemyBehaviourGraphManager = enemy.GetComponent<AIBehaviourGraphManager>();
 
+        // TODO: Chance of "assassins" spawn (Hunt instead of Destroy)
         // We set the Agent's mission to "Destroy", as they will be performing the Destroy part of their Behaviour Graph
         enemyBehaviourGraphManager.SetAgentMission(Mission.Destroy);
         enemyBehaviourGraphManager.SetTarget(remainingObjectives[Random.Range(0, objectives.Length)].transform);
