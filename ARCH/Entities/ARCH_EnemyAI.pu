@@ -6,7 +6,7 @@ top to bottom direction
 ****[#4083FF] Hunt Down Player
 *****[#FF5964] ⟳
 ******[#FF5964] ->
-*******[#7FFA80] Move Towards Player
+*******[#7FFA80] Follow Player
 *******[#FF5964] ⟳ Player is close?
 ********[#7FFA80] Attack
 ***[#FFD640] E_Destroy
@@ -14,7 +14,10 @@ top to bottom direction
 *****[#FF5964] ⟳
 ******[#FF5964] Player is close?
 *******[#FF5964] TRUE
-********[#7FFA80] Attack
+********[#FF5964] ⟳ Player is close?
+*********[#FF5964] ->
+**********[#7FFA80] Follow Player
+**********[#7FFA80] Attack
 *******[#FF5964] FALSE
 ********[#FF5964] ->
 *********[#7FFA80] Move Towards Objective

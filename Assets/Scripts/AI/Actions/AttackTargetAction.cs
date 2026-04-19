@@ -18,7 +18,7 @@ public partial class AttackTargetAction : Action
 
     protected override Status OnStart()
     {
-        // TODO ATTACK!
+        // TODO ATTACK! AND CHECK IF THE TARGET IS DESTROYED!!!
         Debug.Log(Agent.Value.name + " has Attacked " + Target.Value.name + "!");
         return Status.Success;
     }

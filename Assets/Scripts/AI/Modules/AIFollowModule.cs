@@ -47,7 +47,7 @@ public class AIFollowModule : MonoBehaviour
     {
         // TODO: CHECK IF CLOSE, NOT EXACTLY THE SAME!
 
-        return movementModule.GetTargetDestination() == target.position;
+        return movementModule.IsAgentDestination(target.position);
     }
 
     /// <summary>

@@ -3,20 +3,18 @@ using Unity.Behavior.GraphFramework;
 using UnityEngine;
 
 /// <summary>
-/// Module that allows an Agent to check whether a target is close enough to attack
+/// Module that allows an Agent to check whether the player is close enough to attack
 /// </summary>
+[RequireComponent(typeof(AIBehaviourGraphManager))]
 public class AITargetProximityMonitor : MonoBehaviour
 {
-    #region Blackboard References
-    SerializableGUID targetCloseGUID;
-    #endregion
-    bool targetClose = false;
+    AIBehaviourGraphManager behaviourGraphManager;
 
-    BehaviorGraphAgent agentBehaviourTree;
+    bool playerClose = false;
 
-    [SerializeField] Transform target;
+    Transform player;
 
-    [Tooltip("How close the target has to be from the Agent to be considered close enough")]
+    [Tooltip("How close the player has to be from the Agent to be considered close enough to attack")]
     [SerializeField] float _closeThreshold = 1.39f;
     /// <summary>
     /// closeThreshold squared for optimization purposes
@@ -26,19 +24,22 @@ public class AITargetProximityMonitor : MonoBehaviour
     #region Initialization
     void Awake()
     {
+        behaviourGraphManager = GetComponent<AIBehaviourGraphManager>();
         _squaredCloseThreshold = _closeThreshold * _closeThreshold;
-        agentBehaviourTree = GetComponent<BehaviorGraphAgent>();
-        if (!agentBehaviourTree.GetVariableID("Target Close", out targetCloseGUID))
-        {
-            throw new BlackboardVariableNotFoundException("Target Close");
-        }
+        enabled = false;
+    }
+
+    public void Initialize(Transform player)
+    {
+        this.player = player;
+        enabled = true;
     }
     #endregion
 
     void CheckTargetProximity()
     {
-        targetClose = (target.position - transform.position).sqrMagnitude <= _squaredCloseThreshold;
-        agentBehaviourTree.SetVariableValue(targetCloseGUID, targetClose);
+        playerClose = (player.position - transform.position).sqrMagnitude <= _squaredCloseThreshold;
+        behaviourGraphManager.SetPlayerCloseBool(playerClose);
     }
 
     #region Performance

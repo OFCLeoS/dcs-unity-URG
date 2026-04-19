@@ -34,7 +34,10 @@ public partial class MoveToAction : Action
 
     protected override Status OnUpdate()
     {
-        if (MovementModule.GetTargetDestination() != Target.Value.position) return Status.Failure;
+        if (!MovementModule.IsAgentDestination(Target.Value.position))
+        {
+            return Status.Failure;
+        }
 
         if (MovementModule.ReachedDestination()) return Status.Success;
         else return Status.Running;
@@ -42,6 +45,7 @@ public partial class MoveToAction : Action
 
     protected override void OnEnd()
     {
+        MovementModule.ClearDestination();
     }
 }
 

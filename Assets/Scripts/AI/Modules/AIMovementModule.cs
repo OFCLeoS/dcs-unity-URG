@@ -7,8 +7,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AIMovementModule))]
 public class AIMovementModule : MonoBehaviour
 {
-    const float DEFAULT_STOPPING_DISTANCE = 0.01f;
+    const float DEFAULT_STOPPING_DISTANCE = 1.5f;
 
+    float squared_stopping_distance;
     NavMeshAgent navMeshAgent;
     [SerializeField] float speed;
 
@@ -17,6 +18,7 @@ public class AIMovementModule : MonoBehaviour
 
     void InitializeMovementModule()
     {
+        squared_stopping_distance = DEFAULT_STOPPING_DISTANCE * DEFAULT_STOPPING_DISTANCE;
         navMeshAgent = GetComponent<NavMeshAgent>();
         // The rotation will be updated by this module
         navMeshAgent.updateRotation = false;
@@ -25,14 +27,17 @@ public class AIMovementModule : MonoBehaviour
     }
     #endregion
 
-    public void SetStoppingDistance(float stoppingDistance) => navMeshAgent.stoppingDistance = stoppingDistance;
+    public void SetStoppingDistance(float stoppingDistance)
+    {
+        navMeshAgent.stoppingDistance = stoppingDistance;
+        squared_stopping_distance = stoppingDistance * stoppingDistance;
+    }
 
     /// <summary>
     /// Gives the Agent a new Destination.
     /// </summary>
     public void SetDestination(Vector3 destination)
     {
-        Debug.Log(navMeshAgent.stoppingDistance);
         navMeshAgent.SetDestination(destination);
     }
 
@@ -43,11 +48,8 @@ public class AIMovementModule : MonoBehaviour
     {
         Vector3 destination = navMeshAgent.destination;
 
-        float distance = Vector3.Distance(new Vector3(transform.position.x, destination.y, transform.position.z), destination);
-        bool destinationReached = distance <= navMeshAgent.stoppingDistance;
-
-        Debug.Log("Stopping: " + navMeshAgent.stoppingDistance);
-        Debug.Log("Distance: " + distance);
+        float sqrMagnitude = (new Vector3(transform.position.x, destination.y, transform.position.z) - destination).sqrMagnitude;
+        bool destinationReached = sqrMagnitude <= squared_stopping_distance;
 
         if (destinationReached && !navMeshAgent.pathPending) return true;
         else return false;
@@ -58,14 +60,25 @@ public class AIMovementModule : MonoBehaviour
     /// <returns>True if the Agent has reached the given target</returns>
     public bool ReachedTarget(Vector3 target)
     {
-        float distance = Vector3.Distance(new Vector3(transform.position.x, target.y, transform.position.z), target);
-        return distance <= navMeshAgent.stoppingDistance;
+        float sqrMagnitude = (new Vector3(transform.position.x, target.y, transform.position.z) - target).sqrMagnitude;
+        return sqrMagnitude <= squared_stopping_distance;
     }
 
     /// <summary>
     /// </summary>
-    /// <returns>The current target destination of the Agent</returns>
-    public Vector3 GetTargetDestination() => navMeshAgent.destination;
+    /// <returns>True if the Agent destination is the same as the provided one (y-Axis ignored)</returns>
+    public bool IsAgentDestination(Vector3 destination)
+    {
+        return navMeshAgent.destination.x == destination.x && navMeshAgent.destination.z == destination.z;
+    }
+
+    /// <summary>
+    /// Makes the Agent stop going towards their previous destination.
+    /// </summary>
+    public void ClearDestination()
+    {
+        if (navMeshAgent.isActiveAndEnabled) navMeshAgent.ResetPath();
+    }
 
 # if UNITY_EDITOR
     #region DEBUG

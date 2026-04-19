@@ -1,19 +1,24 @@
 using System.Collections.Generic;
+using UnityEngine;
 
+/// <summary>
+/// A wave of the Defend format
+/// </summary>
 public class DefendWave : Wave
 {
-    HashSet<DefendWaveObjective> objectives;
-    int destroyedObjectives = 0;
+    DefendWaveObjective[] objectives;
+    List<DefendWaveObjective> remainingObjectives = new List<DefendWaveObjective>();
 
-    public DefendWave(WaveManager waveManager): base(waveManager)
+    public DefendWave(WaveManager waveManager) : base(waveManager)
     {
         InitializeWave();
     }
 
     protected override void InitializeWave()
     {
-        destroyedObjectives = 0;
-        objectives = new HashSet<DefendWaveObjective>(waveManager.GetDefendWaveObjectsManager.ActivateRandomSet(this));
+        remainingObjectives.Clear();
+        objectives = waveManager.GetDefendWaveObjectsManager.ActivateRandomSet(this);
+        remainingObjectives.AddRange(objectives);
         // TODO: PREP PHASE
     }
 
@@ -23,8 +28,9 @@ public class DefendWave : Wave
     /// <param name="destroyedObjective"></param>
     public void ObjectiveDestroyed(DefendWaveObjective destroyedObjective)
     {
-        destroyedObjectives++;
-        if(destroyedObjectives == objectives.Count){
+        remainingObjectives.Remove(destroyedObjective);
+        if (remainingObjectives.Count <= 0)
+        {
             CompleteWave();
         }
         // TODO: DESTROY BEHAVIOUR!
@@ -32,6 +38,15 @@ public class DefendWave : Wave
 
     public override float GetCompletionPercentage()
     {
-        return destroyedObjectives/objectives.Count*1.0f;
+        return remainingObjectives.Count / objectives.Length * 1.0f;
+    }
+
+    public override void SetupEnemyForWave(GameObject enemy)
+    {
+        AIBehaviourGraphManager enemyBehaviourGraphManager = enemy.GetComponent<AIBehaviourGraphManager>();
+
+        // We set the Agent's mission to "Destroy", as they will be performing the Destroy part of their Behaviour Graph
+        enemyBehaviourGraphManager.SetAgentMission(Mission.Destroy);
+        enemyBehaviourGraphManager.SetTarget(remainingObjectives[Random.Range(0, objectives.Length)].transform);
     }
 }
