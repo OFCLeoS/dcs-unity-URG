@@ -1,16 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class AttackSystem : MonoBehaviour
 {
 
     InputAction shootAction;
+    InputAction meeleeAction;
     [SerializeField] GameObject projectile;
+
     [SerializeField] float spawnRate = 2f;
     [SerializeField] float delay = 1f;
     [SerializeField] float timer = 10f;
-
     [SerializeField] float rpm = 900f;
+
+    // when using this weapon, shoot.
+    public Weapon currentWeapon;
+    GameObject newProjectile;
+    float timeSinceLastRound;
+    bool canFire;
 
 
 
@@ -19,19 +27,23 @@ public class AttackSystem : MonoBehaviour
     void Start()
     {
         shootAction = InputSystem.actions.FindAction("Attack");
+        meeleeAction = InputSystem.actions.FindAction("Meelee");
     }
 
     void Update()
     {
-        ShootRaycast();
+        Attack();
     }
 
 
 // line cast
-    void ShootRaycast()
+    void Attack()
     {
         if(shootAction.IsPressed())
         {
+
+            // currentWeapon.Attack(); use this method instead, bellow goes to each individual weapon
+
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit; // ATINGIR qualquer cena e guardar informacoes
             SpawnProjectiles();
@@ -49,6 +61,15 @@ public class AttackSystem : MonoBehaviour
         }
     }
 
+    //void PerformMeleeAttack()
+    //{
+    //    if(meeleeAction.IsPressed())
+    //    {
+    //        // currentWeapon.Attack(); use this method instead but using the correct weapon
+    //    }
+    //}
+
+
     void SpawnProjectiles()
     {   
 
@@ -61,7 +82,7 @@ public class AttackSystem : MonoBehaviour
         else if(timer < 0)
         {
             //timer = maxTimer;
-            GameObject newProjectile = Instantiate(projectile, transform.position, transform.rotation);
+            newProjectile = Instantiate(projectile, transform.position, transform.rotation);
             Destroy(newProjectile,delay);
         }
     }
