@@ -7,14 +7,16 @@ top to bottom direction
 *****[#FF5964] ⟳
 ******[#FF5964] ->
 *******[#7FFA80] Move Towards Player
-*******[#7FFA80] Attack
+*******[#FF5964] ⟳ Player is close?
+********[#7FFA80] Attack
 ***[#FFD640] E_Destroy
 ****[#4083FF] Destroy Objective
-*****[#FF5964] Player is too close?
-******[#FF5964] TRUE
-*******[#7FFA80] Attack
-******[#FF5964] FALSE
-*******[#FF5964] ->
-********[#7FFA80] Move Towards Objective
+*****[#FF5964] ⟳
+******[#FF5964] Player is close?
+*******[#FF5964] TRUE
 ********[#7FFA80] Attack
+*******[#FF5964] FALSE
+********[#FF5964] ->
+*********[#7FFA80] Move Towards Objective
+*********[#7FFA80] Attack
 @endmindmap

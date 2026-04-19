@@ -32,8 +32,40 @@ public class AIMovementModule : MonoBehaviour
     /// </summary>
     public void SetDestination(Vector3 destination)
     {
+        Debug.Log(navMeshAgent.stoppingDistance);
         navMeshAgent.SetDestination(destination);
     }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>True if the Agent has reached it's destination</returns>
+    public bool ReachedDestination()
+    {
+        Vector3 destination = navMeshAgent.destination;
+
+        float distance = Vector3.Distance(new Vector3(transform.position.x, destination.y, transform.position.z), destination);
+        bool destinationReached = distance <= navMeshAgent.stoppingDistance;
+
+        Debug.Log("Stopping: " + navMeshAgent.stoppingDistance);
+        Debug.Log("Distance: " + distance);
+
+        if (destinationReached && !navMeshAgent.pathPending) return true;
+        else return false;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>True if the Agent has reached the given target</returns>
+    public bool ReachedTarget(Vector3 target)
+    {
+        float distance = Vector3.Distance(new Vector3(transform.position.x, target.y, transform.position.z), target);
+        return distance <= navMeshAgent.stoppingDistance;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>The current target destination of the Agent</returns>
+    public Vector3 GetTargetDestination() => navMeshAgent.destination;
 
 # if UNITY_EDITOR
     #region DEBUG
