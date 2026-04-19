@@ -2,12 +2,12 @@
 
 public class Question
 {
-    public string question;
-    public string topic;
-    public string subtopic;
-    public int paragraphNumber;
-    public string[] choices;
-    public int correctIndex;
+    private string question = "";
+    private string topic = "";
+    private string subtopic = "";
+    private int paragraphNumber  = -1;
+    private string[] choices = new string[0];
+    private int correctIndex = -1;
 
     public Question(string question, string topic, string subtopic, int paragraphNumber, string[] choices, int correctIndex)
     {
@@ -19,8 +19,38 @@ public class Question
         this.correctIndex = correctIndex;
     }
 
+    public string GetQuestion()
+    {
+        return question;
+    }
+
+    public string GetTopic()
+    {
+        return topic;
+    }
+
+    public string GetSubtopic()
+    {
+        return subtopic;
+    }
+
+    public int GetParagraphNumber()
+    {
+        return paragraphNumber;
+    }
+
+    public string[] GetChoices()
+    {
+        return choices;
+    }
+
+    public int GetCorrectIndex()
+    {
+        return correctIndex;
+    }
+
     public override string ToString()
     {
-        return "Question: " + question + ", Topic: " + topic + ", Subtopic: " + subtopic + ", Paragraph: " + paragraphNumber + ", Choices: " + string.Join("Q, Q", choices) + ", Correct Answer: " + correctIndex;
+        return "Question: " + question + ", Topic: " + topic + ", Subtopic: " + subtopic + ", Paragraph: " + paragraphNumber + ", Choices: " + string.Join(", ", choices) + ", Correct Answer: " + correctIndex;
     }
 }
