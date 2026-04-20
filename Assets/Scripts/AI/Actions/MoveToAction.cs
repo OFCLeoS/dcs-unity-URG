@@ -34,10 +34,11 @@ public partial class MoveToAction : Action
 
     protected override Status OnUpdate()
     {
-        if (!MovementModule.IsAgentDestination(Target.Value.position))
-        {
-            return Status.Failure;
-        }
+        // TODO: SHOULD WE CHECK TO SEE IF DESTINATION IS THE SAME?
+        // if (!MovementModule.IsAgentDestination(Target.Value.position))
+        // {
+        //     return Status.Failure;
+        // }
 
         if (MovementModule.ReachedDestination()) return Status.Success;
         else return Status.Running;

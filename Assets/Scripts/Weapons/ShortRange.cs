@@ -26,7 +26,7 @@ public class ShortRange : Weapon
         }
     }
 
-    public override void activateTriggerCollider(bool triggerCollider)
+    public override void ActivateTriggerCollider(bool triggerCollider)
     {
         colliderAttack.isTrigger = triggerCollider;
     }

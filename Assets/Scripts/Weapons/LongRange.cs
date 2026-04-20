@@ -71,7 +71,7 @@ public class LongRange : Weapon
 
 
 
-    public override void activateTriggerCollider(bool isColliderActivated)
+    public override void ActivateTriggerCollider(bool isColliderActivated)
     {
         return;
     }
