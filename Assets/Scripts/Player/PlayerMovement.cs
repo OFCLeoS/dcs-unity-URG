@@ -1,11 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    InputAction movementDirection;
+    [SerializeField] CharacterController controller;
+    [SerializeField] float speed;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+
+    void Awake()
     {
+        movementDirection = InputSystem.actions.FindAction("Move");
+        speed = speed*Time.deltaTime;
         
     }
 
@@ -13,5 +21,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         
+        Vector2 input= movementDirection.ReadValue<Vector2>();
+        Vector3 move = new Vector3(input.x*speed, 0, input.y*speed);
+        controller.Move(move);
     }
 }
