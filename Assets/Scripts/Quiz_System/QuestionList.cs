@@ -175,7 +175,7 @@ public class QuestionList
         {
             if (entry[0].Trim() == topic && entry[1].Trim() == subtopic)
             {
-                result += "Paragraph " + entry[2].Trim() + ":\n" + entry[3].Trim() + "\n\n";
+                result += entry[2].Trim() + "   " + entry[3].Trim() + "\n";
             }
         }
         return result;
