@@ -1,0 +1,6 @@
+AI|Tokens|1|A token is the smallest unit of text that an AI model processes.
+AI|Tokens|2|Tokens can be words, parts of words, or even single characters.
+AI|MachineLearning|1|Machine learning is a method of teaching computers using data.
+Security|Permissions|1|Permissions define what a user is allowed to do in a system.
+Security|Permissions|2|A permission can be read, write, or execute.
+Software|Threads|1|A thread is a unit of execution within a process.

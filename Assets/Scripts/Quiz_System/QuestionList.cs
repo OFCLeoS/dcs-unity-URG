@@ -1,10 +1,15 @@
 //using UnityEngine;
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 public class QuestionList
 {
     private static List<Question> lQuestions = new List<Question>();
+
+    // [0] = topic, [1] = subtopic, [2] = paragraph number, [3] = paragraph text
+    private static List<string[]> lContent = new List<string[]>();
 
     public static void AddQuestion(Question question)
     {
@@ -102,5 +107,77 @@ public class QuestionList
         }
 
         System.Console.WriteLine("Finished loading! Questions loaded: " + lQuestions.Count);
+    }
+
+    public static void LoadContentFromFile(string filePath)
+    {
+        if (!File.Exists(filePath))
+        {
+            System.Console.WriteLine("ERROR! No file at: " + filePath);
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(filePath);
+
+        foreach (string line in lines)
+        {
+            if (line.Trim() == "") continue;
+
+            // topic|subtopic|paragraphNumber|paragraphText
+            string[] fields = line.Split('|');
+
+            if (fields.Length != 4)
+            {
+                System.Console.WriteLine("ERROR: Expected 4 fields! But found: " + fields.Length);
+                continue;
+            }
+
+            lContent.Add(fields);
+        }
+
+        System.Console.WriteLine("Finished loading! Paragraphs loaded: " + lQuestions.Count);
+    }
+
+    // returns all unique topic
+    public static List<string> GetTopics()
+    {
+        List<string> topics = new List<string>();
+        foreach (string[] uniqueTopic in lContent)
+        {
+            string topic = uniqueTopic[0].Trim();
+            if (!topics.Contains(topic))
+                topics.Add(topic);
+        }
+        return topics;
+    }
+
+    // returns all unique subtopic for a given topic
+    public static List<string> GetSubtopics(string topic)
+    {
+        List<string> subtopics = new List<string>();
+        foreach (string[] uniqueSubopic in lContent)
+        {
+            if (uniqueSubopic[0].Trim() == topic)
+            {
+                string subtopic = uniqueSubopic[1].Trim();
+                if (!subtopics.Contains(subtopic))
+                    subtopics.Add(subtopic);
+            }
+        }
+        return subtopics;
+    }
+
+    // returns all paragraphs for each topic and subtopic
+    public static string GetParagraphs(string topic, string subtopic)
+    {
+        string result = "";
+        foreach (string[] entry in lContent)
+        {
+            if (entry[0].Trim() == topic && entry[1].Trim() == subtopic)
+            {
+                result += "Paragraph " + entry[2].Trim() + ":\n" + entry[3].Trim() + "\n\n";
+            }
+        }
+        return result;
     }
 }

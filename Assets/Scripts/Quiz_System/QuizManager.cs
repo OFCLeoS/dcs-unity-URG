@@ -9,16 +9,47 @@ public class QuizManager : MonoBehaviour
     private Question currentQuestion;
     private bool quizActive = false;
     private int hintLevel = 0; //0 = no hint, 1 = topic, 2 = subtopic, 3 = paragraph
+
+    public Question getCurrentQuestion()
+    {
+        return currentQuestion;
+    }
+
+    public bool getQuizActive()
+    {
+        return quizActive;
+    }
+
+    public int getHintLevel()
+    {
+        return hintLevel;
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        QuestionList.LoadQuestionsFromFile("QuizQuestions.txt");
+        string questionPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizQuestions.txt");
+        string contentPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizContent.txt");
+
+        //QuestionList.LoadQuestionsFromFile("QuizQuestions.txt");
+        //QuestionList.LoadContentFromFile("QuizContent.txt");
+        QuestionList.LoadQuestionsFromFile(questionPath);
+        QuestionList.LoadContentFromFile(contentPath);
+
+        //Debug.Log("Question File exists: " + System.IO.File.Exists("QuizQuestion.txt"));
+        //Debug.Log("Content File exists: " + System.IO.File.Exists("QuizContent.txt"));
+        Debug.Log("Question File exists: " + System.IO.File.Exists(questionPath));
+        Debug.Log("Content File exists: " + System.IO.File.Exists(contentPath));
     }
 
     public void StartQuiz() // call this when the player interacts with the pc/quiz system
     {
-        // check if list is not empty first !!!!!!!!!!!!!!!!!!!!
+        if (QuestionList.GetSize() == 0)
+        {
+            Debug.Log("No Quesitons loaded! Cannot start Quiz.");
+            return;
+        }
+
         System.Random rand = new System.Random();
 
         int randomQuestionIndex = rand.Next(0, QuestionList.GetSize());
@@ -42,6 +73,12 @@ public class QuizManager : MonoBehaviour
 
     public void SendAnswer(int choiceIndex)
     {
+        if (!quizActive)
+        {
+            Debug.Log("Quiz is not active!");
+            return;
+        }
+
         if (choiceIndex == currentQuestion.GetCorrectIndex())
         {
             Debug.Log("Correct!");
@@ -61,6 +98,12 @@ public class QuizManager : MonoBehaviour
 
     public void NextHint()
     {
+        if(!quizActive)
+        {
+            Debug.Log("Quiz is not active!");
+            return;
+        }
+
         if (hintLevel >= 3)
         {
             Debug.Log("You already have all Hints unlocked!");
@@ -73,6 +116,12 @@ public class QuizManager : MonoBehaviour
 
     public string GetHint()
     {
+        if (currentQuestion == null)
+        {
+            Debug.Log("No Question available!");
+            return "";
+        }
+
         if (hintLevel == 0)
         {
             return "No hint unlocked yet!";
