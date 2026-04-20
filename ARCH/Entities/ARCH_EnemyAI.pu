@@ -1,0 +1,34 @@
+@startmindmap Enemy Behaviour Tree
+top to bottom direction
+*[#FFFFFF] Start
+**[#FF5964] E? (Mission)
+
+***[#FFD640] E_Hunt
+****[#4083FF] Hunt Down Player
+*****[#FF5964] ⟳ Mission is Hunt?
+******[#FF5964] ->
+*******[#7FFA80] Follow Player
+*******[#FF5964] ⟳ Player is close?
+********[#7FFA80] Attack
+
+***[#FFD640] E_Destroy
+****[#4083FF] Destroy Objective
+*****[#FF5964] ⟳ Mission is Destroy?
+******[#FF5964] Has Valid Target?
+*******[#FF5964] TRUE
+    ********[#FF5964] Player is close?
+    *********[#FF5964] TRUE
+    **********[#FF5964] ⟳ Player is close?
+    ***********[#FF5964] ->
+    ************[#FF5964] FAIL IF: Player is not close
+    *************[#7FFA80] Follow Player
+    ************[#7FFA80] Attack
+    *********[#FF5964] FALSE
+    **********[#FF5964] ->
+    ***********[#FF5964] FAIL IF:\nPlayer is close\nOR\nTarget is not valid
+    ************[#7FFA80] Move Towards Objective
+    ***********[#FF5964] ⟳ Target is Valid?
+    ************[#7FFA80] Attack
+*******[#FF5964] FALSE
+    ********[#7FFA80] Get a new Target or Hunt if none are available
+@endmindmap
