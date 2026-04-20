@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class DamageableObject : MonoBehaviour, IDamageable
+public abstract class DamageableEntity : MonoBehaviour, IDamageable
 {
-    [Tooltip("The health this object starts at")]
+    [Tooltip("The health this entity starts at")]
     [SerializeField] protected float _health = 100;
 
     float currentHealth;
@@ -13,9 +13,9 @@ public abstract class DamageableObject : MonoBehaviour, IDamageable
     {
         if (_health <= 0)
         {
-            Debug.LogError(name + "'s Object Health is not valid, the object will be destroyed...");
+            Debug.LogError(name + "'s Entity Health is not valid, the entity will be destroyed...");
             isDestroyed = true;
-            DestroyObject();
+            DestroyEntity();
         }
         else currentHealth = _health;
     }
@@ -23,16 +23,16 @@ public abstract class DamageableObject : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damageAmount)
     {
-        Debug.Log(name+" took " +damageAmount+". Current Health: " +currentHealth);
+        Debug.Log(name + " took " + damageAmount + ". Current Health: " + currentHealth);
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
             isDestroyed = true;
-            DestroyObject();
+            DestroyEntity();
         }
     }
 
     public bool IsDestroyed => isDestroyed;
 
-    protected abstract void DestroyObject();
+    protected abstract void DestroyEntity();
 }

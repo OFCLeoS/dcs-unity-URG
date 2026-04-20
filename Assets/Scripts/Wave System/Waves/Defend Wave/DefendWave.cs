@@ -22,6 +22,12 @@ public class DefendWave : Wave
         // TODO: PREP PHASE
     }
 
+
+    public override float GetWaveTimeLimit()
+    {
+        throw new System.NotImplementedException();
+    }
+
     /// <summary>
     /// Warn the Wave that an object was destroyed.
     /// </summary>
@@ -31,7 +37,7 @@ public class DefendWave : Wave
         remainingObjectives.Remove(destroyedObjective);
         if (remainingObjectives.Count <= 0)
         {
-            CompleteWave();
+            FinishWave();
         }
         // TODO: DESTROY BEHAVIOUR!
     }

@@ -10,7 +10,7 @@ class WaveManager {
 - defendWaveObjectsManager: DefendWaveObjectsManager
 
 + StartNextWave(): void
-+ OnEnemyKilled(): delegate void
++ OnEnemyKilled(): void
 + FinishWave(): void
 }
 

@@ -6,9 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(AIAgent))]
 public class AIBootstrapper : MonoBehaviour
 {
-    public void Initialize(Transform player, Wave currentWave)
+    public void Initialize(Transform player, WaveManager waveManager)
     {
-        GetComponent<AIAgent>().Initialize(currentWave);
+        GetComponent<AIAgent>().Initialize(waveManager);
 
         AITargetProximityMonitor targetProximityMonitor = GetComponent<AITargetProximityMonitor>();
         if (targetProximityMonitor) InitializeTargetProximityMonitor(targetProximityMonitor, player);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DefendWaveObjective : DamageableObject
+public class DefendWaveObjective : DamageableEntity
 {
     DefendWave wave;
 
@@ -30,7 +30,7 @@ public class DefendWaveObjective : DamageableObject
         gameObject.SetActive(false);
     }
 
-    protected override void DestroyObject()
+    protected override void DestroyEntity()
     {
         wave.ObjectiveDestroyed(this);
         // TODO: Kaboom
@@ -42,7 +42,7 @@ public class DefendWaveObjective : DamageableObject
 #if UNITY_EDITOR
 
     [ContextMenu("DEBUG_DESTROY")]
-    void DEBUG_DESTROY() => DestroyObject();
+    void DEBUG_DESTROY() => DestroyEntity();
 
 #endif
     #endregion

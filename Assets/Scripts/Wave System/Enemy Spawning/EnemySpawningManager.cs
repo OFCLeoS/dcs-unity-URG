@@ -12,13 +12,29 @@ public class EnemySpawningManager : MonoBehaviour
 
     bool isActive = false;
 
-    Wave currentWave;
+    [SerializeField] WaveManager waveManager;
 
     [SerializeField] EntitySpawner[] enemySpawners;
 
     [SerializeField] GameObject[] enemies;
 
     [SerializeField] Transform player;
+
+    Wave currentWave;
+
+    #region Initialization
+    void Awake()
+    {
+        if (!waveManager)
+        {
+            waveManager = GetComponent<WaveManager>();
+            if (!waveManager)
+            {
+                Debug.LogError(name + "'s Wave Manager was not found. Enemy spawning will not function!");
+            }
+        }
+    }
+    #endregion
 
     public void SetTimeBetweenSpawns(float time)
     {
@@ -52,7 +68,7 @@ public class EnemySpawningManager : MonoBehaviour
     void RandomSpawn()
     {
         GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Length)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
-        spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, currentWave);
+        spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, waveManager);
         currentWave.SetupEnemyForWave(spawnedEnemy);
     }
 

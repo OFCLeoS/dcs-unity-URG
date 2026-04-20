@@ -1,11 +1,20 @@
+using System;
 using UnityEngine;
 
+/// <summary>
+/// Is responsible for wave related tasks such as Difficulty Scaling and Wave Creation
+/// </summary>
 public class WaveManager : MonoBehaviour
 {
     int wave;
     Wave currentWave;
-    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+    public Wave CurrentWave { get { return currentWave; } }
+
+    float currentWaveTimeLimit;
+    float currentWaveTime;
+
     [SerializeField] EnemySpawningManager enemySpawningManager;
+    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
 
     public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
 
@@ -48,13 +57,36 @@ public class WaveManager : MonoBehaviour
     {
         wave++;
         currentWave = WaveFactory.CreateRandomWave(this);
-        enemySpawningManager.Activate(3,currentWave);
+        currentWaveTimeLimit = currentWave.GetWaveTimeLimit();
+        currentWaveTime = 0;
+        enemySpawningManager.Activate(3, currentWave);
     }
 
-    public delegate void OnEnemyKilled();
+    /// <summary>
+    /// Event that fires when an enemy was killed
+    /// </summary>
+    public event Action<AIAgent> OnEnemyKilled;
+
+    public void EnemyKilled(AIAgent enemy)
+    {
+        OnEnemyKilled.Invoke(enemy);
+    }
+
+    void DeactivateAllManagers()
+    {
+        enemySpawningManager.Deactivate();
+        defendWaveObjectsManager.DeactivateAllObjectives();
+    }
 
     public void FinishWave()
     {
         Debug.Log("Wave " + wave + " was Completed!");
+        DeactivateAllManagers();
+    }
+
+    void Update()
+    {
+        currentWaveTime += currentWaveTimeLimit;
+        if(currentWaveTime >= currentWaveTimeLimit) FinishWave();
     }
 }
