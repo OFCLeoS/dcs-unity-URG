@@ -25,7 +25,9 @@ public class DefendWave : Wave
 
     public override float GetWaveTimeLimit()
     {
-        throw new System.NotImplementedException();
+        // TODO: CHANGE THIS FOR DIFFICULTY SCALING
+        // EQUATION: (log10(x+1))/1.23
+        return 600;
     }
 
     /// <summary>

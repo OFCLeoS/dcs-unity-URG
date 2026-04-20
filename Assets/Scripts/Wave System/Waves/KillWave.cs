@@ -17,14 +17,15 @@ public class KillWave : Wave
 
     protected override void InitializeWave()
     {
-
-        // TODO: PREP PHASE
+        // TODO: PREP PHASE?
     }
 
 
     public override float GetWaveTimeLimit()
     {
-        throw new System.NotImplementedException();
+        // TODO: CHANGE THIS FOR DIFFICULTY SCALING
+        // EQUATION: (log10(x+1))/1.23
+        return 600;
     }
 
     public void EnemyKilled(AIAgent enemy)
@@ -32,9 +33,14 @@ public class KillWave : Wave
         kills++;
         if (kills >= _requiredKills)
         {
-            waveManager.OnEnemyKilled -= EnemyKilled;
             FinishWave();
         }
+    }
+
+    protected override void FinishWave()
+    {
+        waveManager.OnEnemyKilled -= EnemyKilled;
+        base.FinishWave();
     }
 
 

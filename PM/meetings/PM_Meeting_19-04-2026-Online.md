@@ -16,16 +16,10 @@
 - Summary of work done.
 
 ## Decisions / Conclusions
-- D
-
-## Action Items
-- Task — Assigned to — Deadline
-  - e.g., Implement UI prototype — John — 05/04
-- Task — Assigned to — Deadline
+N/A
 
 ## Issues
-- Problem description
-- Needed help / dependency
+N/A
 
 ## Notes
 N/A

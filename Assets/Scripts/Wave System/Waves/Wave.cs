@@ -17,5 +17,5 @@ public abstract class Wave
     /// </summary>
     abstract public void SetupEnemyForWave(GameObject enemy);
 
-    protected void FinishWave() => waveManager.FinishWave();
+    protected virtual void FinishWave() => waveManager.FinishWave();
 }

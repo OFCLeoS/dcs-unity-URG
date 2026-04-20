@@ -985,8 +985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c573c869a79d56a4e9cfe48ece9892f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
-  defendWaveObjectsManager: {fileID: 1236928245}
   enemySpawningManager: {fileID: 1236928246}
+  defendWaveObjectsManager: {fileID: 1236928245}
 --- !u!114 &1236928245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478a08fbf4c30e2469f2de8e849e1d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawningManager
+  waveManager: {fileID: 0}
   enemySpawners:
   - {fileID: 1530033205}
   - {fileID: 427035086}
@@ -1706,7 +1707,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.34
+      value: -7.68
       objectReference: {fileID: 0}
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1714,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.02
+      value: 6.74
       objectReference: {fileID: 0}
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalRotation.w

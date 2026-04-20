@@ -86,7 +86,7 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        currentWaveTime += currentWaveTimeLimit;
+        currentWaveTime += Time.deltaTime;
         if(currentWaveTime >= currentWaveTimeLimit) FinishWave();
     }
 }
