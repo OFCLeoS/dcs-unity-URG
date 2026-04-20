@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!136 &4561699
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -417,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!1 &505182430
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!136 &561407723
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -703,6 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!136 &895977219
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1468,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!136 &2019075657
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1690,6 +1695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbffa3c07d7fbc4aa7c7f77897a7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefendWaveObjective
+  _health: 100
 --- !u!1001 &7385524130421478813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1708,7 +1714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.16
+      value: 4.02
       objectReference: {fileID: 0}
     - target: {fileID: 1995421985824158383, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
       propertyPath: m_LocalRotation.w

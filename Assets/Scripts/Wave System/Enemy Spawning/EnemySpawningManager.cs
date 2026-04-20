@@ -52,7 +52,7 @@ public class EnemySpawningManager : MonoBehaviour
     void RandomSpawn()
     {
         GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Length)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
-        spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player);
+        spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, currentWave);
         currentWave.SetupEnemyForWave(spawnedEnemy);
     }
 

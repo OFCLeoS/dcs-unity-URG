@@ -4,7 +4,7 @@ using UnityEngine.AI;
 /// <summary>
 /// Module that allows custom behaviour upon issuing movement commands to an Agent
 /// </summary>
-[RequireComponent(typeof(AIMovementModule))]
+[RequireComponent(typeof(AIAgent), typeof(AIMovementModule))]
 public class AIMovementModule : MonoBehaviour
 {
     const float DEFAULT_STOPPING_DISTANCE = 1.5f;

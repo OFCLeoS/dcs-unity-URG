@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 7119914831764827554}
   - component: {fileID: 7988058228853770177}
   - component: {fileID: 7855540414181724637}
+  - component: {fileID: 5840431441356688353}
   - component: {fileID: 6209350523677230956}
   - component: {fileID: 6305971138394580035}
   - component: {fileID: 3863701918098427924}
   - component: {fileID: 3995979282168252077}
   - component: {fileID: 7131099232751728636}
   - component: {fileID: 4912213487420956629}
+  - component: {fileID: -2559488415884999706}
   - component: {fileID: 804123911789097774}
   m_Layer: 0
   m_Name: Enemy
@@ -121,6 +123,18 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5840431441356688353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658796704713744968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a1c5e19dc9b144ea4d8ebff9d7e08c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIAgent
 --- !u!114 &6209350523677230956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +238,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c02a88f98e65d4a8944301cd6d3728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIBootstrapper
+--- !u!114 &-2559488415884999706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3658796704713744968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea03866a3b9746439f1d558c65f98a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AITargetManager
 --- !u!195 &804123911789097774
 NavMeshAgent:
   m_ObjectHideFlags: 0

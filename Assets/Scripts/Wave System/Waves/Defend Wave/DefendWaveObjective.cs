@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class DefendWaveObjective : MonoBehaviour
+public class DefendWaveObjective : DamageableObject
 {
     DefendWave wave;
 
     #region Initialization
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         gameObject.SetActive(false);
     }
     #endregion
@@ -20,17 +21,28 @@ public class DefendWaveObjective : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    // TODO: ONDESTROY COURTESY OF IDAMAGABLE IMPLEMENTATION?
+    /// <summary>
+    /// Deactivates the Wave Objective
+    /// </summary>
+    public void Deactivate()
+    {
+        wave = null;
+        gameObject.SetActive(false);
+    }
 
+    protected override void DestroyObject()
+    {
+        wave.ObjectiveDestroyed(this);
+        // TODO: Kaboom
+        //...
+        Deactivate();
+    }
 
     #region DEBUG
 #if UNITY_EDITOR
 
     [ContextMenu("DEBUG_DESTROY")]
-    void DEBUG_DESTROY()
-    {
-        wave.ObjectiveDestroyed(this);
-    }
+    void DEBUG_DESTROY() => DestroyObject();
 
 #endif
     #endregion

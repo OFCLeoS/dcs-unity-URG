@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Module that allows an Agent to follow a Transform Target
 /// </summary>
-[RequireComponent(typeof(AIMovementModule))]
+[RequireComponent(typeof(AIAgent), typeof(AIMovementModule))]
 public class AIFollowModule : MonoBehaviour
 {
     AIMovementModule movementModule;

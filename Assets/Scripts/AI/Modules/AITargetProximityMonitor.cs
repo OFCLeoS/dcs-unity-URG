@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Module that allows an Agent to check whether the player is close enough to attack
 /// </summary>
-[RequireComponent(typeof(AIBehaviourGraphManager))]
+[RequireComponent(typeof(AIAgent), typeof(AIBehaviourGraphManager))]
 public class AITargetProximityMonitor : MonoBehaviour
 {
     AIBehaviourGraphManager behaviourGraphManager;
