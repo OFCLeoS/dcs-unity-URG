@@ -8,6 +8,7 @@ public class LongRange : Weapon
     [SerializeField] protected float destroyProjectileTime = 10f;
     [SerializeField] float projectileVelocity = 10f;
     [SerializeField] float bulletSpreadability = 1f;
+    [SerializeField] Transform weaponBarrel;
 
     protected float fireDelay;
     float timeSinceLastRound;
@@ -50,7 +51,7 @@ public class LongRange : Weapon
 
     void SpawnProjectiles()
     {   
-        newProjectile = Instantiate(projectile, transform.position, transform.rotation);
+        newProjectile = Instantiate(projectile, weaponBarrel.position, weaponBarrel.rotation);
         newProjectile.GetComponent<ProjectileBehaviour>().setVelocity(projectileVelocity);
         newProjectile.GetComponent<ProjectileBehaviour>().activateTriggerCollider(true);
         newProjectile.GetComponent<ProjectileBehaviour>().spreadBullets(bulletSpreadability);
