@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 1210607960}
   - component: {fileID: 1210607959}
   - component: {fileID: 1210607962}
+  - component: {fileID: 1210607963}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -544,6 +545,19 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1210607963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210607958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa8321688c5e0b40af72c126aec43df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraDriver
+  player: {fileID: 7385524130421478814}
 --- !u!1001 &7385524130421478813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -601,6 +615,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
+--- !u!4 &7385524130421478814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9059754869936048134, guid: 1558b7261ffca2b4c97484b3db337f66, type: 3}
+  m_PrefabInstance: {fileID: 7385524130421478813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
