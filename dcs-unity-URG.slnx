@@ -49,7 +49,6 @@
   <Project Path="Unity.RenderPipelines.Universal.2D.Editor.Overrides.csproj" />
   <Project Path="Unity.AI.Navigation.Editor.csproj" />
   <Project Path="Unity.AppUI.MVVM.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Muse.Behavior.csproj" />
   <Project Path="Unity.Multiplayer.Center.Common.csproj" />
   <Project Path="Unity.Behavior.SerializableGUID.csproj" />

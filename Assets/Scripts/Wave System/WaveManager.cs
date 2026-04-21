@@ -69,7 +69,7 @@ public class WaveManager : MonoBehaviour
 
     public void EnemyKilled(AIAgent enemy)
     {
-        OnEnemyKilled.Invoke(enemy);
+        OnEnemyKilled?.Invoke(enemy);
     }
 
     void DeactivateAllManagers()
