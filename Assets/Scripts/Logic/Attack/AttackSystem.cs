@@ -11,7 +11,6 @@ public class AttackSystem : MonoBehaviour
     void Awake()
     {
         shootAction = InputSystem.actions.FindAction("Attack");
-        Debug.Log(shootAction.IsPressed());
     }
 
     void Update()
@@ -27,7 +26,7 @@ public class AttackSystem : MonoBehaviour
         }
         else
         {
-            currentWeapon.activateTriggerCollider(false);
+            currentWeapon.ActivateTriggerCollider(false);
         }
     }
 }

@@ -8,6 +8,8 @@ public class ProjectileBehaviour : MonoBehaviour
     Collider colliderAttack;
     float bulletSpread;
 
+    [SerializeField] float damage = 50;
+
     // Only works on Awake and not Start
     void Awake()
     {
@@ -29,25 +31,13 @@ public class ProjectileBehaviour : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-
-        if(other.CompareTag("Enemy"))
-        {
-            // deal damage
-            Debug.Log($"Projectile {GetInstanceID()} hit {other.name}");
-            Destroy(this.gameObject);
-        }
-        if(other.CompareTag("Player"))
-        {
-            // deal damage
-            Debug.Log($"Projectile {GetInstanceID()} hit {other.name}");
-            Destroy(this.gameObject);
-        }
-        if(other.CompareTag("Wall"))
+        if (other.CompareTag("Wall")) // TODO: CHANGE THIS!
         {
             Debug.Log($"Projectile {GetInstanceID()} hit {other.name}");
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable != null) damageable.TakeDamage(damage);
     }
 
 
