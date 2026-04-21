@@ -334,6 +334,10 @@ PrefabInstance:
       value: 950
       objectReference: {fileID: 0}
     - target: {fileID: 1645771238193643942, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 2641114338202987814, guid: 262a26cae45594d8e804e94f271650cc, type: 3}
+    - target: {fileID: 1645771238193643942, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
       propertyPath: weaponBarrel
       value: 
       objectReference: {fileID: 3130539294452558910}
@@ -398,7 +402,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5203251445959228355, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7380300594112095414, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
       insertIndex: -1
