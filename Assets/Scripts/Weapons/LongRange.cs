@@ -10,6 +10,7 @@ public class LongRange : Weapon
     [SerializeField] float bulletSpreadability = 1f;
     [SerializeField] Transform weaponBarrel;
 
+
     protected float fireDelay;
     float timeSinceLastRound;
     bool canFire;
