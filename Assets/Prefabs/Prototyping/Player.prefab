@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2114399915531703272}
   - component: {fileID: 7982849101033325649}
   - component: {fileID: 4686893108084905705}
+  - component: {fileID: 6948504147835172967}
   - component: {fileID: 4609185307123664894}
   - component: {fileID: 6890084963146444032}
   - component: {fileID: 5442137235921225154}
@@ -119,6 +120,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6948504147835172967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316765368383284722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c60b20859e74c36409837a59848c25d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  _health: 100
+  playerMovement: {fileID: 4609185307123664894}
+  playerRotation: {fileID: 6890084963146444032}
 --- !u!114 &4609185307123664894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +207,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9059754869936048134}
     m_Modifications:
+    - target: {fileID: 1645771238193643942, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
+      propertyPath: rpm
+      value: 950
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645771238193643942, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
+      propertyPath: projectileVelocity
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5113909420008694252, guid: 0ee49f3c8754f434b8cd96cb8b03e230, type: 3}
       propertyPath: m_Name
       value: Long Range Weapon

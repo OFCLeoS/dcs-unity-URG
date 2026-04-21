@@ -5,6 +5,7 @@ using System;
 public class ShortRange : Weapon
 {
     Collider colliderAttack;
+    [SerializeField] float damage = 115;
 
 
     //public LayerMask enemyLayerMask;
@@ -18,12 +19,11 @@ public class ShortRange : Weapon
     {
         colliderAttack.isTrigger = true;
     }
+    
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
-        {
-            Debug.Log("SHORT WEAPON: Enemy HIT");
-        }
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable != null) damageable.TakeDamage(damage);
     }
 
     public override void ActivateTriggerCollider(bool triggerCollider)
