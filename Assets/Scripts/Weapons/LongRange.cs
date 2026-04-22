@@ -10,6 +10,9 @@ public class LongRange : Weapon
     [SerializeField] float bulletSpreadability = 1f;
     [SerializeField] Transform weaponBarrel;
 
+    [SerializeField] Transform DEBUG_SHELL_EJECTOR;
+    [SerializeField] GameObject DEBUG_SHELL_CASING;
+
 
     protected float fireDelay;
     float timeSinceLastRound;
@@ -22,18 +25,18 @@ public class LongRange : Weapon
         fireDelay = 60f / rpm;
         timeSinceLastRound += Time.deltaTime;
 
-        if(timeSinceLastRound >= fireDelay)
+        if (timeSinceLastRound >= fireDelay)
         {
             canFire = true;
         }
 
-        if(!canFire) return;
+        if (!canFire) return;
 
         SpawnProjectiles();
 
         //Ray ray = new Ray(transform.position, transform.forward);
         //RaycastHit hit; // ATINGIR qualquer cena e guardar informacoes
-//
+        //
         //if(Physics.Raycast(ray, out hit, 100))
         //{
         //    Debug.Log("Acertei");
@@ -51,12 +54,17 @@ public class LongRange : Weapon
     }
 
     void SpawnProjectiles()
-    {   
+    {
         newProjectile = Instantiate(projectile, weaponBarrel.position, weaponBarrel.rotation);
         newProjectile.GetComponent<ProjectileBehaviour>().setVelocity(projectileVelocity);
         newProjectile.GetComponent<ProjectileBehaviour>().activateTriggerCollider(true);
         newProjectile.GetComponent<ProjectileBehaviour>().spreadBullets(bulletSpreadability);
         Destroy(newProjectile, destroyProjectileTime);
+
+        // TODO: THIS IS ALL TEMPORARY
+        GameObject shellCasing = Instantiate(DEBUG_SHELL_CASING, DEBUG_SHELL_EJECTOR.position, DEBUG_SHELL_EJECTOR.transform.rotation);
+        shellCasing.GetComponent<Rigidbody>().AddForce((-DEBUG_SHELL_EJECTOR.right * Random.Range(100, 176)) + (DEBUG_SHELL_EJECTOR.forward * Random.Range(-5, 5)));
+        Destroy(shellCasing, 60);
 
         // TODO see photo and remove tim        
         //if(rps >= 0)

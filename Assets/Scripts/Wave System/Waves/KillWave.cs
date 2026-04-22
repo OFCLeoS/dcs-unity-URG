@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class KillWave : Wave
 {
-    readonly int _requiredKills = 5;
+    readonly int _requiredKills = 50;
     int kills = 0;
 
     public KillWave(WaveManager waveManager) : base(waveManager)
