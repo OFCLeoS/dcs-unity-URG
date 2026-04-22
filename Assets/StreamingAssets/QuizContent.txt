@@ -1,6 +1,79 @@
 AI|Tokens|1|A token is the smallest unit of text that an AI model processes.
 AI|Tokens|2|Tokens can be words, parts of words, or even single characters.
+AI|Tokens|3|In large language models, a sentence is broken into tokens before being fed into the model.
+AI|Tokens|4|The number of tokens in a prompt directly affects the computational cost of running a model.
 AI|Machine Learning|1|Machine learning is a method of teaching computers using data.
+AI|Machine Learning|2|In supervised learning, a model is trained on labeled input-output pairs to learn a mapping function.
+AI|Machine Learning|3|Unsupervised learning finds hidden patterns in data without the use of labeled examples.
+AI|Machine Learning|4|Reinforcement learning trains an agent by rewarding desired behaviors and penalizing undesired ones.
+AI|Machine Learning|5|Overfitting occurs when a model learns the training data too well and performs poorly on new data.
+AI|Neural Networks|1|A neural network is a computational model inspired by the structure of the human brain.
+AI|Neural Networks|2|Neural networks consist of layers of interconnected nodes called neurons.
+AI|Neural Networks|3|The input layer receives raw data, hidden layers transform it, and the output layer produces predictions.
+AI|Neural Networks|4|A deep neural network has many hidden layers, allowing it to learn complex representations.
+AI|Neural Networks|5|Training a neural network involves adjusting weights using an algorithm called backpropagation.
+AI|Natural Language Processing|1|Natural language processing, or NLP, is a field of AI focused on enabling computers to understand human language.
+AI|Natural Language Processing|2|NLP tasks include text classification, sentiment analysis, machine translation, and question answering.
+AI|Natural Language Processing|3|Word embeddings represent words as dense numerical vectors that capture semantic relationships.
+AI|Natural Language Processing|4|The transformer architecture revolutionized NLP by processing all words in a sentence simultaneously.
+AI|Natural Language Processing|5|Large language models like GPT are trained on massive text corpora to generate coherent text.
+AI|Computer Vision|1|Computer vision is an AI field that enables machines to interpret and understand visual information.
+AI|Computer Vision|2|Convolutional neural networks, or CNNs, are especially effective for image recognition tasks.
+AI|Computer Vision|3|Object detection algorithms identify and locate multiple objects within a single image.
+AI|Computer Vision|4|Image segmentation assigns a class label to every pixel in an image for fine-grained analysis.
+AI|Computer Vision|5|Training a computer vision model requires large labeled datasets of images.
+AI|Algorithms|1|An algorithm is a finite set of step-by-step instructions to solve a problem.
+AI|Algorithms|2|The time complexity of an algorithm describes how its running time grows with input size.
+AI|Algorithms|3|A greedy algorithm makes the locally optimal choice at each step hoping to find a global optimum.
+AI|Algorithms|4|Dynamic programming solves problems by breaking them into overlapping subproblems and storing results.
+AI|Algorithms|5|Graph search algorithms like BFS and DFS explore nodes and edges to find paths or connected components.
 Security|Permissions|1|Permissions define what a user is allowed to do in a system.
 Security|Permissions|2|A permission can be read, write, or execute.
+Security|Permissions|3|The principle of least privilege states that users should only have the permissions they need.
+Security|Permissions|4|Access control lists, or ACLs, specify which users or groups have which permissions on a resource.
+Security|Permissions|5|Role-based access control assigns permissions to roles rather than to individual users.
+Security|Cryptography|1|Cryptography is the practice of securing information by transforming it into an unreadable format.
+Security|Cryptography|2|Symmetric encryption uses the same key to encrypt and decrypt data.
+Security|Cryptography|3|Asymmetric encryption uses a public key to encrypt and a private key to decrypt.
+Security|Cryptography|4|A hash function maps data of arbitrary size to a fixed-size digest, and is one-way by design.
+Security|Cryptography|5|Digital signatures use asymmetric cryptography to verify the authenticity and integrity of a message.
+Security|Network Security|1|Network security involves protecting a computer network from unauthorized access and attacks.
+Security|Network Security|2|A firewall monitors and filters incoming and outgoing network traffic based on security rules.
+Security|Network Security|3|A VPN, or virtual private network, creates an encrypted tunnel over a public network.
+Security|Network Security|4|An intrusion detection system monitors network traffic for suspicious activity and alerts administrators.
+Security|Network Security|5|A denial-of-service attack floods a server with requests to make it unavailable to legitimate users.
+Security|Vulnerabilities|1|A software vulnerability is a weakness that can be exploited by an attacker to compromise a system.
+Security|Vulnerabilities|2|A buffer overflow vulnerability occurs when a program writes more data to a buffer than it can hold.
+Security|Vulnerabilities|3|SQL injection attacks insert malicious SQL code into input fields to manipulate a database.
+Security|Vulnerabilities|4|Cross-site scripting, or XSS, allows attackers to inject malicious scripts into web pages viewed by others.
+Security|Vulnerabilities|5|Patch management is the process of applying software updates to fix known vulnerabilities.
+Security|Authentication|1|Authentication is the process of verifying that a user is who they claim to be.
+Security|Authentication|2|Passwords are the most common form of authentication but can be weak if not managed properly.
+Security|Authentication|3|Multi-factor authentication requires users to provide two or more verification factors.
+Security|Authentication|4|Biometric authentication uses physical characteristics such as fingerprints or facial recognition.
+Security|Authentication|5|OAuth is an open standard that allows users to grant third-party applications limited access to their accounts.
 Software|Threads|1|A thread is a unit of execution within a process.
+Software|Threads|2|Multiple threads within the same process share memory and resources.
+Software|Threads|3|Concurrency allows multiple threads to make progress within overlapping time periods.
+Software|Threads|4|A race condition occurs when two threads access shared data simultaneously and the outcome depends on timing.
+Software|Threads|5|A mutex, or mutual exclusion lock, ensures that only one thread accesses a critical section at a time.
+Software|Databases|1|A database is an organized collection of structured data stored and accessed electronically.
+Software|Databases|2|A relational database stores data in tables with rows and columns and uses SQL for queries.
+Software|Databases|3|Primary keys uniquely identify each record in a database table.
+Software|Databases|4|A foreign key in one table references the primary key of another table to create a relationship.
+Software|Databases|5|Normalization is the process of organizing a database to reduce redundancy and improve data integrity.
+Software|Operating Systems|1|An operating system is system software that manages hardware resources and provides services to programs.
+Software|Operating Systems|2|The kernel is the core part of an operating system that manages memory, processes, and hardware.
+Software|Operating Systems|3|Virtual memory allows a computer to use disk space as an extension of RAM.
+Software|Operating Systems|4|A process scheduler decides which process runs on the CPU and for how long.
+Software|Operating Systems|5|File systems organize how data is stored and retrieved on storage devices.
+Software|Software Engineering|1|Software engineering is the disciplined application of engineering principles to software development.
+Software|Software Engineering|2|Agile development is an iterative approach that delivers software in small, functional increments called sprints.
+Software|Software Engineering|3|Version control systems like Git track changes to source code over time and enable collaboration.
+Software|Software Engineering|4|Unit testing verifies that individual components of a program behave as expected in isolation.
+Software|Software Engineering|5|Design patterns are reusable solutions to commonly occurring problems in software design.
+Software|Networks|1|A computer network is a group of interconnected devices that can exchange data.
+Software|Networks|2|The TCP/IP model defines how data is transmitted across the internet in four layers.
+Software|Networks|3|An IP address is a unique numerical label assigned to each device on a network.
+Software|Networks|4|The Domain Name System, or DNS, translates human-readable domain names into IP addresses.
+Software|Networks|5|HTTP is the protocol used to transfer web pages between servers and browsers over the internet.

@@ -1,0 +1,3 @@
+What is a token?|AI|Tokens|1|The smallest unit of text\A full sentence\A database entry\A neural network\A dataset\A parameter|0
+What is a permission?|Security|Permissions|3|A rule defining access\A type of variable\A network protocol\A database table\A UI element\A loop|0
+What is a thread?|Software|Threads|2|A database record\A UI component\A file type\A network packet\A memory address\A unit of execution|5
