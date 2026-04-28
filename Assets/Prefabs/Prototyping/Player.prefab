@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2379680178383570231}
   - component: {fileID: 8783371293484504966}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Muzzle Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3748,7 +3748,7 @@ GameObject:
   - component: {fileID: 2158077782296631343}
   - component: {fileID: 1910759610534840441}
   m_Layer: 0
-  m_Name: Muzzle Flash
+  m_Name: Muzzle Flash Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9032,8 +9032,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackSystem
   currentWeapon: {fileID: 133724987325490923}
-  DEBUG_MUZZLE_FLASH_LIGHT: {fileID: 182995065684786344}
-  DEBUG_MUZZLE_FLASH: {fileID: 2158077782296631343}
 --- !u!1 &8328567048306239091
 GameObject:
   m_ObjectHideFlags: 0
@@ -9205,14 +9203,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongRange
   projectile: {fileID: 2641114338202987814, guid: 262a26cae45594d8e804e94f271650cc, type: 3}
-  magSize: 0
-  rpm: 950
-  destroyProjectileTime: 2
-  projectileVelocity: 60
+  weaponCapacity: 0
+  rpm: 900
   bulletSpreadability: 0.6
   weaponBarrel: {fileID: 3130539294452558910}
-  DEBUG_SHELL_EJECTOR: {fileID: 1197575026272537199}
-  DEBUG_SHELL_CASING: {fileID: 1635325624293217185, guid: d6530fb4b4a8f8248ba9429dbc5e894d, type: 3}
+  shellEjector: {fileID: 1197575026272537199}
+  shellCasing: {fileID: 1635325624293217185, guid: d6530fb4b4a8f8248ba9429dbc5e894d, type: 3}
+  muzzleFlashLight: {fileID: 182995065684786344}
+  muzzleFlashActiveTime: 0.03
+  muzzleFlashParticle: {fileID: 2158077782296631343}
 --- !u!1 &8543653386805572864
 GameObject:
   m_ObjectHideFlags: 0
