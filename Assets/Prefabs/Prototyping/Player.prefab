@@ -9205,7 +9205,7 @@ MonoBehaviour:
   projectile: {fileID: 2641114338202987814, guid: 262a26cae45594d8e804e94f271650cc, type: 3}
   weaponCapacity: 0
   rpm: 900
-  bulletSpreadability: 0.6
+  bulletSpreadability: 0.15
   weaponBarrel: {fileID: 3130539294452558910}
   shellEjector: {fileID: 1197575026272537199}
   shellCasing: {fileID: 1635325624293217185, guid: d6530fb4b4a8f8248ba9429dbc5e894d, type: 3}
