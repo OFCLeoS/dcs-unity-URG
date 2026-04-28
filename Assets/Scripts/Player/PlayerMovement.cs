@@ -13,16 +13,13 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         movementDirection = InputSystem.actions.FindAction("Move");
-        speed = speed*Time.deltaTime;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        Vector2 input= movementDirection.ReadValue<Vector2>();
-        Vector3 move = new Vector3(input.x*speed, 0, input.y*speed);
+        Vector2 input= movementDirection.ReadValue<Vector2>().normalized;
+        Vector3 move = new Vector3(input.x*speed*Time.deltaTime, 0, input.y*speed*Time.deltaTime);
         controller.Move(move);
     }
 }

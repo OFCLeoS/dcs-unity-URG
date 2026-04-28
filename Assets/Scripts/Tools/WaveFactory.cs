@@ -12,8 +12,8 @@ public static class WaveFactory {
         int ran =Random.Range(0,2);
         switch (ran)
         {
-            case 0: return new DefendWave(waveManager);
-            default: return new DefendWave(waveManager); //TODO : CHANGE THIS
+            case 0: return new KillWave(waveManager);
+            default: return new KillWave(waveManager); //TODO : CHANGE THIS
         }
     }
 }
