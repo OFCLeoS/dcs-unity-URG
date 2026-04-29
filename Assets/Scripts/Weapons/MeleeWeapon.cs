@@ -8,9 +8,11 @@ public class MeleeWeapon : Weapon
     Collider attackCollider;
     [SerializeField] float damage = 115;
 
-    void Start()
+    void Awake()
     {
         attackCollider = GetComponent<BoxCollider>();
+        attackCollider.isTrigger = true;
+        attackCollider.enabled = false;
     }
 
     public override void Attack()
@@ -51,7 +53,7 @@ public class MeleeWeapon : Weapon
         {
             if (DEBUG_TIME_BEFORE_ATTACK_PERFORMED <= 0)
             {
-                attackCollider.isTrigger = true;
+                attackCollider.enabled = true;
                 DEBUG_HAS_ATTACKED = true;
                 DEBUG_IS_ATTACKING = false;
             }
@@ -59,16 +61,16 @@ public class MeleeWeapon : Weapon
         }
         else if (DEBUG_HAS_ATTACKED)
         {
-            attackCollider.isTrigger = false;
+            attackCollider.enabled = false;
             DEBUG_HAS_ATTACKED = false;
         }
         else if (DEBUG_TIME_BEFORE_ABLE_TO_ATTACK > 0)
         {
+            DEBUG_TIME_BEFORE_ABLE_TO_ATTACK -= Time.deltaTime;
             if (DEBUG_TIME_BEFORE_ABLE_TO_ATTACK <= 0)
             {
                 DEBUG_CAN_ATTACK = true;
             }
-            DEBUG_TIME_BEFORE_ABLE_TO_ATTACK -= Time.deltaTime;
         }
     }
     #endregion

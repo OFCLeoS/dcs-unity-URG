@@ -6,45 +6,30 @@ using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
-    name: "Attack Target",
-    story: "[Agent] attacks [Target]",
-    description: "Attacks a Target. Return Failure if the Target is destroyed or does not exist.",
+    name: "Attack",
+    story: "[Agent] attacks",
+    description: "Agent uses its currently selected weapon to Attack.",
     category: "Action",
     id: "cb288e184679a26423f07e1a221caec3")]
 public partial class AttackTargetAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    [SerializeReference] public BlackboardVariable<Transform> Target;
 
-    Transform oldTarget;
+    AttackController _attackController;
 
-    IDamageable _damageable;
-
-    IDamageable Damageable
+    AttackController AttackController
     {
         get
         {
-            if (_damageable == null) _damageable = Target.Value.GetComponent<IDamageable>();
-            return _damageable;
+            if (_attackController == null) _attackController = Agent.Value.GetComponent<AttackController>();
+            return _attackController;
         }
     }
 
     protected override Status OnStart()
     {
-        if (oldTarget == null) oldTarget = Target.Value;
-        else if (oldTarget != Target.Value)
-        {
-            _damageable = null;
-            oldTarget = Target.Value;
-        }
-
-        if (!Damageable.IsDestroyed)
-        {
-            Damageable.TakeDamage(0.075f);
-            // TODO: ATTACK LOGIC HERE!
-            return Status.Success;
-        }
-        else return Status.Failure;
+        AttackController.Attack();
+        return Status.Success;
     }
 
     protected override Status OnUpdate()

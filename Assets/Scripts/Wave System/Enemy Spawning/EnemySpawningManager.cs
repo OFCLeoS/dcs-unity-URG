@@ -7,7 +7,7 @@ public class EnemySpawningManager : MonoBehaviour
 {
     const float MIN_TIME_BETWEEN_SPAWNS = 1;
 
-    float timeBetweenSpawns = 3;
+    float timeBetweenSpawns = 1;
     float timeSinceLastSpawn = 0;
 
     bool isActive = false;
