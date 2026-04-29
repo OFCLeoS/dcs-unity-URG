@@ -6,17 +6,14 @@ using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(
-    name: "Attack Target",
-    story: "[Agent] attacks [Target]",
-    description: "Attacks a Target. Return Failure if the Target is destroyed or does not exist.",
+    name: "Attack",
+    story: "[Agent] attacks",
+    description: "Agent uses its currently selected weapon to Attack.",
     category: "Action",
     id: "cb288e184679a26423f07e1a221caec3")]
 public partial class AttackTargetAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    [SerializeReference] public BlackboardVariable<Transform> Target;
-
-    Transform oldTarget;
 
     AttackController _attackController;
 
@@ -24,15 +21,15 @@ public partial class AttackTargetAction : Action
     {
         get
         {
-            if (_attackController == null) _attackController = Target.Value.GetComponent<AttackController>();
+            if (_attackController == null) _attackController = Agent.Value.GetComponent<AttackController>();
             return _attackController;
         }
     }
 
     protected override Status OnStart()
     {
-        //AttackController.
-        return Status.Failure;
+        AttackController.Attack();
+        return Status.Success;
     }
 
     protected override Status OnUpdate()
