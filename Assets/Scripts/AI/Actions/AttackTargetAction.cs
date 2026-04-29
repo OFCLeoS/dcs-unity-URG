@@ -18,33 +18,21 @@ public partial class AttackTargetAction : Action
 
     Transform oldTarget;
 
-    IDamageable _damageable;
+    AttackController _attackController;
 
-    IDamageable Damageable
+    AttackController AttackController
     {
         get
         {
-            if (_damageable == null) _damageable = Target.Value.GetComponent<IDamageable>();
-            return _damageable;
+            if (_attackController == null) _attackController = Target.Value.GetComponent<AttackController>();
+            return _attackController;
         }
     }
 
     protected override Status OnStart()
     {
-        if (oldTarget == null) oldTarget = Target.Value;
-        else if (oldTarget != Target.Value)
-        {
-            _damageable = null;
-            oldTarget = Target.Value;
-        }
-
-        if (!Damageable.IsDestroyed)
-        {
-            Damageable.TakeDamage(0.075f);
-            // TODO: ATTACK LOGIC HERE!
-            return Status.Success;
-        }
-        else return Status.Failure;
+        //AttackController.
+        return Status.Failure;
     }
 
     protected override Status OnUpdate()
