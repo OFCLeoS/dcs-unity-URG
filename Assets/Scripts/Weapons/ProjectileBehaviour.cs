@@ -1,42 +1,31 @@
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
-    // The first prefab needs to have a velocity of 0f so it doesnt moves
-    float velocity = 0f;
-    Collider colliderAttack;
-    float bulletSpread;
+    [SerializeField] Vector3 velocity;
+
+    [SerializeField] float destroyProjectileTime = 10f; // PUT IN PROJECTILE
 
     [SerializeField] float damage = 50;
 
-    // Only works on Awake and not Start
-    void Awake()
-    {
-        // The first prefab needs to have a isTrigger false so it wont be destroyed by accident
-        colliderAttack = GetComponent<SphereCollider>();
-        colliderAttack.isTrigger = false;
-    }
-
-    void Update()
-    {
-        TranslateProjectile();
-    }
-
     void TranslateProjectile()
     {
-        Vector3 shoot = new Vector3(Time.deltaTime * bulletSpread, 0f, Time.deltaTime * velocity);
-        transform.Translate(shoot);
+        transform.Translate(Time.deltaTime * velocity);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall")) // TODO: CHANGE THIS!
+        HandleProjectileCollision(other);
+    }
+
+    void HandleProjectileCollision(Collider collider)
+    {
+        if (collider.CompareTag("Wall")) // TODO: CHANGE THIS!
         {
-            Debug.Log($"Projectile {GetInstanceID()} hit {other.name}");
+            Debug.Log($"Projectile {GetInstanceID()} hit {collider.name}");
             Destroy(gameObject);
         }
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageable.TakeDamage(damage);
@@ -44,23 +33,13 @@ public class ProjectileBehaviour : MonoBehaviour
         }
     }
 
-
-    // This is required because we can change velocity everytime we shoot
-    public void setVelocity(float velocity)
+    public void AddVelocity(Vector3 addedVelocity)
     {
-        this.velocity = velocity;
+        velocity += addedVelocity;
     }
 
-    // This is required because we can change the isTrigger everytime we shoot
-    public void activateTriggerCollider(bool triggerCollider)
+    void Update()
     {
-        colliderAttack.isTrigger = triggerCollider;
+        TranslateProjectile();
     }
-
-    public void spreadBullets(float bulletSpreadability)
-    {
-        float random = Random.Range(-bulletSpreadability, bulletSpreadability);
-        this.bulletSpread = random;
-    }
-
 }
