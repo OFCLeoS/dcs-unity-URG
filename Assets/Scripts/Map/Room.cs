@@ -5,9 +5,10 @@ using UnityEngine;
 /// </summary>
 public class Room
 {
+    public GameObject RoomObject { get; }
     public int Width { get; }
     public int Height { get; }
-    public Vector2Int Coordinates { set; get; }
+    public Vector2Int Position { set; get; }
     public int Layer { set; get; }
     /// <summary>
     /// How much the room is moving per iteration of the map generator.
@@ -20,42 +21,46 @@ public class Room
     public bool IsPlaced { set; get; }
 
     #region Initialization
-    public Room(int width, int height)
+    public Room(GameObject roomObject, int width, int height)
     {
+        RoomObject = roomObject;
         Width = width;
         Height = height;
         Layer = 0;
-        Coordinates = Vector2Int.zero;
+        Position = Vector2Int.zero;
         Displacement = Vector2Int.zero;
         IsPlaced = false;
     }
 
-    public Room(int width, int height, int layer)
+    public Room(GameObject roomObject, int width, int height, int layer)
     {
+        RoomObject = roomObject;
         Width = width;
         Height = height;
         Layer = layer;
-        Coordinates = Vector2Int.zero;
+        Position = Vector2Int.zero;
         Displacement = Vector2Int.zero;
         IsPlaced = false;
     }
 
-    public Room(int width, int height, int layer, Vector2Int startingPos)
+    public Room(GameObject roomObject, int width, int height, int layer, Vector2Int startingPos)
     {
+        RoomObject = roomObject;
         Width = width;
         Height = height;
         Layer = layer;
-        Coordinates = startingPos;
+        Position = startingPos;
         Displacement = Vector2Int.zero;
         IsPlaced = false;
     }
 
-    public Room(int width, int height, int layer, Vector2Int startingPos, Vector2Int startingDisplacement)
+    public Room(GameObject roomObject, int width, int height, int layer, Vector2Int startingPos, Vector2Int startingDisplacement)
     {
+        RoomObject = roomObject;
         Width = width;
         Height = height;
         Layer = layer;
-        Coordinates = startingPos;
+        Position = startingPos;
         Displacement = startingDisplacement;
         IsPlaced = false;
     }
@@ -64,5 +69,5 @@ public class Room
     /// <summary>
     /// Uses the Room's Displacement Vector to change its coordinates
     /// </summary>
-    public void DisplaceRoom() => Coordinates += Displacement;
+    public void DisplaceRoom() => Position += Displacement;
 }

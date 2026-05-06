@@ -17,7 +17,7 @@ public class Map
         List<Room> inspectedCell;
         foreach (Room room in rooms)
         {
-            Vector2Int inspectedRoomCoords = room.Coordinates;
+            Vector2Int inspectedRoomCoords = room.Position;
             if (!FloorMap.TryGetValue(inspectedRoomCoords, out inspectedCell))
             {
                 inspectedCell = new List<Room>();
@@ -25,19 +25,5 @@ public class Map
             }
             inspectedCell.Add(room);
         }
-    }
-
-    /// <summary>
-    /// Checks if a room collides with any other room in the layer below it
-    /// </summary>
-    /// <returns></returns>
-    public bool RoomIsColliding(Room room)
-    {
-        // TODO: AABB or something else? Should a grid even be used?
-        // AABB:
-        //   Mathf.Abs(aCenter.x - bCenter.x) <= (aHalfSize.x + bHalfSize.x) &&
-        //            Mathf.Abs(aCenter.y - bCenter.y) <= (aHalfSize.y + bHalfSize.y);
-
-        return false;
     }
 }
