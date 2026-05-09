@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class InventoryBehaviour : MonoBehaviour
+[System.Obsolete("This Uses a Deprecated Inventory System, DO NOT USE!")]
+public class DEPRECATED_InventoryBehaviour : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

@@ -3,7 +3,8 @@ using UnityEngine;
 /// <summary>
 /// A weapon that deals damage to nearby damageables
 /// </summary>
-public class MeleeWeapon : Weapon
+[System.Obsolete("This Uses a Deprecated Inventory System, DO NOT USE!")]
+public class DEPRECATED_MeleeWeapon : Weapon
 {
     Collider attackCollider;
     [SerializeField] float damage = 115;

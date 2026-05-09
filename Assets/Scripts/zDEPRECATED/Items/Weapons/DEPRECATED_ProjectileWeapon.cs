@@ -3,7 +3,8 @@ using UnityEngine;
 /// <summary>
 /// A weapon that launches projectiles that damage enemies
 /// </summary>
-public class ProjectileWeapon : Weapon
+[System.Obsolete("This Uses a Deprecated Inventory System, DO NOT USE!")]
+public class DEPRECATED_ProjectileWeapon : Weapon
 {
     [SerializeField] GameObject projectile;
     [SerializeField] int weaponCapacity;
@@ -64,7 +65,7 @@ public class ProjectileWeapon : Weapon
         float randomSpread = Random.Range(-bulletSpreadability, bulletSpreadability);
 
         GameObject newProjectile = Instantiate(projectile, weaponBarrel.position, weaponBarrel.rotation);
-        newProjectile.GetComponent<ProjectileBehaviour>().AddVelocity(Vector3.right * randomSpread);
+        newProjectile.GetComponent<DEPRECATED_ProjectileBehaviour>().AddVelocity(Vector3.right * randomSpread);
 
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);
         shellCasingInstance.GetComponent<Rigidbody>().AddForce((-shellEjector.right * Random.Range(100, 176)) + (shellEjector.forward * Random.Range(-5, 5)));

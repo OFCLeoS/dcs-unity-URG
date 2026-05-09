@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class ProjectileBehaviour : MonoBehaviour
+[System.Obsolete("This Uses a Deprecated Inventory System, DO NOT USE!")]
+public class DEPRECATED_ProjectileBehaviour : MonoBehaviour
 {
     [SerializeField] Vector3 velocity;
 
