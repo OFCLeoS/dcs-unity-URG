@@ -7,6 +7,8 @@ public class PlayerInventory : MonoBehaviour
     InputAction secondaryWeaponAction;
     InputAction meleeWeaponAction;
 
+    [SerializeField] Transform inventoryParent;
+
     [SerializeField] ProjectileWeapon primaryWeapon;
     [SerializeField] ProjectileWeapon secondaryWeapon;
     [SerializeField] MeleeWeapon meleeWeapon;
@@ -37,6 +39,41 @@ public class PlayerInventory : MonoBehaviour
     }
     #endregion
 
+    public void ChangePrimaryWeapon(ProjectileWeapon newPrimaryWeapon)
+    {
+        if (playerAttackController.GetSelectedWeapon() == primaryWeapon)
+        {
+            playerAttackController.SetSelectedWeapon(newPrimaryWeapon);
+        }
+        if(primaryWeapon != null) Destroy(primaryWeapon.gameObject);
+        newPrimaryWeapon.transform.SetParent(inventoryParent);
+        newPrimaryWeapon.transform.localPosition = Vector3.zero; //TODO: SHOW IN ACTUAL CHARACTER POSITION
+        primaryWeapon = newPrimaryWeapon;
+    }
+
+    public void ChangeSecondaryWeapon(ProjectileWeapon newSecondaryWeapon)
+    {
+        if (playerAttackController.GetSelectedWeapon() == secondaryWeapon)
+        {
+            playerAttackController.SetSelectedWeapon(newSecondaryWeapon);
+        }
+        if(secondaryWeapon != null) Destroy(secondaryWeapon.gameObject);
+        newSecondaryWeapon.transform.SetParent(inventoryParent);
+        newSecondaryWeapon.transform.localPosition = Vector3.zero; //TODO: SHOW IN ACTUAL CHARACTER POSITION
+        secondaryWeapon = newSecondaryWeapon;
+    }
+
+    public void ChangeMeleeWeapon(MeleeWeapon newMeleeWeapon)
+    {
+        if (playerAttackController.GetSelectedWeapon() == meleeWeapon)
+        {
+            playerAttackController.SetSelectedWeapon(newMeleeWeapon);
+        }
+        if(meleeWeapon != null) Destroy(meleeWeapon.gameObject);
+        newMeleeWeapon.transform.SetParent(inventoryParent);
+        newMeleeWeapon.transform.localPosition = Vector3.zero; //TODO: SHOW IN ACTUAL CHARACTER POSITION
+        meleeWeapon = newMeleeWeapon;
+    }
 
     void HandleInventoryAction()
     {

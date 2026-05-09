@@ -65,7 +65,7 @@ public class Projectile : MonoBehaviour
     /// </summary>
     void CheckProjectileTrajectory()
     {
-        Debug.DrawRay(lastPosition, transform.position, Color.red, 0.5f);
+        Debug.DrawLine(lastPosition, transform.position, Color.red, 0.5f);
         RaycastHit hit;
         // TODO: LAYER MASK FOR BETTER PERFORMANCE?
         if (Physics.Linecast(lastPosition, transform.position, out hit))

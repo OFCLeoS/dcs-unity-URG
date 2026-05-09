@@ -42,6 +42,7 @@ public class ProjectileWeapon : Weapon
     {
         fireDelay = 60f / rpm;
     }
+    public void SetProjectilePool(ProjectilePool projectilePool) => this.projectilePool = projectilePool;
     #endregion
 
     public override void Attack()
@@ -64,8 +65,8 @@ public class ProjectileWeapon : Weapon
     {
         float randomSpread = Random.Range(-bulletSpreadability, bulletSpreadability);
 
-        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation,randomSpread);
-        
+        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread);
+
 
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);
         shellCasingInstance.GetComponent<Rigidbody>().AddForce((-shellEjector.right * Random.Range(100, 176)) + (shellEjector.forward * Random.Range(-5, 5)));

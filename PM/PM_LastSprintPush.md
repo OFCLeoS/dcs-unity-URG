@@ -64,6 +64,7 @@ Every point is a game "step", every sub-point is a comment about that game step 
 - Animations
 - Dynamic Wave Difficulty
 - VFX
+- Game-Over
 # Should-Do
 - Sound
 - Story
