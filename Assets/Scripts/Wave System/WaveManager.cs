@@ -59,7 +59,7 @@ public class WaveManager : MonoBehaviour
         currentWave = WaveFactory.CreateRandomWave(this);
         currentWaveTimeLimit = currentWave.GetWaveTimeLimit();
         currentWaveTime = 0;
-        enemySpawningManager.Activate(1.5f, currentWave);
+        enemySpawningManager.Activate(5f, currentWave);
     }
 
     /// <summary>

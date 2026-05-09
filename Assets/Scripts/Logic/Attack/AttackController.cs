@@ -7,5 +7,5 @@ public class AttackController : MonoBehaviour
 {
     [SerializeField] Weapon selectedWeapon;
 
-    protected void Attack() => selectedWeapon.Attack();
+    public void Attack() => selectedWeapon.Attack();
 }

@@ -23,13 +23,13 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damageAmount)
     {
-        // Debug.Log(name + " took " + damageAmount + ". Current Health: " + currentHealth);
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
             isDestroyed = true;
             DestroyEntity();
         }
+        Debug.Log(name + " took " + damageAmount + ". Current Health: " + currentHealth);
     }
 
     public bool IsDestroyed => isDestroyed;
