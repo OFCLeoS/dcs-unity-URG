@@ -1,0 +1,85 @@
+# Written Playthrough
+## Explanation
+Every point is a game "step", every sub-point is a comment about that game step (e.g. a feature that is missing and needs to be created)
+## Playthrough
+- Click on the game
+	- Do Deliverable (Probably Later? Check Moodle again)
+- In Main Menu
+	- Do Main Menu
+	- Do Start Logic
+	- Do Mini Tutorial!!! (Probably after the 20th)
+	- Do Settings Logic
+	- Do Exit Button
+- Player Presses Start
+	- Do Loading Screen
+- Player Starts immediately on the HUB.
+	- Do HUB
+- Player choses a loadout
+	- Do loadout logic
+	- Do basic inventory system
+- Player goes to the elevator, and presses the button
+	- Do button pressing logic (Interaction)
+- Player spawns in a randomly generated level
+	- Do random gen
+	- Do scene spawning logic
+- Player knows what to do based on their HUD
+	- Do HUD
+- Player gets a few seconds to prepare
+	- Do Start-up timer
+	- Integrate this in HUD
+- Wave Starts, player is told this
+	- Integrate this in HUD
+- Player Completes the Wave
+- Player goes back to the HUB
+	- Do logic of this
+- Player answers Quiz Question
+	- Do Computer HUD
+	- Do Quiz Questions (maybe after the 20th)
+	- Do Quiz punishments
+	- Do Quiz timer
+- Repeat
+# Changes
+- Random Generation
+	- Will be more limited. There will be a small number of room layouts. Each room layout will have certain presets that it can become.
+- Inventory System
+	- Will be a lot simpler. No actual inventory, just a hotbar with predefined item slots.
+- Shop System
+	- Will not do, but for loadout variety, we will instead have loadout picking at the start.
+# Must-Do
+- Main Menu
+- Settings
+- HUB
+- Loadout logic
+- Basic Inventory
+- Player HUD
+- Interaction Logic
+- Computer HUD
+- Do Random Gen
+- Graphical Overhaul
+- Do all Quiz Stuff
+- 3D Models
+	- Player
+	- Enemies
+	- Rooms
+- Animations
+- Dynamic Wave Difficulty
+- VFX
+# Should-Do
+- Sound
+- Story
+- "Loading Screen" (Elevator sequence)
+# Won't Do
+- Equipment system
+	- No time
+- Shop System
+	- No time
+- Dynamic enemy damage
+	- No time
+- Quiz AI system
+	- No time
+- Crafting system
+	- No time
+- Sound
+	- Maybe after the 20th if allowed
+- Story
+	- Maybe some very basic stuff
