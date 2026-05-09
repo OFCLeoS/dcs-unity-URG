@@ -9202,7 +9202,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9aba443b616746a8b6de770f9b3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongRange
-  projectile: {fileID: 2641114338202987814, guid: 262a26cae45594d8e804e94f271650cc, type: 3}
+  projectilePool: {fileID: 0}
+  projectileAttributes:
+    velocity: 50
+    destroyProjectileTime: 5
+    damage: 50
   weaponCapacity: 0
   rpm: 900
   bulletSpreadability: 0.15

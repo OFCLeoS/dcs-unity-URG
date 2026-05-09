@@ -67,7 +67,7 @@ Every point is a game "step", every sub-point is a comment about that game step 
 # Should-Do
 - Sound
 - Story
-- Loading Screen
+- "Loading Screen" (Elevator sequence)
 # Won't Do
 - Equipment system
 	- No time

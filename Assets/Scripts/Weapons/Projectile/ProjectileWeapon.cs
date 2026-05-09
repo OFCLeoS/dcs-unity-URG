@@ -5,7 +5,8 @@ using UnityEngine;
 /// </summary>
 public class ProjectileWeapon : Weapon
 {
-    [SerializeField] GameObject projectile;
+    [SerializeField] ProjectilePool projectilePool;
+    [SerializeField] ProjectileBlueprint projectileAttributes;
     [SerializeField] int weaponCapacity;
     [SerializeField] float rpm = 700f;
 
@@ -53,22 +54,22 @@ public class ProjectileWeapon : Weapon
         muzzleFlashActive = true;
 
         muzzleFlashParticle.Play();
-        SpawnProjectiles();
+        SpawnProjectile();
 
         canFire = false;
         timeBeforeAbleToFire = fireDelay;
     }
 
-    void SpawnProjectiles()
+    void SpawnProjectile()
     {
         float randomSpread = Random.Range(-bulletSpreadability, bulletSpreadability);
 
-        GameObject newProjectile = Instantiate(projectile, weaponBarrel.position, weaponBarrel.rotation);
-        newProjectile.GetComponent<ProjectileBehaviour>().AddVelocity(Vector3.right * randomSpread);
+        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation,randomSpread);
+        
 
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);
         shellCasingInstance.GetComponent<Rigidbody>().AddForce((-shellEjector.right * Random.Range(100, 176)) + (shellEjector.forward * Random.Range(-5, 5)));
-        // TODO: THIS IS TEMPORARY
+        // TODO: THIS IS TEMPORARY, ADD A POOL?
         Destroy(shellCasingInstance, 60);
     }
 
