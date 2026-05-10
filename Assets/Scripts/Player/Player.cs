@@ -10,9 +10,23 @@ public class Player : DamageableEntity
 {
     [SerializeField] PlayerMovement movement;
     [SerializeField] PlayerRotation rotation;
+
+    [SerializeField] CameraDriver cameraDriver;
+
     [SerializeField] PlayerInteractionsHandler interactionsHandler;
     [SerializeField] PlayerAttackController attackController;
     [SerializeField] PlayerInventory inventory;
+
+    #region Properties
+    public PlayerMovement Movement { get { return movement; } }
+    public PlayerRotation Rotation { get { return rotation; } }
+
+    public CameraDriver CameraDriver { get { return cameraDriver; } }
+
+    public PlayerInteractionsHandler InteractionsHandler { get { return interactionsHandler; } }
+    public PlayerAttackController AttackController { get { return attackController; } }
+    public PlayerInventory Inventory { get { return inventory; } }
+    #endregion
 
     #region Initialization
     protected override void Awake()
@@ -33,7 +47,8 @@ public class Player : DamageableEntity
 
         Debug.Log("Player has died!");
     }
-
+    
+    // TODO: Remove this? Properties now available
     public void ReceiveLoadout(ProjectileWeapon primaryWeapon, ProjectileWeapon secondaryWeapon, MeleeWeapon meleeWeapon)
     {
         if (primaryWeapon != null) inventory.ChangePrimaryWeapon(primaryWeapon);

@@ -7,10 +7,6 @@ public class ElevatorButton : MonoBehaviour, IInteractable
 
     public void OnInteract(Player player)
     {
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = elevator.transform.position;
-        elevator.StartElevatorSequence();
-        player.GetComponent<CharacterController>().enabled = true;
+        elevator.StartElevatorSequence(player);
     }
-
 }
