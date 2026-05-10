@@ -8,4 +8,8 @@ public class AttackController : MonoBehaviour
     [SerializeField] Weapon selectedWeapon;
 
     public void Attack() => selectedWeapon.Attack();
+
+    public Weapon GetSelectedWeapon() => selectedWeapon;
+
+    public void SetSelectedWeapon(Weapon weapon) => selectedWeapon = weapon;
 }

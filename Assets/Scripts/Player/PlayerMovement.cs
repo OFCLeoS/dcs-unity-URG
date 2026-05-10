@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] CharacterController controller;
     [SerializeField] float speed;
     
-    
-
     void Awake()
     {
         movementDirection = InputSystem.actions.FindAction("Move");
