@@ -1,0 +1,70 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="dR8FIw8NsMLaiFg5qiBY">
+    <mxGraphModel dx="1863" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object label="STARTING ROOM" Room_Type="STARTING" id="OpCXDfPJrS20hdrOnuNi-1">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="130" width="180" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-4">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="50" width="180" x="180" y="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="SECTOR" Room_Type="SECTOR" id="OpCXDfPJrS20hdrOnuNi-5">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="130" width="180" x="360" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="SECTOR" Room_Type="SECTOR" id="OpCXDfPJrS20hdrOnuNi-6">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="320" width="180" x="580" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-7">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="50" width="40" x="540" y="40" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-8">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="210" width="50" x="645" y="320" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="SECTOR" Room_Type="SECTOR" id="OpCXDfPJrS20hdrOnuNi-9">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="130" width="180" x="585" y="530" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-10">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="50" width="330" x="760" y="120" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="SECTOR" Room_Type="SECTOR" id="OpCXDfPJrS20hdrOnuNi-11">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="430" width="640" x="1090" y="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-12">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="440" width="50" x="1640" y="510" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="SECTOR" Room_Type="SECTOR" id="OpCXDfPJrS20hdrOnuNi-13">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="130" width="750" x="970" y="950" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="HALLWAY" Room_Type="HALLWAY" id="OpCXDfPJrS20hdrOnuNi-14">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="440" width="50" x="1330" y="1080" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,4 @@
+- Room_Type
+    - SECTOR
+    - HALLWAY
+    - STARTING
