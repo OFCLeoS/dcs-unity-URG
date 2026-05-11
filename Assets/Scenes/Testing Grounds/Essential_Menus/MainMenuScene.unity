@@ -2085,10 +2085,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2143134192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c406a5f5baecf46af2e3177b8f54aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 262830c48dab713429b3f0b36727b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  gameplayScene: TESTStartGameScene
+  startGameScene: TESTStartGameScene
   tutorialScene: TESTTutorialScene
   creditsScene: TESTCreditsScene
   settingsPanel: {fileID: 0}
