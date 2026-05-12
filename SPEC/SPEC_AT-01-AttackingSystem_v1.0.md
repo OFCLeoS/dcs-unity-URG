@@ -1,4 +1,4 @@
 # AT-01 - Attacking System
-## Short-Range
+### Short-Range
 
-## Long-Range
+### Long-Range

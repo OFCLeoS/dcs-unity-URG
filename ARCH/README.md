@@ -13,7 +13,7 @@ An Action Group Node is a parent for multiple Leaf Nodes. It is used to group mu
 The Leaf Node is an actual action the entity can perform. It is represented by a yellow background (#FFE74C) and the fact that it has no children.
 
 # Behaviour Tree (BT)
-A Behaviour Tree represents the behaviour of an AI Agent. Priorities go from left (highest) to right (lowest).
+A Behaviour Tree represents the behaviour of an AI Agent. Priorities go from right (highest) to left (lowest).
 ## Nodes
 Nodes can be distinguished by a "node letter" and their background colour. Example: "? (Find Scientist)" with a red background would indicate a selector node whose sub-nodes are related to finding a scientist.
 ### Flow
