@@ -30,7 +30,7 @@ public class OcclusionHandler : MonoBehaviour
 
         Vector3 direction = (targetPosition - startPosition).normalized;
 
-        Vector3 halfExtents = new Vector3(4.5f, 1f, 0.1f);
+        Vector3 halfExtents = new Vector3(2.5f, 1f, 0.1f);
 
         currentHits.Clear();
 
@@ -57,6 +57,7 @@ public class OcclusionHandler : MonoBehaviour
         currentHits = temp;
     }
 
+    // TODO: DONT DO THIS PER FRAME???
     void Update()
     {
         HandleOcclusion();
