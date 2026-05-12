@@ -8,8 +8,10 @@ public class CameraDriver : MonoBehaviour
     [SerializeField] Transform player;
     Quaternion startingRotation;
 
-    [Tooltip("How far the camera will be from the player.")]
+    [Tooltip("How far the camera will be from the player on the y axis.")]
     [SerializeField] float cameraYDistance;
+    [Tooltip("How far the camera will be from the player o the z axis.")]
+    [SerializeField] float cameraZDistance;
 
     bool followPlayer;
 
@@ -43,7 +45,7 @@ public class CameraDriver : MonoBehaviour
     {
         if (followPlayer)
         {
-            transform.position = new Vector3(player.position.x, player.position.y + cameraYDistance, player.position.z);
+            transform.position = new Vector3(player.position.x, player.position.y + cameraYDistance, player.position.z + cameraZDistance);
         }
         else
         {
