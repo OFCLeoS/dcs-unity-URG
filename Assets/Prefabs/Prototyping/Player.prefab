@@ -2868,6 +2868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b9aba443b616746a8b6de770f9b3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LongRange
+  weaponAttackShakeIntensity: 0.1
   projectilePool: {fileID: 0}
   projectileAttributes:
     velocity: 100
@@ -9135,6 +9136,8 @@ GameObject:
   - component: {fileID: 1602320963449306147}
   - component: {fileID: 5442137235921225154}
   - component: {fileID: 5930947798041469053}
+  - component: {fileID: 7615609447347074140}
+  - component: {fileID: 7537033518100838245}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -9255,6 +9258,7 @@ MonoBehaviour:
   _health: 100
   movement: {fileID: 0}
   rotation: {fileID: 0}
+  cameraDriver: {fileID: 0}
   interactionsHandler: {fileID: 0}
   attackController: {fileID: 0}
   inventory: {fileID: 0}
@@ -9272,6 +9276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   controller: {fileID: 5442137235921225154}
   speed: 9
+  crosshairController: {fileID: 0}
 --- !u!114 &6890084963146444032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9284,6 +9289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63a60298d19a1a42880bad0d2e2d6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRotation
+  mouseSensitivity: 1
+  crosshairController: {fileID: 0}
 --- !u!114 &1602320963449306147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9339,6 +9346,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackSystem
   selectedWeapon: {fileID: 133724987325490923}
+  playerCameraShaker: {fileID: 7537033518100838245}
+--- !u!114 &7615609447347074140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316765368383284722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f48975586d0e1a54c89ca3a905d56a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrosshairController
+  crosshair: {fileID: 0}
+  maximumXDistanceFromPlayerPerAxis: 25
+  maximumZDistanceFromPlayerPerAxis: 15
+--- !u!114 &7537033518100838245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8316765368383284722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d5e982d2d031343bc5dc36691e5998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecoilSimulator
+  virtualCamera: {fileID: 0}
+  defaultAmplitudeGain: 0.39
+  defaultFrequencyGain: 3.9
 --- !u!1 &8328567048306239091
 GameObject:
   m_ObjectHideFlags: 0
@@ -9986,6 +10024,10 @@ PrefabInstance:
     - target: {fileID: 3570739838727998179, guid: 9c1cbb3f8dbc4a547992490a4f8791c8, type: 3}
       propertyPath: m_Name
       value: M4A1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949377705264734040, guid: 9c1cbb3f8dbc4a547992490a4f8791c8, type: 3}
+      propertyPath: weaponAttackShakeIntensity
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6159573040978417718, guid: 9c1cbb3f8dbc4a547992490a4f8791c8, type: 3}
       propertyPath: m_LocalPosition.x

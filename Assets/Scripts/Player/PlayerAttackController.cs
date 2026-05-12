@@ -8,12 +8,25 @@ public class PlayerAttackController : AttackController
 {
     InputAction attackAction;
 
-    void Awake() => attackAction = InputSystem.actions.FindAction("Attack");
+    [SerializeField] CameraShaker playerCameraShaker;
+
+    #region Initialization
+    void Awake()
+    {
+        attackAction = InputSystem.actions.FindAction("Attack");
+        if (!playerCameraShaker)
+        {
+            playerCameraShaker = GetComponent<CameraShaker>();
+        }
+    }
+    #endregion
 
     void HandleAttack()
     {
         if (attackAction.IsPressed())
         {
+            // TODO: CHECK IF ATTACK WAS SUCCESSFUL!
+            playerCameraShaker.ShakeCamera(0.1f, GetSelectedWeapon().WeaponAttackShakeIntensity);
             Attack();
         }
     }

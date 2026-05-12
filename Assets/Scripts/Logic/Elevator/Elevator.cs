@@ -26,7 +26,8 @@ public class Elevator : MonoBehaviour
             this.player = player.transform;
             playerCharacterController = this.player.GetComponent<CharacterController>();
         }
-        player.CameraDriver.StickToTarget(cameraHolder);
+        //player.CameraDriver.StickToTarget(cameraHolder);
+        Debug.LogError("MUST FIX THIS!");
         playerCharacterController.enabled = false;
         player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2));
         playerCharacterController.enabled = true;

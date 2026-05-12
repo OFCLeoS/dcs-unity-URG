@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -6,51 +7,33 @@ using UnityEngine;
 public class CameraDriver : MonoBehaviour
 {
     [SerializeField] Transform player;
-    Quaternion startingRotation;
+    [SerializeField] CrosshairController crosshairController;
+    [SerializeField] CinemachineVirtualCamera virtualCamera;
 
-    [Tooltip("How far the camera will be from the player on the y axis.")]
-    [SerializeField] float cameraYDistance;
-    [Tooltip("How far the camera will be from the player o the z axis.")]
-    [SerializeField] float cameraZDistance;
+    [SerializeField] float screenXMin = 0.1f;
+    [SerializeField] float screenXMax = 0.9f;
 
-    bool followPlayer;
+    [SerializeField] float screenYMin = 0.1f;
+    [SerializeField] float screenYMax = 0.9f;
 
-    Transform alternateTarget;
+    CinemachineFramingTransposer virtualCameraBody;
+
 
     #region Initialization
     void Awake()
     {
-        followPlayer = true;
-        startingRotation = transform.rotation;
+        virtualCamera.Follow = player;
+        virtualCameraBody = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
     #endregion
 
-    /// <summary>
-    /// Makes the camera Stick to a target transform
-    /// </summary>
-    public void StickToTarget(Transform target)
-    {
-        alternateTarget = target;
-        followPlayer = false;
-        transform.rotation = target.rotation;
-    }
-
-    public void FollowPlayer()
-    {
-        followPlayer = true;
-        transform.rotation = startingRotation;
-    }
 
     void HandleDriver()
     {
-        if (followPlayer)
-        {
-            transform.position = new Vector3(player.position.x, player.position.y + cameraYDistance, player.position.z + cameraZDistance);
-        }
-        else
-        {
-            transform.position = new Vector3(alternateTarget.position.x, alternateTarget.position.y, alternateTarget.position.z);
-        }
+        Vector2 normalizedCrosshairPosition = crosshairController.NormalizedCrosshairPosition;
+
+        virtualCameraBody.m_ScreenX = Mathf.Lerp(screenXMin, screenXMax, Mathf.InverseLerp(-1f, 1f, -normalizedCrosshairPosition.x));
+        virtualCameraBody.m_ScreenY = Mathf.Lerp(screenYMin, screenYMax, Mathf.InverseLerp(-1f, 1f, normalizedCrosshairPosition.y));
     }
 
     void Update()

@@ -4,20 +4,34 @@ using UnityEngine.InputSystem;
 
 public class PlayerRotation : MonoBehaviour
 {
-   InputAction rotationDirection;
+    InputAction mouseDeltaAction;
+
+    [SerializeField] float mouseSensitivity = 1;
+    [SerializeField] CrosshairController crosshairController;
+
+    #region Initialization
     void Awake()
     {
-      
-        rotationDirection = InputSystem.actions.FindAction("Point");
+        mouseDeltaAction = InputSystem.actions.FindAction("Look");
+        if (!crosshairController)
+        {
+            crosshairController = GetComponent<CrosshairController>();
+        }
+    }
+    #endregion
+
+
+    void HandleRotation()
+    {
+        Vector2 mouseDelta = mouseDeltaAction.ReadValue<Vector2>();
+        crosshairController.MoveCrosshair(mouseDelta * mouseSensitivity);
+    
+        transform.rotation = Quaternion.LookRotation(crosshairController.GetDirectionToCrosshair(transform.position), transform.up);
     }
 
-  
+    // TODO: PERFORMANCE CHECK
     void Update()
     {
-        Vector2 newValue =rotationDirection.ReadValue<Vector2>();
-        Vector3 worldValue = Camera.main.ScreenToWorldPoint( new Vector3(newValue.x, newValue.y, 
-        Camera.main.transform.position.y - transform.position.y));
-        Vector3 direction = new Vector3(worldValue.x - transform.position.x,0,worldValue.z-transform.position.z);
-        transform.rotation = Quaternion.LookRotation(direction);
+        HandleRotation();
     }
 }
