@@ -22,6 +22,7 @@
   <Project Path="Unity.Burst.csproj" />
   <Project Path="Unity.Behavior.csproj" />
   <Project Path="Unity.VisualScripting.Flow.Editor.csproj" />
+  <Project Path="Cinemachine.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="Unity.InputSystem.csproj" />
   <Project Path="Unity.Behavior.Serialization.csproj" />
@@ -42,6 +43,7 @@
   <Project Path="Unity.TextMeshPro.Editor.csproj" />
   <Project Path="Unity.AppUI.Navigation.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Samples.Runtime.csproj" />
+  <Project Path="com.unity.cinemachine.editor.csproj" />
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
   <Project Path="Unity.VisualScripting.State.csproj" />
