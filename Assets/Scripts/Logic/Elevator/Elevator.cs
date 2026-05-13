@@ -9,7 +9,10 @@ public class Elevator : MonoBehaviour
     [SerializeField] Vector3 startPoint;
     [SerializeField] Vector3 endPoint;
 
-    [SerializeField] Transform cameraHolder;
+    [Tooltip("How far the camera will be from the player once the sequence starts")]
+    [SerializeField] float playerCameraDistance;
+    [Tooltip("The rotation the camera will have once the sequence starts")]
+    [SerializeField] Vector3 playerCameraRotation;
 
     bool active;
 
@@ -26,17 +29,27 @@ public class Elevator : MonoBehaviour
             this.player = player.transform;
             playerCharacterController = this.player.GetComponent<CharacterController>();
         }
-        //player.CameraDriver.StickToTarget(cameraHolder);
-        Debug.LogError("MUST FIX THIS!");
+        AdaptCameraSettings(player.CameraDriver);
         playerCharacterController.enabled = false;
-        player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2));
+        player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2.0f));
         playerCharacterController.enabled = true;
+        player.CrosshairController.ResetCrosshairPosition();
+    }
+
+    /// <summary>
+    /// Adapts Camera Settings to the elevator sequence
+    /// </summary>
+    void AdaptCameraSettings(CameraDriver cameraDriver)
+    {
+        cameraDriver.DisableSmoothing();
+        cameraDriver.SetCameraDistance(playerCameraDistance);
+        cameraDriver.SetCameraRotation(playerCameraRotation);
     }
 
     void StickPlayerToElevatorFloor()
     {
         playerCharacterController.enabled = false;
-        player.transform.position = new Vector3(player.transform.position.x, elevatorFloor.position.y + (playerCharacterController.height / 2), player.transform.position.z);
+        player.transform.position = new Vector3(player.transform.position.x, elevatorFloor.position.y + (playerCharacterController.height / 2.0f), player.transform.position.z);
         playerCharacterController.enabled = true;
     }
 

@@ -12,6 +12,7 @@ public class Player : DamageableEntity
     [SerializeField] PlayerRotation rotation;
 
     [SerializeField] CameraDriver cameraDriver;
+    [SerializeField] CrosshairController crosshairController;
 
     [SerializeField] PlayerInteractionsHandler interactionsHandler;
     [SerializeField] PlayerAttackController attackController;
@@ -22,6 +23,7 @@ public class Player : DamageableEntity
     public PlayerRotation Rotation { get { return rotation; } }
 
     public CameraDriver CameraDriver { get { return cameraDriver; } }
+     public CrosshairController CrosshairController { get { return crosshairController; } }
 
     public PlayerInteractionsHandler InteractionsHandler { get { return interactionsHandler; } }
     public PlayerAttackController AttackController { get { return attackController; } }
@@ -34,6 +36,9 @@ public class Player : DamageableEntity
         base.Awake();
         movement = GetComponent<PlayerMovement>();
         rotation = GetComponent<PlayerRotation>();
+
+        crosshairController = GetComponent<CrosshairController>();
+
         interactionsHandler = GetComponent<PlayerInteractionsHandler>();
         attackController = GetComponent<PlayerAttackController>();
         inventory = GetComponent<PlayerInventory>();

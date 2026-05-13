@@ -33,7 +33,6 @@ public class CameraShaker : MonoBehaviour
 
     public void ShakeCamera(float shakeTime, float amplitudeGain, float frequencyGain)
     {
-        Debug.Log("HIIIII");
         virtualCameraNoise.m_AmplitudeGain = amplitudeGain;
         virtualCameraNoise.m_FrequencyGain = frequencyGain;
         shakeTimer = shakeTime;
@@ -49,7 +48,6 @@ public class CameraShaker : MonoBehaviour
     {
         if (isShaking)
         {
-            Debug.Log("WASSAP");
             shakeTimer -= Time.deltaTime;
             if (shakeTimer <= 0)
             {
