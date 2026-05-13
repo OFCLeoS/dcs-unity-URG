@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -95,18 +96,20 @@ public class DrawIOTranslator : MonoBehaviour
                             break;
                         }
 
-                        float x = 0;
-                        float z = 0;
+                        double x = 0;
+                        double z = 0;
 
                         string xText = GetDataValueInLine(fileLines[i], " x");
                         if (!xText.Equals(""))
                         {
-                            x = float.Parse(xText) / 10.0f;
+                            // Rounding to 1 decimal seems to make everything be connected better
+                            x = Math.Round(double.Parse(xText) / 10.0f, 1);
                         }
                         string zText = GetDataValueInLine(fileLines[i], " y");
                         if (!zText.Equals(""))
                         {
-                            z = -float.Parse(zText) / 10.0f;
+                            // Rounding to 1 decimal seems to make everything be connected better
+                            z = Math.Round(-double.Parse(zText) / 10.0f, 1);
                         }
                         if (rotation == 90)
                         {
@@ -121,7 +124,7 @@ public class DrawIOTranslator : MonoBehaviour
                         {
                             if (randomSector.Dimensions == dimensions)
                             {
-                                matchingRandomSector = Instantiate(randomSector, new Vector3(x, 0, z), Quaternion.Euler(-90, rotation, 0), layoutParent.transform);
+                                matchingRandomSector = Instantiate(randomSector, new Vector3((float)x, 0, (float)z), Quaternion.Euler(-90, rotation, 0), layoutParent.transform);
                                 layoutParent.AddMapSection(matchingRandomSector);
                                 idSectorPairs.Add(sectorTypeIDValue, matchingRandomSector);
                             }

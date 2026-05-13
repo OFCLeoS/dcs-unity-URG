@@ -34,6 +34,20 @@ public class Elevator : MonoBehaviour
         player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2.0f));
         playerCharacterController.enabled = true;
         player.CrosshairController.ResetCrosshairPosition();
+#if UNITY_EDITOR
+        if (DEBUG_ACTIVE) DEBUG_SIMULATION_ACTIVE = true;
+#endif
+    }
+
+    public void StopElevatorSequence(Vector3 stopPosition)
+    {
+        active = false;
+        Player player = this.player.GetComponent<Player>();
+        player.CameraDriver.ResetCameraSettings();
+        playerCharacterController.enabled = false;
+        player.transform.position = stopPosition;
+        playerCharacterController.enabled = true;
+        player.CrosshairController.ResetCrosshairPosition();
     }
 
     /// <summary>
@@ -76,5 +90,29 @@ public class Elevator : MonoBehaviour
         {
             HandleElevator();
         }
+#if UNITY_EDITOR
+        if (DEBUG_SIMULATION_ACTIVE)
+        {
+            DEBUG_SIMULATE_ELEVATOR_SEQUENCE();
+        }
+#endif
     }
+
+    #region DEBUGGING
+#if UNITY_EDITOR
+    public bool DEBUG_ACTIVE = false;
+    float DEBUG_ELEVATOR_TIME = 5;
+    bool DEBUG_SIMULATION_ACTIVE = false;
+    public Vector3 DEBUG_STOP_POS;
+    void DEBUG_SIMULATE_ELEVATOR_SEQUENCE()
+    {
+        DEBUG_ELEVATOR_TIME -= Time.deltaTime;
+        if (DEBUG_ELEVATOR_TIME <= 0)
+        {
+            StopElevatorSequence(DEBUG_STOP_POS);
+            DEBUG_SIMULATION_ACTIVE = false;
+        }
+    }
+#endif
+    #endregion
 }

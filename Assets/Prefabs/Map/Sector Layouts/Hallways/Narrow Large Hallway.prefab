@@ -101,7 +101,8 @@ GameObject:
   - component: {fileID: 2760881230647837667}
   - component: {fileID: 2724112114595785943}
   - component: {fileID: 8119720194080061632}
-  m_Layer: 0
+  - component: {fileID: 7665301159269893945}
+  m_Layer: 6
   m_Name: Wall.023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,6 +181,18 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7665301159269893945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060891897143316899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bec5a40a8da0344388902768dcede96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Occludable
 --- !u!1 &4684198763394685028
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +343,8 @@ GameObject:
   - component: {fileID: 3363478394403481993}
   - component: {fileID: 8942179328905222623}
   - component: {fileID: 5999257582793929842}
-  m_Layer: 0
+  - component: {fileID: 1867722356870477515}
+  m_Layer: 6
   m_Name: Wall.024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -409,6 +423,18 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1867722356870477515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5931008724996211178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bec5a40a8da0344388902768dcede96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Occludable
 --- !u!1 &6878572856931543118
 GameObject:
   m_ObjectHideFlags: 0
