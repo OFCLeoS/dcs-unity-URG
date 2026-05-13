@@ -4,22 +4,35 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    InputAction movementDirection;
+    InputAction movementDirectionAction;
     [SerializeField] CharacterController controller;
     [SerializeField] float speed;
-    
-    
 
+    [SerializeField] CrosshairController crosshairController;
+
+    #region Initialization
     void Awake()
     {
-        movementDirection = InputSystem.actions.FindAction("Move");
+        movementDirectionAction = InputSystem.actions.FindAction("Move");
+        if (!crosshairController)
+        {
+            crosshairController = GetComponent<CrosshairController>();
+        }
+    }
+    #endregion
+
+    void HandleMovement()
+    {
+        Vector2 movementAxis = movementDirectionAction.ReadValue<Vector2>().normalized;
+        Vector3 move = new Vector3(movementAxis.x * speed * Time.deltaTime, 0, movementAxis.y * speed * Time.deltaTime);
+        controller.Move(move);
+        // We use velocity so that the crosshair does not move when the player is colliding against something
+        crosshairController.MoveCrosshair(new Vector2(controller.velocity.x, controller.velocity.z));
     }
 
-    // Update is called once per frame
+    // TODO: PERFORMANCE CHECK
     void Update()
     {
-        Vector2 input= movementDirection.ReadValue<Vector2>().normalized;
-        Vector3 move = new Vector3(input.x*speed*Time.deltaTime, 0, input.y*speed*Time.deltaTime);
-        controller.Move(move);
+        HandleMovement();
     }
 }
