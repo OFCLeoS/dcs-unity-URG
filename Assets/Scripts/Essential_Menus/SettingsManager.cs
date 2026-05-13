@@ -149,6 +149,7 @@ public class SettingsManager : MonoBehaviour
 
     public void OnCancel()
     {
+        Debug.Log("HIii");
         currentSettings = SettingsData.Load() ?? new SettingsData();
         ApplySettingsToUI();
         ApplySettings();
