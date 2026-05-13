@@ -22,7 +22,7 @@ public class MapRandomSector : MonoBehaviour
     }
     #endregion
 
-
+    #region Draw.io Translator Related
     public void SetActiveDoorPoints(List<Vector2> doorPointsToActivate)
     {
         foreach (DoorPoint doorPoint in doorPoints)
@@ -54,4 +54,5 @@ public class MapRandomSector : MonoBehaviour
             Debug.LogWarning($"The Door Point of deltas: {doorPointDeltas} does not exist on the {transform.name} Random Sector!");
         }
     }
+    #endregion
 }
