@@ -28,7 +28,8 @@ public class OcclusionHandler : MonoBehaviour
         Vector3 startPosition = playerCamera.position;
         Vector3 targetPosition = player.position;
 
-        Vector3 direction = (targetPosition - startPosition).normalized;
+        // TODO: CHECK IF 1.5f IS THE BEST VALUE
+        Vector3 direction = (targetPosition-(Vector3.forward*1.5f) - startPosition).normalized;
 
         Vector3 halfExtents = new Vector3(2.5f, 1f, 0.1f);
 
