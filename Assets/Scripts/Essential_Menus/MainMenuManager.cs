@@ -7,7 +7,9 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private string tutorialScene = "TESTTutorialScene";
     [SerializeField] private string creditsScene = "TESTCreditsScene";
 
+    [Header("Panels")]
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject menuPanel;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,6 +33,7 @@ public class MainMenuManager : MonoBehaviour
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(true);
+            menuPanel.SetActive(false);
         } 
         else
         {

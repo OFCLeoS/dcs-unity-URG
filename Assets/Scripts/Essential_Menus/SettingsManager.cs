@@ -18,6 +18,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider mouseSensitivitySlider;
     [SerializeField] private TMP_Text mouseSensitivityLabel;
 
+    [Header("Panels")]
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject menuPanel;
+
     private SettingsData currentSettings;
     private Resolution[] availableResolutions;
 
@@ -144,7 +148,8 @@ public class SettingsManager : MonoBehaviour
     public void OnApply()
     {
         currentSettings.Save();
-        gameObject.SetActive(false);
+        menuPanel.SetActive(true);
+        settingsPanel.SetActive(false);
     }
 
     public void OnCancel()
@@ -153,7 +158,8 @@ public class SettingsManager : MonoBehaviour
         currentSettings = SettingsData.Load() ?? new SettingsData();
         ApplySettingsToUI();
         ApplySettings();
-        gameObject.SetActive(false);
+        menuPanel.SetActive(true);
+        settingsPanel.SetActive(false);
     }
 
     public void OnResetToDefaults()

@@ -41,6 +41,7 @@ public class PauseMenuManager : MonoBehaviour
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(true);
+            pauseMenuPanel.SetActive(false);
         }
         else
         {

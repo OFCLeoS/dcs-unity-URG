@@ -209,7 +209,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnMasterVolumeChanged
         m_Mode: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnFullscreenToggled
         m_Mode: 0
@@ -1349,7 +1349,6 @@ GameObject:
   - component: {fileID: 529139187}
   - component: {fileID: 529139189}
   - component: {fileID: 529139188}
-  - component: {fileID: 529139190}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -1419,25 +1418,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529139186}
   m_CullTransparentMesh: 1
---- !u!114 &529139190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529139186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6ad25aa509e4f4da2f9951270d1520, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
-  audioMixer: {fileID: 24100000, guid: 57da7fa95d812fe4b8cd73e67869b29b, type: 2}
-  masterVolumeSlider: {fileID: 63763842}
-  masterVolumeLabel: {fileID: 1793824852}
-  resolutionDropdown: {fileID: 875245187}
-  fullscreenToggle: {fileID: 426867667}
-  mouseSensitivitySlider: {fileID: 2033497727}
-  mouseSensitivityLabel: {fileID: 1333261231}
 --- !u!1 &614957348
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,7 +2314,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnResolutionChanged
         m_Mode: 0
@@ -3141,7 +3121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 1973598449}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnCancel
         m_Mode: 1
@@ -5152,6 +5132,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933648131}
   m_CullTransparentMesh: 1
+--- !u!1 &1973598448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973598450}
+  - component: {fileID: 1973598449}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1973598449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973598448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f6ad25aa509e4f4da2f9951270d1520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsManager
+  audioMixer: {fileID: 24100000, guid: 57da7fa95d812fe4b8cd73e67869b29b, type: 2}
+  masterVolumeSlider: {fileID: 63763842}
+  masterVolumeLabel: {fileID: 1793824852}
+  resolutionDropdown: {fileID: 875245187}
+  fullscreenToggle: {fileID: 426867667}
+  mouseSensitivitySlider: {fileID: 2033497727}
+  mouseSensitivityLabel: {fileID: 1333261231}
+  settingsPanel: {fileID: 529139186}
+  menuPanel: {fileID: 1586816394}
+--- !u!4 &1973598450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973598448}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.64761, y: 1.92452, z: 0.30045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975139169
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,7 +5268,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 1973598449}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnResetToDefaults
         m_Mode: 1
@@ -5368,7 +5401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 1973598449}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnApply
         m_Mode: 1
@@ -5508,7 +5541,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 529139190}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: OnMouseSensitivityChanged
         m_Mode: 0
@@ -5934,5 +5967,6 @@ SceneRoots:
   - {fileID: 975424539}
   - {fileID: 2413507228648012162}
   - {fileID: 2137168278}
+  - {fileID: 1973598450}
   - {fileID: 1448104625}
   - {fileID: 2083028639}
