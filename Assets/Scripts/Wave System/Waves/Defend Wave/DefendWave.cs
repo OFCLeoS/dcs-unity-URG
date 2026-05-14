@@ -9,25 +9,15 @@ public class DefendWave : Wave
     DefendWaveObjective[] objectives;
     List<DefendWaveObjective> remainingObjectives = new List<DefendWaveObjective>();
 
-    public DefendWave(WaveManager waveManager) : base(waveManager)
+    public DefendWave(WaveManager waveManager, float waveDuration) : base(waveManager, waveDuration)
     {
-        InitializeWave();
     }
 
-    protected override void InitializeWave()
+    public override void InitializeWave()
     {
         remainingObjectives.Clear();
         objectives = waveManager.GetDefendWaveObjectsManager.ActivateRandomSet(this);
         remainingObjectives.AddRange(objectives);
-        // TODO: PREP PHASE
-    }
-
-
-    public override float GetWaveTimeLimit()
-    {
-        // TODO: CHANGE THIS FOR DIFFICULTY SCALING
-        // EQUATION: (log10(x+1))/1.23
-        return 600;
     }
 
     /// <summary>

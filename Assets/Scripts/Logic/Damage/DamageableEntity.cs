@@ -6,7 +6,7 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     [SerializeField] protected float _defaultMaxHealth = 100;
 
     float maxHealth;
-    float currentHealth;
+    protected float currentHealth;
     protected bool isDestroyed = false;
 
     #region Initialization
@@ -75,16 +75,4 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     public bool IsDestroyed => isDestroyed;
 
     protected abstract void DestroyEntity();
-
-    [ContextMenu("AAAA")]
-    public void HEAL()
-    {
-        Heal(10);
-    }
-
-    [ContextMenu("AAAA2")]
-    public void DAMAGE()
-    {
-        TakeDamage(10);
-    }
 }

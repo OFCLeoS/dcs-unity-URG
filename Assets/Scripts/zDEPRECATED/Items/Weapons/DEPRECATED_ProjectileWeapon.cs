@@ -90,4 +90,9 @@ public class DEPRECATED_ProjectileWeapon : Weapon
             timeBeforeMuzzleFlashDeactivation -= Time.deltaTime;
         }
     }
+
+    public override void SetDamage(float newDamage)
+    {
+        throw new System.NotImplementedException();
+    }
 }

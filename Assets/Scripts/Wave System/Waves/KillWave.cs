@@ -9,23 +9,15 @@ public class KillWave : Wave
     readonly int _requiredKills = 50;
     int kills = 0;
 
-    public KillWave(WaveManager waveManager) : base(waveManager)
+    public KillWave(WaveManager waveManager, float waveDuration, int requiredKills) : base(waveManager, waveDuration)
     {
+        _requiredKills = requiredKills;
         waveManager.OnEnemyKilled += EnemyKilled;
-        InitializeWave();
     }
 
-    protected override void InitializeWave()
+    public override void InitializeWave()
     {
-        // TODO: PREP PHASE?
-    }
-
-
-    public override float GetWaveTimeLimit()
-    {
-        // TODO: CHANGE THIS FOR DIFFICULTY SCALING
-        // EQUATION: (log10(x+1))/1.23
-        return 600;
+        
     }
 
     public void EnemyKilled(AIAgent enemy)

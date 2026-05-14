@@ -2,26 +2,38 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Is responsible for wave related tasks such as Difficulty Scaling and Wave Creation
+/// Is responsible for wave related tasks such as Difficulty Scaling and Wave Creation. Should only be active during waves.
 /// </summary>
 public class WaveManager : MonoBehaviour
 {
-    int wave;
+    [SerializeField] EnemySpawningManager enemySpawningManager;
+
+    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+    public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
+
+    [Tooltip("Quiz Manager reference in order to get tip level.")]
+    [SerializeField] QuizManager quizManager;
+
+    [Tooltip("Wave that has the highest difficulty. (Anything above this is for bragging rights only)")]
+    [SerializeField] int maxDifficultyWave = 50;
+
+    public float WaveDifficultyModifier { get; private set; }
+
+    int waveNumber;
     Wave currentWave;
     public Wave CurrentWave { get { return currentWave; } }
 
-    float currentWaveTimeLimit;
-    float currentWaveTime;
+    float preperationTimeLeft;
+    bool inPreperationPhase = true;
 
-    [SerializeField] EnemySpawningManager enemySpawningManager;
-    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+    float timeLeftForCurrentWave;
 
-    public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
 
     #region Initialization
     void Awake()
     {
         CheckComponentsExistence();
+        enabled = false;
     }
 
     void CheckComponentsExistence()
@@ -45,21 +57,40 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-        // TODO: THIS IS TEMPORARY!
-        StartNextWave();
-    }
     #endregion
 
-    public void StartNextWave()
+    void SetWaveDifficultyModifier()
     {
-        wave++;
+        float x = waveNumber * 1.0f / maxDifficultyWave * 1.0f;
+        WaveDifficultyModifier = Mathf.Pow(
+            (Mathf.Exp(x / 2) - 1)
+            /
+            (Mathf.Exp(1 / 2) - 1)
+            , 1.5f);
+    }
+
+    public void GenerateNextWave()
+    {
+        waveNumber++;
+        SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
-        currentWaveTimeLimit = currentWave.GetWaveTimeLimit();
-        currentWaveTime = 0;
-        enemySpawningManager.Activate(5f, currentWave);
+        currentWave.InitializeWave();
+        StartPreparationPhase();
+    }
+
+    void StartPreparationPhase()
+    {
+        inPreperationPhase = true;
+        // TODO: MAKE THIS DYNAMIC?
+        preperationTimeLeft = 60;
+        enabled = true;
+    }
+
+    void StartWave()
+    {
+        inPreperationPhase = false;
+        timeLeftForCurrentWave = currentWave.WaveDuration;
+        enemySpawningManager.Activate(currentWave);
     }
 
     /// <summary>
@@ -80,13 +111,42 @@ public class WaveManager : MonoBehaviour
 
     public void FinishWave()
     {
-        Debug.Log("Wave " + wave + " was Completed!");
+        // DO SOMETHING WITH THIS
+        float waveCompletionPercenrtage = currentWave.GetCompletionPercentage();
+        if (waveCompletionPercenrtage >= (3.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.PARAGRAPH);
+        }
+        else if (waveCompletionPercenrtage >= (2.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.SUB_TOPIC);
+        }
+        else if (waveCompletionPercenrtage >= (1.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.TOPIC);
+        }
+        else
+        {
+            quizManager.SetHintLevel(HintLevel.NO_HINT);
+        }
+        Debug.Log("Wave " + waveNumber + " was Completed!");
         DeactivateAllManagers();
+        enabled = false;
     }
 
-    void Update()
+    void HandleWave()
     {
-        currentWaveTime += Time.deltaTime;
-        if(currentWaveTime >= currentWaveTimeLimit) FinishWave();
+        if (inPreperationPhase)
+        {
+            preperationTimeLeft -= Time.deltaTime;
+            if (preperationTimeLeft <= 0) StartWave();
+        }
+        else
+        {
+            timeLeftForCurrentWave -= Time.deltaTime;
+            if (timeLeftForCurrentWave <= 0) FinishWave();
+        }
     }
+
+    void Update() => HandleWave();
 }

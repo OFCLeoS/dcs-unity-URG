@@ -20,12 +20,21 @@ public class AIMovementModule : MonoBehaviour
     {
         squared_stopping_distance = DEFAULT_STOPPING_DISTANCE * DEFAULT_STOPPING_DISTANCE;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        // The rotation will be updated by this module
+        // We want the agent to be able to immidiately reach their desired speed
+        navMeshAgent.acceleration = 99999999999;
+        navMeshAgent.autoBraking = false;
+        // TODO: SET TO FALSE (maybe): The rotation will be updated by this module
         navMeshAgent.updateRotation = true;
         navMeshAgent.speed = speed;
         navMeshAgent.stoppingDistance = DEFAULT_STOPPING_DISTANCE;
     }
     #endregion
+
+    public void SetMovementSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+        navMeshAgent.speed = speed;
+    }
 
     public void SetStoppingDistance(float stoppingDistance)
     {
