@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class QuizManager : MonoBehaviour
 {
-    // Add checks if question is not null and if quiz is active!
-
     private Question currentQuestion;
     private bool quizActive = false;
 
-    // TODO: Change to Enum? (Magic Numbers)
     private HintLevel hintLevel = HintLevel.NO_HINT;
 
     [SerializeField] GameObject quizCanvas;

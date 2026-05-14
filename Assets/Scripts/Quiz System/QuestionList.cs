@@ -9,6 +9,8 @@ public class QuestionList
 {
     private static List<Question> questionsList = new List<Question>();
 
+    // TODO: Replace foreach loops with for due to this being run countless times at runtime?
+
     // [0] = topic, [1] = subtopic, [2] = paragraph number, [3] = paragraph text
     private static List<string[]> contentList = new List<string[]>();
 

@@ -18,6 +18,8 @@ public class Player : DamageableEntity
     [SerializeField] PlayerAttackController attackController;
     [SerializeField] PlayerInventory inventory;
 
+    [SerializeField] StatusEffectController statusEffectController;
+
     #region Properties
     public PlayerMovement Movement { get { return movement; } }
     public PlayerRotation Rotation { get { return rotation; } }
@@ -28,6 +30,8 @@ public class Player : DamageableEntity
     public PlayerInteractionsHandler InteractionsHandler { get { return interactionsHandler; } }
     public PlayerAttackController AttackController { get { return attackController; } }
     public PlayerInventory Inventory { get { return inventory; } }
+
+    public StatusEffectController StatusEffectController { get { return statusEffectController; } }
     #endregion
 
     #region Initialization
@@ -41,6 +45,8 @@ public class Player : DamageableEntity
 
         attackController = GetComponent<PlayerAttackController>();
         inventory = GetComponent<PlayerInventory>();
+
+        statusEffectController = GetComponent<StatusEffectController>();
     }
     #endregion
 
