@@ -26,14 +26,6 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     }
     #endregion
 
-    /// <summary>
-    /// This should always be used to set health, in case behaviour wants to be done upon health change
-    /// </summary>
-    public virtual void SetHealth(float newHealth)
-    {
-        currentHealth = newHealth;
-    }
-
     public virtual void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
@@ -70,8 +62,9 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     /// </summary>
     public void AddTakeMaxHealth(float maxHealthToAdd)
     {
+        float oldMaxHealth = maxHealth;
         maxHealth += maxHealthToAdd;
-        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        if (currentHealth == oldMaxHealth) currentHealth = maxHealth;
     }
 
     /// <summary>
@@ -82,4 +75,16 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     public bool IsDestroyed => isDestroyed;
 
     protected abstract void DestroyEntity();
+
+    [ContextMenu("AAAA")]
+    public void HEAL()
+    {
+        Heal(10);
+    }
+
+    [ContextMenu("AAAA2")]
+    public void DAMAGE()
+    {
+        TakeDamage(10);
+    }
 }

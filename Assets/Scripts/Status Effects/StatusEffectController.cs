@@ -6,7 +6,8 @@ public class StatusEffectController : MonoBehaviour
     // TODO: REPLACE WITH BETTER PARENT CLASS!
     [SerializeField] DamageableEntity target;
 
-    List<StatusEffect> activeEffects;
+    List<DebuffStatusEffect> activeDebuffs = new List<DebuffStatusEffect>();
+    List<RecurrentStatusEffect> activeRecurrentEffects = new List<RecurrentStatusEffect>();
 
     void Awake()
     {
@@ -14,6 +15,12 @@ public class StatusEffectController : MonoBehaviour
         {
             target = GetComponent<DamageableEntity>();
         }
+    }
+
+    public void AddDebuff(DebuffStatusEffect debuff)
+    {
+        activeDebuffs.Add(debuff);
+        debuff.ApplyEffect();
     }
 
 }

@@ -7,7 +7,7 @@ public abstract class StatusEffect
         this.target = target;
     }
 
-    public abstract void Apply();
+    public abstract void ApplyEffect();
 
-    public abstract void Remove();
+    public abstract void RemoveEffect();
 }

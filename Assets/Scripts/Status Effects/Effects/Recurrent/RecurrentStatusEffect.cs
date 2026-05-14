@@ -15,7 +15,7 @@ public abstract class RecurrentStatusEffect : StatusEffect
         timeLeftToApply -= deltaTime;
         if(timeLeftToApply <= 0)
         {
-            Apply();
+            ApplyEffect();
             timeLeftToApply = _applyTime;
         }
     }

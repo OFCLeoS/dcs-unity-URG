@@ -90,6 +90,7 @@ public class QuizManager : MonoBehaviour
 
     void PunishPlayer()
     {
+        player.StatusEffectController.AddDebuff(StatusEffectFactory.CreateRandomDebuff(player));
         EndQuiz();
     }
 

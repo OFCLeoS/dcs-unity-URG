@@ -4,16 +4,18 @@ public class WoundedDebuff : DebuffStatusEffect
     public WoundedDebuff(DamageableEntity target, float healthPenalty) : base(target)
     {
         _healthPenalty = healthPenalty;
-        Apply();
     }
 
-    public override void Apply()
+    public override void ApplyEffect()
     {
-
+        target.SubtractMaxHealth(_healthPenalty);
     }
 
-    public override void Remove()
+    /// <summary>
+    /// Must be called upon removal!
+    /// </summary>
+    public override void RemoveEffect()
     {
-
+        target.AddTakeMaxHealth(_healthPenalty);
     }
 }
