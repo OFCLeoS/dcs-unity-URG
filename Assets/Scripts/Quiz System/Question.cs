@@ -3,18 +3,22 @@
 public class Question
 {
     private string question = "";
+    #region Tips
     private string topic = "";
     private string subtopic = "";
     private int paragraphNumber  = -1;
+    #endregion
     private string[] choices = new string[0];
     private int correctIndex = -1;
 
     public Question(string question, string topic, string subtopic, int paragraphNumber, string[] choices, int correctIndex)
     {
         this.question = question;
+
         this.topic = topic;
         this.subtopic = subtopic;
         this.paragraphNumber = paragraphNumber;
+        
         this.choices = choices;
         this.correctIndex = correctIndex;
     }

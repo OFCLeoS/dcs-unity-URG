@@ -23,7 +23,7 @@ public class Player : DamageableEntity
     public PlayerRotation Rotation { get { return rotation; } }
 
     public CameraDriver CameraDriver { get { return cameraDriver; } }
-     public CrosshairController CrosshairController { get { return crosshairController; } }
+    public CrosshairController CrosshairController { get { return crosshairController; } }
 
     public PlayerInteractionsHandler InteractionsHandler { get { return interactionsHandler; } }
     public PlayerAttackController AttackController { get { return attackController; } }
@@ -39,11 +39,28 @@ public class Player : DamageableEntity
 
         crosshairController = GetComponent<CrosshairController>();
 
-        interactionsHandler = GetComponent<PlayerInteractionsHandler>();
         attackController = GetComponent<PlayerAttackController>();
         inventory = GetComponent<PlayerInventory>();
     }
     #endregion
+
+    public void EnableControls()
+    {
+        movement.enabled = true;
+        rotation.enabled = true;
+        interactionsHandler.enabled = true;
+        attackController.enabled = true;
+        inventory.enabled = true;
+    }
+
+    public void DisableControls()
+    {
+        movement.enabled = false;
+        rotation.enabled = false;
+        interactionsHandler.enabled = false;
+        attackController.enabled = false;
+        inventory.enabled = false;
+    }
 
     protected override void DestroyEntity()
     {
@@ -52,7 +69,7 @@ public class Player : DamageableEntity
 
         Debug.Log("Player has died!");
     }
-    
+
     // TODO: Remove this? Properties now available
     public void ReceiveLoadout(ProjectileWeapon primaryWeapon, ProjectileWeapon secondaryWeapon, MeleeWeapon meleeWeapon)
     {

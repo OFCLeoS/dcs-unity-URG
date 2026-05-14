@@ -1,77 +1,102 @@
 using UnityEngine;
-using System.Collections.Generic;
-using System;
 
 public class QuizManager : MonoBehaviour
 {
-    // add checks if question is not null and if quiz is active !!!!!!!!!!
+    // Add checks if question is not null and if quiz is active!
 
     private Question currentQuestion;
     private bool quizActive = false;
-    private int hintLevel = 0; //0 = no hint, 1 = topic, 2 = subtopic, 3 = paragraph
 
-    public Question getCurrentQuestion()
-    {
-        return currentQuestion;
-    }
+    // TODO: Change to Enum? (Magic Numbers)
+    private HintLevel hintLevel = HintLevel.NO_HINT;
 
-    public bool getQuizActive()
-    {
-        return quizActive;
-    }
+    [SerializeField] GameObject quizCanvas;
+    [SerializeField] QuizUI quizUI;
 
-    public int getHintLevel()
-    {
-        return hintLevel;
-    }
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] Player player;
+
+    public Question GetCurrentQuestion() => currentQuestion;
+
+    public bool IsQuizActive() => quizActive;
+
+    public HintLevel GetHintLevel() => hintLevel;
+
     void Awake()
     {
+        // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
         string questionPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizQuestions.txt");
         string contentPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizContent.txt");
 
-        //QuestionList.LoadQuestionsFromFile("QuizQuestions.txt");
-        //QuestionList.LoadContentFromFile("QuizContent.txt");
         QuestionList.LoadQuestionsFromFile(questionPath);
         QuestionList.LoadContentFromFile(contentPath);
 
-        //Debug.Log("Question File exists: " + System.IO.File.Exists("QuizQuestion.txt"));
-        //Debug.Log("Content File exists: " + System.IO.File.Exists("QuizContent.txt"));
         Debug.Log("Question File exists: " + System.IO.File.Exists(questionPath));
         Debug.Log("Content File exists: " + System.IO.File.Exists(contentPath));
+
+        quizUI.CloseQuizUI();
     }
 
-    public void StartQuiz() // call this when the player interacts with the pc/quiz system
+    public void StartQuiz() // Call this when the player interacts with the pc/quiz system
     {
+
+        if (quizActive) return;
         if (QuestionList.GetSize() == 0)
         {
-            Debug.Log("No Quesitons loaded! Cannot start Quiz.");
+            Debug.Log("No Questions loaded! Cannot start Quiz.");
             return;
         }
 
-        System.Random rand = new System.Random();
+        player.DisableControls();
+        player.CrosshairController.ShowCursor();
 
-        int randomQuestionIndex = rand.Next(0, QuestionList.GetSize());
+        int randomQuestionIndex = Random.Range(0, QuestionList.GetSize());
         currentQuestion = QuestionList.GetQuestionFromIndex(randomQuestionIndex);
 
         quizActive = true;
-        hintLevel = 0;
+        hintLevel = HintLevel.NO_HINT;
+
+        quizCanvas.SetActive(true);
 
         Debug.Log("Quiz Started!");
         Debug.Log("Question: " + currentQuestion);
+        quizUI.OpenQuizUI();
     }
 
     public void EndQuiz()
     {
+        quizUI.CloseQuizUI();
+        player.EnableControls();
+        player.CrosshairController.HideCursor();
         currentQuestion = null;
         quizActive = false;
-        hintLevel = 0;
+        hintLevel = HintLevel.NO_HINT;
+        quizCanvas.SetActive(false);
 
         Debug.Log("Quiz Ended!");
     }
 
     public void SendAnswer(int choiceIndex)
+    {
+        if (!quizActive) return;
+
+        if (choiceIndex == currentQuestion.GetCorrectIndex())
+        {
+            Debug.Log("Correct!");
+            EndQuiz();
+        }
+        else
+        {
+            Debug.Log("Wrong!");
+            PunishPlayer();
+        }
+    }
+
+    void PunishPlayer()
+    {
+        EndQuiz();
+    }
+
+    public void NextHint()
     {
         if (!quizActive)
         {
@@ -79,37 +104,10 @@ public class QuizManager : MonoBehaviour
             return;
         }
 
-        if (choiceIndex == currentQuestion.GetCorrectIndex())
-        {
-            Debug.Log("Correct!");
-            EndQuiz();
-        } else
-        {
-            Debug.Log("Wrong!");
-            Debug.Log("Punishment Incoming!");
-            Punishment();
-        }
-    }
-
-    void Punishment()
-    {
-        Debug.Log("punishment not finished!");
-    }
-
-    public void NextHint()
-    {
-        if(!quizActive)
-        {
-            Debug.Log("Quiz is not active!");
-            return;
-        }
-
-        if (hintLevel >= 3)
+        if ((int)hintLevel > System.Enum.GetValues(typeof(HintLevel)).Length)
         {
             Debug.Log("You already have all Hints unlocked!");
         }
-
-        hintLevel += 1;
 
         Debug.Log("Hint Level went up! " + hintLevel + " HintLevel");
     }
@@ -122,27 +120,17 @@ public class QuizManager : MonoBehaviour
             return "";
         }
 
-        if (hintLevel == 0)
+        switch (hintLevel)
         {
-            return "No hint unlocked yet!";
+            case HintLevel.NO_HINT: return "No hint unlocked yet!";
+            case HintLevel.PARAGRAPH: return "Topic: " + currentQuestion.GetTopic();
+            case HintLevel.SUB_TOPIC: return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic();
+            case HintLevel.TOPIC: return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic() + ", Paragraph Number: " + currentQuestion.GetParagraphNumber();
+            default:
+                {
+                    Debug.LogError("INVALID HINT LEVEL!");
+                    return "";
+                }
         }
-        else if (hintLevel == 1)
-        {
-            return "Topic: " + currentQuestion.GetTopic();
-        }
-        else if (hintLevel == 2)
-        {
-            return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic();
-        }
-        else //(hintLevel == 3)
-        {
-            return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic() + ", Paragraph Number: " + currentQuestion.GetParagraphNumber();
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
