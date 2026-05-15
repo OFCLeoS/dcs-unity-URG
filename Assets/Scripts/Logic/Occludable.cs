@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Occludable : MonoBehaviour
 {
-    static readonly int BaseColorID = Shader.PropertyToID("_BaseColor");
+    static readonly int BaseColorID = Shader.PropertyToID("_Color");
 
     private MeshRenderer meshRenderer;
     private MaterialPropertyBlock materialPropertyBlock;
     Color materialColour;
 
-    const float minAlpha = 0.05f;
+    const float minAlpha = 0.15f;
     const float timeToFadeIn = 1f;
     const float timeToFadeOut = 0.39f;
 
