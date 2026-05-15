@@ -490,7 +490,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ffd5fd23bca70b344a2f437ef17e0844, type: 2}
+  - {fileID: 2100000, guid: 91a39519d31e18042b01013a3bd012a8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -672,7 +672,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 973465e935b5a2b488c65509385eae77, type: 2}
+  - {fileID: 2100000, guid: 7e939ed2eb57d174381d298c6e1779df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12813,7 +12813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6247732993368975135
 Transform:
   m_ObjectHideFlags: 0
@@ -12839,8 +12839,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 12
   m_Type: 2
-  m_Color: {r: 1, g: 0.85797274, b: 0, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.57448727, b: 0.3726415, a: 1}
+  m_Intensity: 12
   m_Range: 2.532887
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13572,7 +13572,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d5b1f9ebe3dcb7a449c6b8e030d383f9, type: 2}
+  - {fileID: 2100000, guid: ba193dd4e7b7a47499a5a1a2e66bf1ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14650,7 +14650,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c88baf4d4755a7141bf951689ed47600, type: 2}
+  - {fileID: 2100000, guid: 7e939ed2eb57d174381d298c6e1779df, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14931,7 +14931,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.28
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
