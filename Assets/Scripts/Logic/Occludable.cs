@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class Occludable : MonoBehaviour
 {
+    const float MIN_ALPHA = 0.15f;
+    const float TIME_TO_FADE_IN = 1f;
+    const float TIME_TO_FADE_OUT = 0.39f;
+
     static readonly int BaseColorID = Shader.PropertyToID("_Color");
 
     private MeshRenderer meshRenderer;
     private MaterialPropertyBlock materialPropertyBlock;
     Color materialColour;
 
-    const float minAlpha = 0.15f;
-    const float timeToFadeIn = 1f;
-    const float timeToFadeOut = 0.39f;
-
     bool isFadingOut;
+    
     void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -44,10 +45,10 @@ public class Occludable : MonoBehaviour
         if (isFadingOut)
         {
             Color color = materialColour;
-            color.a = Mathf.Lerp(1f, minAlpha, fadeProgress / timeToFadeOut);
+            color.a = Mathf.Lerp(1f, MIN_ALPHA, fadeProgress / TIME_TO_FADE_OUT);
             materialPropertyBlock.SetColor(BaseColorID, color);
             meshRenderer.SetPropertyBlock(materialPropertyBlock);
-            if (fadeProgress >= timeToFadeOut)
+            if (fadeProgress >= TIME_TO_FADE_OUT)
             {
                 enabled = false;
                 fadeProgress = 0;
@@ -56,10 +57,10 @@ public class Occludable : MonoBehaviour
         else
         {
             Color color = materialColour;
-            color.a = Mathf.Lerp(minAlpha, 1f, fadeProgress / timeToFadeIn);
+            color.a = Mathf.Lerp(MIN_ALPHA, 1f, fadeProgress / TIME_TO_FADE_IN);
             materialPropertyBlock.SetColor(BaseColorID, color);
             meshRenderer.SetPropertyBlock(materialPropertyBlock);
-            if (fadeProgress >= timeToFadeIn)
+            if (fadeProgress >= TIME_TO_FADE_IN)
             {
                 enabled = false;
                 fadeProgress = 0;
