@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using System;
 
 public class FolderUI : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class FolderUI : MonoBehaviour
     private int currentLevel = 1;
     private string currentTopic = "";
     private string currentSubtopic = "";
+
+    [SerializeField] Sprite folderImage;
+    [SerializeField] Sprite txtImage;
+    [SerializeField] Sprite backImage;
 
     private List<Button> activeButtons = new List<Button>();
 
@@ -37,11 +42,25 @@ public class FolderUI : MonoBehaviour
         activeButtons.Clear();
     }
 
-    void CreateButton(string label, UnityEngine.Events.UnityAction onClick)
+    void CreateButton(string label, UnityEngine.Events.UnityAction onClick, string fileType)
     {
+        if(fileType == "txt")
+        {
+            folderButton.GetComponent<Image>().sprite = txtImage;
+        }
+        else if(fileType == "back")
+        {
+            folderButton.GetComponent<Image>().sprite = backImage; 
+        }
+        else
+        {
+            folderButton.GetComponent<Image>().sprite = folderImage;
+        }
         Button newButton = Instantiate(folderButton, folderRowPanel.transform);
         newButton.GetComponentInChildren<TMP_Text>().text = label;
         newButton.onClick.AddListener(onClick);
+
+
         activeButtons.Add(newButton);
     }
 
@@ -57,7 +76,7 @@ public class FolderUI : MonoBehaviour
         foreach (string topic in topics)
         {
             string t = topic;
-            CreateButton(t, () => OnTopicClicked(t));
+            CreateButton(t, () => OnTopicClicked(t), "");
         }
     }
 
@@ -67,14 +86,14 @@ public class FolderUI : MonoBehaviour
         currentLevel = 2;
         currentTopic = topic;
 
-        CreateButton("Go Back", () => ShowTopics());
+        CreateButton("", () => ShowTopics(), "back");
 
         List<string> subtopics = QuestionList.GetSubtopics(topic);
 
         foreach (string subtopic in subtopics)
         {
             string s = subtopic;
-            CreateButton(s, () => OnSubtopicClicked(s));
+            CreateButton(s, () => OnSubtopicClicked(s), "");
         }
     }
 
@@ -84,9 +103,9 @@ public class FolderUI : MonoBehaviour
         currentLevel = 3;
         currentSubtopic = subtopic;
 
-        CreateButton("Go Back", () => OnTopicClicked(currentTopic));
+        CreateButton("", () => OnTopicClicked(currentTopic), "back");
         
-        CreateButton(subtopic + ".txt", () => OnFileClicked(currentTopic, subtopic));
+        CreateButton(subtopic + ".txt", () => OnFileClicked(currentTopic, subtopic), "txt");
     }
 
     void OnFileClicked(string topic, string subtopic)
