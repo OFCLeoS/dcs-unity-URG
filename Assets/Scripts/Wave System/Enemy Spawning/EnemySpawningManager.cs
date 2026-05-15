@@ -5,10 +5,11 @@ using UnityEngine;
 /// </summary>
 public class EnemySpawningManager : MonoBehaviour
 {
-    const float MIN_TIME_BETWEEN_SPAWNS = 1;
+    [SerializeField] float maximumTimeBetweenSpawns = 7;
+    [SerializeField] float minimumTimeBetweenSpawns = 1;
 
     float timeBetweenSpawns = 1;
-    float timeSinceLastSpawn = 0;
+    float timeUntilNextSpawn = 1;
 
     bool isActive = false;
 
@@ -36,23 +37,12 @@ public class EnemySpawningManager : MonoBehaviour
     }
     #endregion
 
-    public void SetTimeBetweenSpawns(float time)
-    {
-        if (time <= MIN_TIME_BETWEEN_SPAWNS) time = MIN_TIME_BETWEEN_SPAWNS;
-
-        timeBetweenSpawns = time;
-    }
-
-    public void Activate(float timeBetweenSpawns, Wave currentWave)
-    {
-        SetTimeBetweenSpawns(timeBetweenSpawns);
-        Activate(currentWave);
-    }
-
     public void Activate(Wave currentWave)
     {
         this.currentWave = currentWave;
-        timeSinceLastSpawn = 0;
+        timeBetweenSpawns = Mathf.Lerp(maximumTimeBetweenSpawns, minimumTimeBetweenSpawns, waveManager.WaveDifficultyModifier);
+
+        timeUntilNextSpawn = timeBetweenSpawns;
         isActive = true;
     }
 
@@ -76,11 +66,11 @@ public class EnemySpawningManager : MonoBehaviour
     {
         if (isActive)
         {
-            timeSinceLastSpawn += Time.deltaTime;
-            if (timeSinceLastSpawn >= timeBetweenSpawns)
+            timeUntilNextSpawn -= Time.deltaTime;
+            if (timeUntilNextSpawn <= 0)
             {
                 RandomSpawn();
-                timeSinceLastSpawn = 0;
+                timeUntilNextSpawn = timeBetweenSpawns;
             }
         }
     }

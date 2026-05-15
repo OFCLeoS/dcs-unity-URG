@@ -6,6 +6,10 @@ using UnityEngine;
 /// </summary>
 public class AIAgent : DamageableEntity
 {
+    [SerializeField] AIAgentAttributes agentAttributes;
+    [SerializeField] AIMovementModule movementModule;
+    [SerializeField] AttackController attackController;
+
     WaveManager waveManager;
     Wave currentWave;
 
@@ -13,6 +17,14 @@ public class AIAgent : DamageableEntity
     protected override void Awake()
     {
         base.Awake();
+        if (!movementModule)
+        {
+            movementModule = GetComponent<AIMovementModule>();
+        }
+        if (!movementModule)
+        {
+            movementModule = GetComponent<AIMovementModule>();
+        }
         enabled = false;
     }
 
@@ -20,7 +32,16 @@ public class AIAgent : DamageableEntity
     {
         this.waveManager = waveManager;
         currentWave = waveManager.CurrentWave;
+        AdaptAttributesToWaveDifficulty(waveManager.WaveDifficultyModifier);
         enabled = true;
+    }
+    void AdaptAttributesToWaveDifficulty(float waveDifficultyModifier)
+    {
+        currentHealth = Mathf.Lerp(agentAttributes.minAgentHealth, agentAttributes.maxAgentHealth, waveDifficultyModifier);
+        movementModule.SetMovementSpeed(Mathf.Lerp(agentAttributes.minMovementSpeed, agentAttributes.maxMovementSpeed, waveDifficultyModifier));
+        attackController.GetSelectedWeapon().SetDamage(
+            Mathf.LerpUnclamped(agentAttributes.minDamage, agentAttributes.maxDamage, waveDifficultyModifier)
+        ); // Funny Bug will happen due to unclamp :D (Only on ridiculous high waves)
     }
     #endregion
 

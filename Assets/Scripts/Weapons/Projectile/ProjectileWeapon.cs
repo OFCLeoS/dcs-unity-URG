@@ -45,6 +45,8 @@ public class ProjectileWeapon : Weapon
     public void SetProjectilePool(ProjectilePool projectilePool) => this.projectilePool = projectilePool;
     #endregion
 
+    public override void SetDamage(float newDamage) => projectileAttributes.damage = newDamage;
+
     public override void Attack()
     {
         // fireDelay = 60f / rpm; UNCOMMENT FOR TESTING

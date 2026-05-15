@@ -17,9 +17,15 @@ public class QuizManager : MonoBehaviour
     public bool IsQuizActive() => quizActive;
 
     public HintLevel GetHintLevel() => hintLevel;
+    public HintLevel SetHintLevel(HintLevel hintLevel) => this.hintLevel = hintLevel;
+
+    int correctAnswersCount;
+    int wrongAnswersCount;
 
     void Awake()
     {
+        correctAnswersCount = 0;
+        wrongAnswersCount = 0;
         // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
         string questionPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizQuestions.txt");
         string contentPath = System.IO.Path.Combine(Application.streamingAssetsPath, "QuizContent.txt");
@@ -76,20 +82,21 @@ public class QuizManager : MonoBehaviour
     {
         if (!quizActive) return;
 
-        if (choiceIndex == currentQuestion.GetCorrectIndex())
-        {
-            Debug.Log("Correct!");
-            EndQuiz();
-        }
-        else
-        {
-            Debug.Log("Wrong!");
-            PunishPlayer();
-        }
+        if (choiceIndex == currentQuestion.GetCorrectIndex()) CorrectAnswerChosen();
+        else WrongAnswerChosen();
     }
 
-    void PunishPlayer()
+    void CorrectAnswerChosen()
     {
+        correctAnswersCount++;
+        Debug.Log("Correct!");
+        EndQuiz();
+    }
+
+    void WrongAnswerChosen()
+    {
+        wrongAnswersCount++;
+        Debug.Log("Wrong!");
         player.StatusEffectController.AddDebuff(StatusEffectFactory.CreateRandomDebuff(player));
         EndQuiz();
     }
@@ -106,8 +113,11 @@ public class QuizManager : MonoBehaviour
         {
             Debug.Log("You already have all Hints unlocked!");
         }
-
-        Debug.Log("Hint Level went up! " + hintLevel + " HintLevel");
+        else
+        {
+            hintLevel += 1;
+            Debug.Log("Hint Level went up! " + hintLevel + " HintLevel");
+        }
     }
 
     public string GetHint()

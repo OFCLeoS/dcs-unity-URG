@@ -14793,6 +14793,7 @@ GameObject:
   - component: {fileID: 5698852924465631553}
   - component: {fileID: 5414667504170093248}
   - component: {fileID: 6207870290314918143}
+  - component: {fileID: 2262944743229980688}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -14854,14 +14855,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b20859e74c36409837a59848c25d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  _health: 100
+  _defaultMaxHealth: 100
   movement: {fileID: 3747362488655712602}
   rotation: {fileID: 7656707493338749873}
   cameraDriver: {fileID: 0}
-  crosshairController: {fileID: 0}
+  crosshairController: {fileID: 5414667504170093248}
   interactionsHandler: {fileID: 3061574747813462686}
   attackController: {fileID: 5698852924465631553}
   inventory: {fileID: 5713546460329060553}
+  statusEffectController: {fileID: 0}
 --- !u!114 &3747362488655712602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14978,6 +14980,19 @@ MonoBehaviour:
   virtualCamera: {fileID: 0}
   defaultAmplitudeGain: 0.39
   defaultFrequencyGain: 3.9
+--- !u!114 &2262944743229980688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588395361337254585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edc840676e30d24d82f9b5343491735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectManager
+  target: {fileID: 0}
 --- !u!1 &8615320094694653245
 GameObject:
   m_ObjectHideFlags: 0

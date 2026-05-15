@@ -15,6 +15,8 @@ public class MeleeWeapon : Weapon
         attackCollider.enabled = false;
     }
 
+    public override void SetDamage(float newDamage) => damage = newDamage;
+
     public override void Attack()
     {
         if (DEBUG_CAN_ATTACK)

@@ -78,4 +78,9 @@ public class DEPRECATED_MeleeWeapon : Weapon
     {
         DEBUG_ATTACK_SYSTEM();
     }
+
+    public override void SetDamage(float newDamage)
+    {
+        throw new System.NotImplementedException();
+    }
 }
