@@ -731,32 +731,32 @@ MonoBehaviour:
     secondary:
       weaponName: Glock 18
       damage: 15
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 5bfd1f018eb720a48b15a8b427bc777d, type: 3}
     melee:
       weaponName: Talon Slaughter
       damage: 25
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 53651c9c6318e2e42977602198738f8f, type: 3}
     utility:
       weaponName: Grenade
       damage: 50
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 8504c396d76f9ff45b517ca96f14c4b6, type: 3}
   - loadoutName: Loadout CT
     primary:
       weaponName: M4A4
       damage: 28
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 3026a619056e58f43ae6cf88d70b110a, type: 3}
     secondary:
       weaponName: USP-S
       damage: 20
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 527263157f5b7254e9a628f09a2062e8, type: 3}
     melee:
       weaponName: Karambit Damascus Steel
       damage: 0
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: cd78efb4f5be4a24aa45e0e9ba333d46, type: 3}
     utility:
       weaponName: Grenade
       damage: 50
-      weaponIcon: {fileID: 0}
+      weaponIcon: {fileID: 21300000, guid: 8504c396d76f9ff45b517ca96f14c4b6, type: 3}
   scrollViewContent: {fileID: 932513605}
   loadoutButtonPrefab: {fileID: 833839581480467400, guid: 39c0687d790744444a170c94c9b77653, type: 3}
   selectedLoadoutText: {fileID: 1327795543}
