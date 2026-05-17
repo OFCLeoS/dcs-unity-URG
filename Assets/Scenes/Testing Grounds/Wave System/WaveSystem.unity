@@ -977,6 +977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveManager
   enemySpawningManager: {fileID: 1236928246}
   defendWaveObjectsManager: {fileID: 1236928245}
+  quizManager: {fileID: 0}
+  maxDifficultyWave: 50
 --- !u!114 &1236928245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,12 +1012,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 478a08fbf4c30e2469f2de8e849e1d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawningManager
+  maximumTimeBetweenSpawns: 7
+  minimumTimeBetweenSpawns: 1
   waveManager: {fileID: 1236928244}
   enemySpawners:
   - {fileID: 1530033205}
   - {fileID: 427035086}
   enemies:
-  - {fileID: 3658796704713744968, guid: a3013b86d92e3454daa39d0e9c1e1f18, type: 3}
+  - {fileID: 3658796704713744968, guid: 922398c9479bfed43b25dc0250ea6e63, type: 3}
   player: {fileID: 1042758733}
 --- !u!1001 &1367644540
 PrefabInstance:

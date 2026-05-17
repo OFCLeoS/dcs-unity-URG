@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -15,7 +16,7 @@ public class EnemySpawningManager : MonoBehaviour
 
     [SerializeField] WaveManager waveManager;
 
-    [SerializeField] EntitySpawner[] enemySpawners;
+    [SerializeField] List<EntitySpawner> enemySpawners;
 
     [SerializeField] GameObject[] enemies;
 
@@ -34,6 +35,12 @@ public class EnemySpawningManager : MonoBehaviour
                 Debug.LogError(name + "'s Wave Manager was not found. Enemy spawning will not function!");
             }
         }
+    }
+
+    public void InitializNewMapSpawners(List<EntitySpawner> newEntitySpawners)
+    {
+        enemySpawners.Clear();
+        enemySpawners.AddRange(newEntitySpawners);
     }
     #endregion
 
@@ -57,7 +64,7 @@ public class EnemySpawningManager : MonoBehaviour
     /// </summary>
     void RandomSpawn()
     {
-        GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Length)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
+        GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Count)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
         spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, waveManager);
         currentWave.SetupEnemyForWave(spawnedEnemy);
     }

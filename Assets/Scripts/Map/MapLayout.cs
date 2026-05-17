@@ -3,15 +3,21 @@ using UnityEngine;
 
 public class MapLayout : MonoBehaviour
 {
-    List<MapRandomSector> randomMapSectors = new List<MapRandomSector>();
+    [SerializeField] List<MapRandomSector> randomMapSectors = new List<MapRandomSector>();
 
     #region Initialization
-    public void InitializeLayout()
+    public List<MapSector> InitializeLayout()
     {
+        List<MapSector> generatedMapSectors = new List<MapSector>();
         foreach (MapRandomSector randomSector in randomMapSectors)
         {
-            randomSector.Initialize();
+            MapSector newGeneratedMapSector = randomSector.Initialize();
+            if (newGeneratedMapSector != null)
+            {
+                generatedMapSectors.Add(newGeneratedMapSector);
+            }
         }
+        return generatedMapSectors;
     }
     #endregion
 

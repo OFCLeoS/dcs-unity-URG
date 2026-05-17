@@ -63,9 +63,9 @@ public class WaveManager : MonoBehaviour
     {
         float x = waveNumber * 1.0f / maxDifficultyWave * 1.0f;
         WaveDifficultyModifier = Mathf.Pow(
-            (Mathf.Exp(x / 2) - 1)
+            (Mathf.Exp(x / 2 * 1.0f) - 1.0f)
             /
-            (Mathf.Exp(1 / 2) - 1)
+            (Mathf.Exp(1 * 1.0f / 2 * 1.0f) - 1.0f)
             , 1.5f);
     }
 
@@ -149,4 +149,20 @@ public class WaveManager : MonoBehaviour
     }
 
     void Update() => HandleWave();
+
+    #region DEBUGGING
+#if UNITY_EDITOR
+    [ContextMenu("Force Generate Wave")]
+    public void DEBUG_FORCE_GENERATE_WAVE()
+    {
+        GenerateNextWave();
+        StartWave();
+    }
+    [ContextMenu("Force Start Wave")]
+    public void DEBUG_FORCE_START_WAVE()
+    {
+        StartWave();
+    }
+#endif
+    #endregion
 }

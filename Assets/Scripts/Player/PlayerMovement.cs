@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     InputAction movementDirectionAction;
     [SerializeField] CharacterController controller;
+    
     [SerializeField] float speed;
+    public float Speed { get { return speed; } }
 
     [SerializeField] CrosshairController crosshairController;
 

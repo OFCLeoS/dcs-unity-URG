@@ -34,7 +34,7 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
             isDestroyed = true;
             DestroyEntity();
         }
-        Debug.Log(name + " took " + damageAmount + ". Current Health: " + currentHealth);
+        //Debug.Log(name + " took " + damageAmount + ". Current Health: " + currentHealth);
     }
 
     public virtual void Heal(float healthToHeal)
