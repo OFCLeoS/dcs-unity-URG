@@ -8,15 +8,24 @@ public class AIAgent : DamageableEntity
 {
     [SerializeField] AIAgentAttributes agentAttributes;
     [SerializeField] AIMovementModule movementModule;
+    [SerializeField] AIFollowModule followModule;
     [SerializeField] AttackController attackController;
+
+    [SerializeField] AIBehaviourGraphManager agentGraphManager;
+    [SerializeField] HumanoidAIAgentAnimationController animationController;
 
     WaveManager waveManager;
     Wave currentWave;
 
+    [SerializeField] Collider agentCollider;
     #region Initialization
     protected override void Awake()
     {
         base.Awake();
+        if (!agentCollider)
+        {
+            agentCollider = GetComponent<Collider>();
+        }
         if (!movementModule)
         {
             movementModule = GetComponent<AIMovementModule>();
@@ -48,7 +57,13 @@ public class AIAgent : DamageableEntity
     protected override void DestroyEntity()
     {
         waveManager.EnemyKilled(this);
-        Destroy(gameObject);
+        followModule.enabled = false;
+        agentCollider.enabled = false;
+        agentGraphManager.StopBehaviour();
+        movementModule.DisableMovementModule();
+        animationController.PlayerDeathAnimation();
+        // TODO: CHANGE THIS?
+        Destroy(gameObject, 15);
     }
 
     /// <summary>

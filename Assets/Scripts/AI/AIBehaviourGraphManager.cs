@@ -59,6 +59,11 @@ public class AIBehaviourGraphManager : MonoBehaviour
     }
     #endregion
 
+    public void StopBehaviour()
+    {
+        agentBehaviourGraph.enabled = false;
+    }
+
     public void SetAgentMission(Mission mission) => agentBehaviourGraph.SetVariableValue(missionGUID, mission);
     public void SetTarget(Transform target) => agentBehaviourGraph.SetVariableValue(targetGUID, target);
     public void SetValidTarget(bool validTarget) => agentBehaviourGraph.SetVariableValue(validTargetGUID, validTarget);

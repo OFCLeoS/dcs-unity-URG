@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class MapGenerator : MonoBehaviour
 {
-    // TODO: THIS IS VERY CODE, DO BETTER SEPERATION OF CONCERNS!!! 
+    // TODO: THIS IS VERY BAD CODE, DO BETTER SEPERATION OF CONCERNS!!! 
 
     [SerializeField] WaveManager waveManager;
 

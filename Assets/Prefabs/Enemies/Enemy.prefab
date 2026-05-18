@@ -1366,7 +1366,11 @@ MonoBehaviour:
     minDamage: 15
     maxDamage: 1000
   movementModule: {fileID: 6305971138394580035}
+  followModule: {fileID: 3863701918098427924}
   attackController: {fileID: -3184256700720611201}
+  agentGraphManager: {fileID: 7131099232751728636}
+  animationController: {fileID: 4110253833130403519}
+  agentCollider: {fileID: 7855540414181724637}
 --- !u!114 &6209350523677230956
 MonoBehaviour:
   m_ObjectHideFlags: 0

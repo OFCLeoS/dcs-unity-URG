@@ -89,6 +89,11 @@ public class AIMovementModule : MonoBehaviour
         if (navMeshAgent.isActiveAndEnabled) navMeshAgent.ResetPath();
     }
 
+    public void DisableMovementModule()
+    {
+        navMeshAgent.enabled = false;
+    }
+
 # if UNITY_EDITOR
     #region DEBUG
     public Vector3 DEBUG_POS;
