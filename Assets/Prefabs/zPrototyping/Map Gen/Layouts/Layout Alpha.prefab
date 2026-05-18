@@ -1779,6 +1779,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 5.600003, z: 3.900001}
   m_Center: {x: -0.25, y: -5.199999, z: 1.9500005}
+--- !u!1 &567891132369703180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8189930673503649111}
+  - component: {fileID: 7579170978628983689}
+  m_Layer: 0
+  m_Name: TEST SECTOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8189930673503649111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567891132369703180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 965235374483354277}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7579170978628983689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567891132369703180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0eda11e0bcf5045b3df2ae017827e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapSector
+  defendWaveObjectives: []
+  entitySpawners: []
 --- !u!1 &575192353524945582
 GameObject:
   m_ObjectHideFlags: 0
@@ -5702,6 +5748,52 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2295689299796964605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1678470842388849502}
+  - component: {fileID: 6197345838842905813}
+  m_Layer: 0
+  m_Name: TEST SECTOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1678470842388849502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295689299796964605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4787820959278713669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6197345838842905813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2295689299796964605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0eda11e0bcf5045b3df2ae017827e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapSector
+  defendWaveObjectives: []
+  entitySpawners: []
 --- !u!1 &2349835978730123496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9690,6 +9782,52 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 16.000002, z: 3.900001}
   m_Center: {x: -0.25, y: 0.0000014305114, z: 1.9500005}
+--- !u!1 &3544789309938588576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6681107108847380279}
+  - component: {fileID: 4961839055709113781}
+  m_Layer: 0
+  m_Name: TEST SECTOR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6681107108847380279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544789309938588576}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -34.8, y: -30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752152848628547398}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4961839055709113781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544789309938588576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0eda11e0bcf5045b3df2ae017827e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapSector
+  defendWaveObjectives: []
+  entitySpawners: []
 --- !u!1 &3683106801118256304
 GameObject:
   m_ObjectHideFlags: 0
@@ -12028,6 +12166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6681107108847380279}
   - {fileID: 5147732035234049439}
   - {fileID: 445786434120951524}
   m_Father: {fileID: 3111269976491057404}
@@ -12046,7 +12185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapRandomSector
   dimensions: {x: 20, y: 4}
   doorPoints: []
-  possibleSectors: []
+  possibleSectors:
+  - {fileID: 4961839055709113781}
 --- !u!1 &4488608654449174633
 GameObject:
   m_ObjectHideFlags: 0
@@ -14563,6 +14703,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1678470842388849502}
   - {fileID: 4832806657984054558}
   - {fileID: 5452937922856085620}
   m_Father: {fileID: 3111269976491057404}
@@ -14581,7 +14722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapRandomSector
   dimensions: {x: 20, y: 4}
   doorPoints: []
-  possibleSectors: []
+  possibleSectors:
+  - {fileID: 6197345838842905813}
 --- !u!1 &5555147934857499477
 GameObject:
   m_ObjectHideFlags: 0
@@ -16856,6 +16998,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8189930673503649111}
   - {fileID: 5764193447473631512}
   - {fileID: 3577564408164714548}
   m_Father: {fileID: 3111269976491057404}
@@ -16874,7 +17017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapRandomSector
   dimensions: {x: 20, y: 4}
   doorPoints: []
-  possibleSectors: []
+  possibleSectors:
+  - {fileID: 7579170978628983689}
 --- !u!1 &6679915189861704449
 GameObject:
   m_ObjectHideFlags: 0

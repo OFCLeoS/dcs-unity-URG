@@ -28,6 +28,8 @@ public class WaveManager : MonoBehaviour
 
     float timeLeftForCurrentWave;
 
+    [SerializeField] WaveElevatorButton waveMapElevatorButton;
+
 
     #region Initialization
     void Awake()
@@ -75,10 +77,9 @@ public class WaveManager : MonoBehaviour
         SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
         currentWave.InitializeWave();
-        StartPreparationPhase();
     }
 
-    void StartPreparationPhase()
+    public void StartPreparationPhase()
     {
         inPreperationPhase = true;
         // TODO: MAKE THIS DYNAMIC?
@@ -131,6 +132,10 @@ public class WaveManager : MonoBehaviour
         }
         Debug.Log("Wave " + waveNumber + " was Completed!");
         DeactivateAllManagers();
+
+        // Player go back to HUB once wave is done
+        waveMapElevatorButton.EnableElevatorButton();
+
         enabled = false;
     }
 
@@ -156,12 +161,18 @@ public class WaveManager : MonoBehaviour
     public void DEBUG_FORCE_GENERATE_WAVE()
     {
         GenerateNextWave();
+        enabled = true;
         StartWave();
     }
     [ContextMenu("Force Start Wave")]
     public void DEBUG_FORCE_START_WAVE()
     {
         StartWave();
+    }
+    [ContextMenu("Force Finish Wave")]
+    public void DEBUG_FORCE_FINISH_WAVE()
+    {
+        FinishWave();
     }
 #endif
     #endregion

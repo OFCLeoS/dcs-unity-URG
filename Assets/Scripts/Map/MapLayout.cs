@@ -6,20 +6,26 @@ public class MapLayout : MonoBehaviour
     [SerializeField] List<MapRandomSector> randomMapSectors = new List<MapRandomSector>();
 
     #region Initialization
-    public List<MapSector> InitializeLayout()
+    public void StartLayoutInitialization()
     {
-        List<MapSector> generatedMapSectors = new List<MapSector>();
-        foreach (MapRandomSector randomSector in randomMapSectors)
-        {
-            MapSector newGeneratedMapSector = randomSector.Initialize();
-            if (newGeneratedMapSector != null)
-            {
-                generatedMapSectors.Add(newGeneratedMapSector);
-            }
-        }
-        return generatedMapSectors;
+        currentGeneratedSectorIndex = 0;
     }
     #endregion
+
+
+    int currentGeneratedSectorIndex = 0;
+    /// <summary>
+    /// Initializes the next Map sector in this layout and returns it
+    /// </summary>
+    /// <returns>Null if not Sectors are left</returns>
+    public MapSector LayoutInitalizationStep()
+    {
+        if (currentGeneratedSectorIndex >= randomMapSectors.Count) return null;
+
+        MapSector newGeneratedMapSector = randomMapSectors[currentGeneratedSectorIndex].Initialize();
+        currentGeneratedSectorIndex++;
+        return newGeneratedMapSector;
+    }
 
 
     #region Draw.io Translator Related

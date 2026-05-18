@@ -6,8 +6,8 @@ public class Elevator : MonoBehaviour
     [SerializeField] Transform elevatorFloor;
     [SerializeField] float _elevatorLoopTime;
 
-    [SerializeField] Vector3 startPoint;
-    [SerializeField] Vector3 endPoint;
+    [SerializeField] Vector3 _defaultStartPoint;
+    [SerializeField] Vector3 _defaultEndPoint;
 
     [Tooltip("How far the camera will be from the player once the sequence starts")]
     [SerializeField] float playerCameraDistance;
@@ -16,13 +16,27 @@ public class Elevator : MonoBehaviour
 
     bool active;
 
+    Vector3 startPoint;
+    Vector3 endPoint;
+
     #region Y Pos Sticking
     Transform player;
     CharacterController playerCharacterController;
     #endregion
 
-    public void StartElevatorSequence(Player player)
+    public void StartElevatorSequence(Player player, bool goUp)
     {
+        if (goUp)
+        {
+            startPoint = _defaultEndPoint;
+            endPoint = _defaultStartPoint;
+        }
+        else
+        {
+            startPoint = _defaultStartPoint;
+            endPoint = _defaultEndPoint;
+        }
+
         active = true;
         if (player != this.player)
         {

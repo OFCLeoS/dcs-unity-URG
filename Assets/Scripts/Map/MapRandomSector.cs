@@ -20,8 +20,7 @@ public class MapRandomSector : MonoBehaviour
     {
         if (possibleSectors.Length <= 0)
         {
-            Debug.LogWarning($"The Random Sector \"{transform.name}\" does not have any possible spawn sectors assigned to it. Ignore if the sector is meant to stay blank.");
-            return null;
+            Debug.LogError($"The Random Sector \"{transform.name}\" does not have any possible spawn sectors assigned to it. Generation of this Sector is impossible.");
         }
         int chosenSectorIndex = Random.Range(0, possibleSectors.Length);
         MapSector chosenSector = Instantiate(possibleSectors[chosenSectorIndex], transform.position, possibleSectors[chosenSectorIndex].transform.rotation, transform);

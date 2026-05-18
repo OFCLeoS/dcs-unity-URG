@@ -13606,7 +13606,7 @@ MonoBehaviour:
   interactionsHandler: {fileID: 3061574747813462686}
   attackController: {fileID: 5698852924465631553}
   inventory: {fileID: 5713546460329060553}
-  statusEffectController: {fileID: 0}
+  statusEffectController: {fileID: 2262944743229980688}
 --- !u!114 &3747362488655712602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13620,7 +13620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   controller: {fileID: 2095721807373313377}
-  speed: 3
+  speed: 5
   crosshairController: {fileID: 5414667504170093248}
 --- !u!114 &7656707493338749873
 MonoBehaviour:

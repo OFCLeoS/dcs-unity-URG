@@ -22,6 +22,8 @@ public class QuizManager : MonoBehaviour
     int correctAnswersCount;
     int wrongAnswersCount;
 
+    [SerializeField] HUBElevatorButton hubMapElevatorButton;
+
     void Awake()
     {
         correctAnswersCount = 0;
@@ -74,6 +76,8 @@ public class QuizManager : MonoBehaviour
         quizActive = false;
         hintLevel = HintLevel.NO_HINT;
         quizCanvas.SetActive(false);
+
+        hubMapElevatorButton.EnableElevatorButton();
 
         Debug.Log("Quiz Ended!");
     }
