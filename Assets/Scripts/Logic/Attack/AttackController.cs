@@ -34,7 +34,7 @@ public class AttackController : MonoBehaviour
         weapon.transform.SetParent(hand);
         weapon.transform.localPosition = weapon.PositionInHand;
         weapon.transform.localRotation = Quaternion.Euler(weapon.RotationInHand);
-        animationController.ChangeAnimatorController(selectedWeapon.AnimatorController);
         selectedWeapon = weapon;
+        animationController.ChangeAnimatorController(selectedWeapon.AnimatorController);
     }
 }
