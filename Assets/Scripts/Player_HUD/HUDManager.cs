@@ -12,8 +12,10 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpText;
 
     [Header("Hotbar")]
-    public Color selectedSlotColor = new Color(255, 0, 0);
-    public Color defaultSlotColor  = new Color(255, 255, 0);
+
+    public Sprite selectedSlotImage;
+    public Sprite defaultSlotImage;
+
     [SerializeField] private HotbarSlot[] hotbarSlots;
 
     [Header("Equipped Weapon Preview")]
@@ -53,7 +55,7 @@ public class HUDManager : MonoBehaviour
     {
         for (int i = 0; i < hotbarSlots.Length; i++)
         {
-            hotbarSlots[i].SetSelected(i == index, selectedSlotColor, defaultSlotColor);
+            hotbarSlots[i].SetSelected(i == index, selectedSlotImage, defaultSlotImage);
         }
     }
 

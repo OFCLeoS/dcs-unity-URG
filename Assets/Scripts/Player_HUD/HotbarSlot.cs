@@ -19,10 +19,10 @@ public class HotbarSlot : MonoBehaviour
         return isSelected;
     }
 
-    public void SetSelected(bool selected, Color selectedColor, Color defaultColor)
+    public void SetSelected(bool selected, Sprite selectedImage, Sprite defaultImage)
     {
         isSelected = selected;
-        background.color = selected ? selectedColor : defaultColor;
+        background.sprite = selected ? selectedImage : defaultImage;
     }
 
     public void SetIcon(Sprite icon)
