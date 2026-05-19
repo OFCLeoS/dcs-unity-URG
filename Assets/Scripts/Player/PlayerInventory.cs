@@ -17,7 +17,8 @@ public class PlayerInventory : MonoBehaviour
     // TODO: Special Tactical Slot?
 
     [SerializeField] PlayerAttackController playerAttackController;
-    [SerializeField] HumanoidPlayerAnimationController playerAnimationController;
+    [Tooltip("The relay that will connect animation events to the melee weapon, in order to activate the damage collider.")]
+    [SerializeField] MeleeAnimationEventRelay meleeAnimationEventRelay;
 
     #region Initialization
     void Awake()
@@ -75,6 +76,7 @@ public class PlayerInventory : MonoBehaviour
             playerAttackController.SetSelectedWeapon(newMeleeWeapon);
         }
         if (meleeWeapon != null) Destroy(meleeWeapon.gameObject);
+        meleeAnimationEventRelay.SetMeleeWeapon(newMeleeWeapon);
         newMeleeWeapon.transform.SetParent(meleeWeaponSlot);
         newMeleeWeapon.transform.localPosition = newMeleeWeapon.PositionInHolster;
         newMeleeWeapon.transform.localRotation = Quaternion.Euler(newMeleeWeapon.RotationInHolster);
@@ -109,19 +111,16 @@ public class PlayerInventory : MonoBehaviour
         if (primaryWeaponAction.WasPressedThisFrame() && primaryWeapon != null && playerAttackController.GetSelectedWeapon() != primaryWeapon)
         {
             HolsterEquippedWeapon();
-            playerAnimationController.ChangeAnimatorController(primaryWeapon.AnimatorController);
             playerAttackController.SetSelectedWeapon(primaryWeapon);
         }
         else if (secondaryWeaponAction.WasPressedThisFrame() && secondaryWeapon != null && playerAttackController.GetSelectedWeapon() != secondaryWeapon)
         {
             HolsterEquippedWeapon();
-            playerAnimationController.ChangeAnimatorController(secondaryWeapon.AnimatorController);
             playerAttackController.SetSelectedWeapon(secondaryWeapon);
         }
         else if (meleeWeaponAction.WasPressedThisFrame() && meleeWeapon != null && playerAttackController.GetSelectedWeapon() != meleeWeapon)
         {
             HolsterEquippedWeapon();
-            playerAnimationController.ChangeAnimatorController(meleeWeapon.AnimatorController);
             playerAttackController.SetSelectedWeapon(meleeWeapon);
         }
     }

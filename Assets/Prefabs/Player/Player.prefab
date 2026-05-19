@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8214307725569014627}
   - component: {fileID: 5261965498642314157}
+  - component: {fileID: 2892728839110546729}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -87,6 +88,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2892728839110546729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14754467121892629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c882efee2a595f4b9697857b89f7ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeAnimationEventRelay
+  meleeBox: {fileID: 5461874476400377553}
 --- !u!1 &206864447843267437
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,6 +2070,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5531442703133236212}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5480063353222852814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9204279168474452426}
+  - component: {fileID: 1053822114017481020}
+  - component: {fileID: 327993538699557368}
+  - component: {fileID: 5461874476400377553}
+  m_Layer: 2
+  m_Name: Melee Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9204279168474452426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480063353222852814}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2732682096732279306}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1053822114017481020
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480063353222852814}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.7604847, z: 0.90561783}
+  m_Center: {x: 0, y: -0.1533575, z: 0.36961263}
+--- !u!54 &327993538699557368
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480063353222852814}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5461874476400377553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5480063353222852814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11497d2357fc7bb4baba25b3e4069ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeBox
 --- !u!1 &5511375748208765800
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3302,7 @@ Transform:
   m_Children:
   - {fileID: 640793502971507624}
   - {fileID: 9041668613120999707}
+  - {fileID: 9204279168474452426}
   - {fileID: 8214307725569014627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3233,6 +3342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   _defaultMaxHealth: 100
+  team: 1
   movement: {fileID: 3747362488655712602}
   rotation: {fileID: 7656707493338749873}
   cameraDriver: {fileID: 0}
@@ -3289,7 +3399,8 @@ MonoBehaviour:
   secondaryWeaponSlot: {fileID: 6937821658873280254}
   meleeWeaponSlot: {fileID: 309040202228623796}
   playerAttackController: {fileID: 5698852924465631553}
-  playerAnimationController: {fileID: 0}
+  playerAnimationController: {fileID: 6464760698860852619}
+  meleeAnimationEventRelay: {fileID: 2892728839110546729}
 --- !u!143 &2095721807373313377
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3327,8 +3438,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b47f4e018a847e4b0f924c862b2214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackSystem
+  controllerTeam: 1
   selectedWeapon: {fileID: 0}
   hand: {fileID: 1759867903557345321}
+  animationController: {fileID: 6464760698860852619}
   playerCameraShaker: {fileID: 6207870290314918143}
 --- !u!114 &5414667504170093248
 MonoBehaviour:

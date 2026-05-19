@@ -30,11 +30,6 @@ public class HumanoidPlayerAnimationController : HumanoidAnimationController
         else animator.SetBool(isMovingBool, false);
     }
 
-    public void ChangeAnimatorController(RuntimeAnimatorController newAnimatorController)
-    {
-        animator.runtimeAnimatorController = newAnimatorController;
-    }
-
     void Update()
     {
         UpdatePlayerMovementBlendTree();

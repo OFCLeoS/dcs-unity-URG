@@ -47,10 +47,11 @@ public class ProjectileWeapon : Weapon
 
     public override void SetDamage(float newDamage) => projectileAttributes.damage = newDamage;
 
-    public override void Attack()
+    public override bool Attack(Team attackingTeam)
     {
+        this.attackingTeam = attackingTeam;
         // fireDelay = 60f / rpm; UNCOMMENT FOR TESTING
-        if (!canFire) return;
+        if (!canFire) return false;
 
         muzzleFlashLight.SetActive(true);
         timeBeforeMuzzleFlashDeactivation = muzzleFlashActiveTime;
@@ -61,13 +62,14 @@ public class ProjectileWeapon : Weapon
 
         canFire = false;
         timeBeforeAbleToFire = fireDelay;
+        return true;
     }
 
     void SpawnProjectile()
     {
         float randomSpread = Random.Range(-bulletSpreadability, bulletSpreadability);
 
-        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread);
+        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread, attackingTeam);
 
 
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);

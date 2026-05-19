@@ -26,7 +26,10 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] Vector3 rotationInHand;
     public Vector3 RotationInHand { get { return rotationInHand; } }
 
+    // TODO: Change this, it's not very good design
+    protected Team attackingTeam;
+
     public abstract void SetDamage(float newDamage);
 
-    public abstract void Attack();
+    public abstract bool Attack(Team attackingTeam);
 }

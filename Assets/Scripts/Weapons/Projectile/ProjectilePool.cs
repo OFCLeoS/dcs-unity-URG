@@ -37,7 +37,7 @@ public class ProjectilePool : MonoBehaviour
 
     public void AddProjectileToPool(Projectile projectileToAdd) => projectilePool.Push(projectileToAdd);
 
-    public void RequestProjectile(ProjectileBlueprint projectileBlueprint, Vector3 position, Quaternion rotation, float spread)
+    public void RequestProjectile(ProjectileBlueprint projectileBlueprint, Vector3 position, Quaternion rotation, float spread, Team attackingTeam)
     {
         Projectile projectileToUse;
         if (!projectilePool.TryPop(out projectileToUse))
@@ -46,6 +46,6 @@ public class ProjectilePool : MonoBehaviour
         }
         projectileToUse.transform.position = position;
         projectileToUse.transform.rotation = rotation;
-        projectileToUse.Activate(projectileBlueprint, spread);
+        projectileToUse.Activate(projectileBlueprint, spread, attackingTeam);
     }
 }

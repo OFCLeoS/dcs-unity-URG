@@ -11,8 +11,9 @@ public class PlayerAttackController : AttackController
     [SerializeField] CameraShaker playerCameraShaker;
 
     #region Initialization
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         attackAction = InputSystem.actions.FindAction("Attack");
         if (!playerCameraShaker)
         {

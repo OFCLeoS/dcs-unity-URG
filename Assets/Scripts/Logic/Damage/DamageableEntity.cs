@@ -4,6 +4,7 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
 {
     [Tooltip("The default max health of this entity")]
     [SerializeField] protected float _defaultMaxHealth = 100;
+    [SerializeField] protected Team team = Team.NEUTRAL;
 
     float maxHealth;
     protected float currentHealth;
@@ -26,8 +27,10 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     }
     #endregion
 
-    public virtual void TakeDamage(float damageAmount)
+    public virtual void TakeDamage(float damageAmount,Team attackingTeam)
     {
+        if(attackingTeam == team) return;
+        
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {

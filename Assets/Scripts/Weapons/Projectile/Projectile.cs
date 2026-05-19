@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
 
     Vector3 lastPosition;
 
+    Team attackingTeam;
+
     #region Initialization
     void Awake()
     {
@@ -28,13 +30,14 @@ public class Projectile : MonoBehaviour
     {
         velocity = Vector3.forward * projectileBlueprint.velocity;
         velocity.x += spread;
-        
+
         destroyProjectileTime = projectileBlueprint.destroyProjectileTime;
         damage = projectileBlueprint.damage;
     }
 
-    public void Activate(ProjectileBlueprint projectileBlueprint, float spread)
+    public void Activate(ProjectileBlueprint projectileBlueprint, float spread, Team attackingTeam)
     {
+        this.attackingTeam = attackingTeam;
         SetProjectileAttributes(projectileBlueprint, spread);
         lastPosition = transform.position;
         gameObject.SetActive(true);
@@ -55,7 +58,7 @@ public class Projectile : MonoBehaviour
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(damage, attackingTeam);
             Deactivate();
         }
     }
