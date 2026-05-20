@@ -96,4 +96,5 @@ public class ProjectileWeapon : Weapon
             timeBeforeMuzzleFlashDeactivation -= Time.deltaTime;
         }
     }
+
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class HUDManager : MonoBehaviour
 {
@@ -19,7 +21,10 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private HotbarSlot[] hotbarSlots;
 
     [Header("Equipped Weapon Preview")]
-    [SerializeField] private Image equippedIcon;
+    //[SerializeField] private Sprite equippedIconSprite;
+    [SerializeField] private Image equippedIconImage;
+
+    private int selectedWeaponIndex = -1;
 
     private float timer;
     private bool timerRunning;
@@ -27,7 +32,7 @@ public class HUDManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SetSelectedSlot(0);
+        //SetSelectedSlot(0);
     }
 
     public void SetHP(int hp)
@@ -53,10 +58,17 @@ public class HUDManager : MonoBehaviour
 
     public void SetSelectedSlot(int index)
     {
-        for (int i = 0; i < hotbarSlots.Length; i++)
+        if(selectedWeaponIndex != -1)
         {
-            hotbarSlots[i].SetSelected(i == index, selectedSlotImage, defaultSlotImage);
+            SetDeselectedSlot(selectedWeaponIndex);
         }
+        selectedWeaponIndex = index;
+        hotbarSlots[index].SetSelected(selectedSlotImage);
+    }
+
+    public void SetDeselectedSlot(int index)
+    {
+        hotbarSlots[index].SetDeselected(defaultSlotImage);
     }
 
     public void SetSlotIcon(int index, Sprite icon)
@@ -64,13 +76,14 @@ public class HUDManager : MonoBehaviour
         hotbarSlots[index].SetIcon(icon);
         if (hotbarSlots[index].GetIsSelected())
         {
-            equippedIcon.sprite = icon;
+            //equippedIconSprite = icon;
+            SetEquippedIcon(icon);
         }
     }
 
     public void SetEquippedIcon(Sprite icon)
     {
-        equippedIcon.sprite = icon;
+        equippedIconImage.sprite = icon;
     }
 
     // Update is called once per frame
@@ -85,5 +98,21 @@ public class HUDManager : MonoBehaviour
         int min = Mathf.FloorToInt(timer / 60);
         int sec = Mathf.FloorToInt(timer % 60);
         timerText.text = string.Format("{0:00}:{1:00}", min, sec);
+
+        //if(primaryWeaponAction.WasPressedThisFrame())
+        //{
+        //    Debug.Log(0);
+        //    SetSelectedSlot(0);
+        //}
+        //if(secondaryWeaponAction.WasPressedThisFrame())
+        //{
+        //    Debug.Log(1);
+        //    SetSelectedSlot(1);
+        //}
+        //if(meleeWeaponAction.WasPressedThisFrame())
+        //{
+        //    Debug.Log(2);
+        //    SetSelectedSlot(2);
+        //}
     }
 }

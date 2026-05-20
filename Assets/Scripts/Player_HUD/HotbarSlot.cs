@@ -18,11 +18,15 @@ public class HotbarSlot : MonoBehaviour
     {
         return isSelected;
     }
-
-    public void SetSelected(bool selected, Sprite selectedImage, Sprite defaultImage)
+    
+    public void SetSelected(Sprite selectedImage)
     {
-        isSelected = selected;
-        background.sprite = selected ? selectedImage : defaultImage;
+        background.sprite = selectedImage;
+    }
+
+    public void SetDeselected(Sprite deselectedImage)
+    {
+        background.sprite = deselectedImage;
     }
 
     public void SetIcon(Sprite icon)

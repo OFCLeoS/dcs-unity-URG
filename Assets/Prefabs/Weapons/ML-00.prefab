@@ -109,6 +109,6 @@ MonoBehaviour:
   rotationInHolster: {x: 348.94495, y: 4.134441, z: 90.75762}
   positionInHand: {x: 0.021, y: 0.0778, z: 0.03}
   rotationInHand: {x: 76.254524, y: 339.26187, z: 243.5383}
-  weaponIcon: {fileID: 21300000, guid: 9adb502db8810204481c16e7badfab9f, type: 3}
+  weaponIcon: {fileID: 21300000, guid: 09d3775a210d6ae4ab44338828028278, type: 3}
   damage: 115
   cooldownAfterAttack: 0.3
