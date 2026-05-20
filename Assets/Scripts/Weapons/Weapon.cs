@@ -24,6 +24,8 @@ public abstract class Weapon : MonoBehaviour
 
     [Tooltip("How this weapon will be rotated in the humanoids hand")]
     [SerializeField] Vector3 rotationInHand;
+
+    [SerializeField] public Sprite weaponIcon;
     public Vector3 RotationInHand { get { return rotationInHand; } }
 
     // TODO: Change this, it's not very good design

@@ -9,6 +9,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] EnemySpawningManager enemySpawningManager;
 
     [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+
+    [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
     public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
 
     [Tooltip("Quiz Manager reference in order to get tip level.")]
@@ -74,6 +76,7 @@ public class WaveManager : MonoBehaviour
     public void GenerateNextWave()
     {
         waveNumber++;
+        playerUIBehaviour.ChangeWaveNumber(waveNumber);
         SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
         currentWave.InitializeWave();
@@ -91,6 +94,7 @@ public class WaveManager : MonoBehaviour
     {
         inPreperationPhase = false;
         timeLeftForCurrentWave = currentWave.WaveDuration;
+        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
         enemySpawningManager.Activate(currentWave);
     }
 
@@ -151,6 +155,7 @@ public class WaveManager : MonoBehaviour
             timeLeftForCurrentWave -= Time.deltaTime;
             if (timeLeftForCurrentWave <= 0) FinishWave();
         }
+        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
     }
 
     void Update() => HandleWave();

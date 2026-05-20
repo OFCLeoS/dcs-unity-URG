@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 /// <summary>
 /// Basis of the Player Entity
@@ -19,6 +20,8 @@ public class Player : DamageableEntity
     [SerializeField] PlayerInventory inventory;
 
     [SerializeField] StatusEffectController statusEffectController;
+
+    [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
 
     #region Properties
     public PlayerMovement Movement { get { return movement; } }
@@ -82,6 +85,24 @@ public class Player : DamageableEntity
         if (primaryWeapon != null) inventory.ChangePrimaryWeapon(primaryWeapon);
         if (secondaryWeapon != null) inventory.ChangeSecondaryWeapon(secondaryWeapon);
         if (meleeWeapon != null) inventory.ChangeMeleeWeapon(meleeWeapon);
+    }
+    void Start()
+    {
+        playerUIBehaviour.SetMaxHealth(_defaultMaxHealth);
+        playerUIBehaviour.SetHealth(currentHealth);  
+    }
+
+    public override void TakeDamage(float damageAmount, Team attackingTeam)
+    {
+        base.TakeDamage(damageAmount, attackingTeam);
+        if(currentHealth <= 0)
+        {
+            playerUIBehaviour.SetHealth(0);  
+        }
+        else
+        {
+            playerUIBehaviour.SetHealth(currentHealth);  
+        }
     }
 
     #region DEBUG

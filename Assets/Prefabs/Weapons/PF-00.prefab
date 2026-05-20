@@ -5205,6 +5205,7 @@ MonoBehaviour:
   rotationInHolster: {x: 344.32056, y: 4.4960346, z: 260.70386}
   positionInHand: {x: 0.0218, y: 0.0813, z: -0.0202}
   rotationInHand: {x: 355.56735, y: 359.36438, z: 89.27599}
+  weaponIcon: {fileID: 21300000, guid: 9171437643d0d3140a33289c855ab0df, type: 3}
   projectilePool: {fileID: 0}
   projectileAttributes:
     velocity: 300
