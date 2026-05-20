@@ -26,6 +26,7 @@ public class MapRandomSector : MonoBehaviour
         MapSector chosenSector = Instantiate(possibleSectors[chosenSectorIndex], transform.position, possibleSectors[chosenSectorIndex].transform.rotation, transform);
         // TODO: REMOVE THIS? Was for debugging
         chosenSector.gameObject.SetActive(true);
+        chosenSector.Initialize();
         return chosenSector;
     }
     #endregion

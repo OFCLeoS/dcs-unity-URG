@@ -85,7 +85,7 @@ public class Elevator : MonoBehaviour
     void ProgressElevatorState()
     {
         elevatorProgress += Time.deltaTime;
-        elevatorFloor.localPosition = Vector3.Lerp(startPoint, endPoint, elevatorProgress / _elevatorLoopTime);
+        transform.localPosition = Vector3.Lerp(startPoint, endPoint, elevatorProgress / _elevatorLoopTime);
         if (elevatorProgress >= _elevatorLoopTime)
         {
             elevatorProgress = 0;
