@@ -100,6 +100,7 @@ public class PlayerInventory : MonoBehaviour
         }
         else if (playerAttackController.GetSelectedWeapon() == meleeWeapon)
         {
+            meleeAnimationEventRelay.EndAttack(); // This makes it so that if a player holsters a melee weapon whilst attacking, their melee will not be soft locked
             meleeWeapon.transform.SetParent(meleeWeaponSlot);
             meleeWeapon.transform.localPosition = meleeWeapon.PositionInHolster;
             meleeWeapon.transform.localRotation = Quaternion.Euler(meleeWeapon.RotationInHolster);

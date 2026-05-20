@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c882efee2a595f4b9697857b89f7ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeAnimationEventRelay
+  meleeWeapon: {fileID: 0}
   meleeBox: {fileID: 5461874476400377553}
 --- !u!1 &206864447843267437
 GameObject:
@@ -3319,7 +3320,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3351,6 +3352,7 @@ MonoBehaviour:
   attackController: {fileID: 5698852924465631553}
   inventory: {fileID: 5713546460329060553}
   statusEffectController: {fileID: 2262944743229980688}
+  animationController: {fileID: 6464760698860852619}
 --- !u!114 &3747362488655712602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3399,7 +3401,6 @@ MonoBehaviour:
   secondaryWeaponSlot: {fileID: 6937821658873280254}
   meleeWeaponSlot: {fileID: 309040202228623796}
   playerAttackController: {fileID: 5698852924465631553}
-  playerAnimationController: {fileID: 6464760698860852619}
   meleeAnimationEventRelay: {fileID: 2892728839110546729}
 --- !u!143 &2095721807373313377
 CharacterController:
@@ -3414,7 +3415,7 @@ CharacterController:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
