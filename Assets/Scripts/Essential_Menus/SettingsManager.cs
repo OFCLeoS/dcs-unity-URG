@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -50,14 +51,24 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.ClearOptions();
 
         var options = new System.Collections.Generic.List<string>();
-        foreach (var res in availableResolutions)
+        int currentResolutionIndex = 0;
+        for (int i = 0; i < availableResolutions.Length; i++)
         {
-            options.Add(res.width + " x " + res.height);
+        //foreach (var res in availableResolutions)
+        //{
+            //options.Add(res.width + " x " + res.height);
+            options.Add(availableResolutions[i].width + " x " + availableResolutions[i].height);
+
+            if (availableResolutions[i].width == Screen.currentResolution.width &&
+                availableResolutions[i].height == Screen.currentResolution.height)
+            {
+                currentResolutionIndex = i;
+            }
         }
 
+        currentSettings.resolutionIndex = currentResolutionIndex;
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = Mathf.Clamp(currentSettings.resolutionIndex, 
-            0, availableResolutions.Length - 1);
+        resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
@@ -154,7 +165,6 @@ public class SettingsManager : MonoBehaviour
 
     public void OnCancel()
     {
-        Debug.Log("HIii");
         currentSettings = SettingsData.Load() ?? new SettingsData();
         ApplySettingsToUI();
         ApplySettings();
@@ -173,6 +183,9 @@ public class SettingsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Keyboard.current.escapeKey.wasPressedThisFrame && settingsPanel.activeSelf)
+        {
+            OnCancel();
+        }
     }
 }
