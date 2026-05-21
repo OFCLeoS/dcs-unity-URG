@@ -3678,6 +3678,7 @@ GameObject:
   - component: {fileID: 5857567707582085886}
   - component: {fileID: 4796346373947505948}
   - component: {fileID: 8278116808475892074}
+  - component: {fileID: 8797748268078220969}
   m_Layer: 0
   m_Name: Large Room Floor
   m_TagString: Untagged
@@ -3757,6 +3758,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8797748268078220969
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117877561755227643}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 25, y: 24.999996, z: 0.22999999}
+  m_Center: {x: -8.171242e-16, y: -0.0000019073486, z: 0.115000024}
 --- !u!1 &5121312302971793427
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class LoadoutGiver : MonoBehaviour, IInteractable
     [SerializeField] ProjectilePool projectilePool;
     [SerializeField] Loadout loadout;
 
+    public string InteractText => "Grab Loadout";
+
     public void OnInteract(Player player)
     {
         ProjectileWeapon primaryWeapon = null;

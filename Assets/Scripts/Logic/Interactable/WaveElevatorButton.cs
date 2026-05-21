@@ -1,28 +1,13 @@
 using UnityEngine;
 
-public class WaveElevatorButton : MonoBehaviour, IInteractable
+public class WaveElevatorButton : ElevatorButton
 {
-    [SerializeField] MapGenerator mapGenerator;
+    public override string InteractText => "Go to HUB";
 
-    Collider elevatorButtonCollider;
-    void Awake()
+    public override void OnInteract(Player player)
     {
-        elevatorButtonCollider = GetComponent<Collider>();
-    }
-
-    public void DisableElevatorButton()
-    {
-        elevatorButtonCollider.enabled = false;
-    }
-
-    public void EnableElevatorButton()
-    {
-        elevatorButtonCollider.enabled = true;
-    }
-
-    public void OnInteract(Player player)
-    {
+        base.OnInteract(player);
         mapGenerator.StartMapDestruction(player);
-        DisableElevatorButton();
+        elevatorButtonCollider.enabled = false;
     }
 }

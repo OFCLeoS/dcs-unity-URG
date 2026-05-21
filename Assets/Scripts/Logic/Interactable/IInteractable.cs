@@ -3,6 +3,8 @@
 /// </summary>
 public interface IInteractable
 {
+    public string InteractText { get; }
+
     /// <summary>
     /// What will occur when the object is interacted with by the player
     /// </summary>
