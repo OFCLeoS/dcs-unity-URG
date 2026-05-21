@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class QuizManager : MonoBehaviour
@@ -22,10 +23,19 @@ public class QuizManager : MonoBehaviour
     int correctAnswersCount;
     int wrongAnswersCount;
 
+    [SerializeField] TextMeshProUGUI timerText;
+
     [SerializeField] HUBElevatorButton hubMapElevatorButton;
+
+    [SerializeField] float minutes;
+
+    [SerializeField] float seconds;
+
+    float elapsedTime;
 
     void Awake()
     {
+        elapsedTime = minutes * 60 + seconds;
         correctAnswersCount = 0;
         wrongAnswersCount = 0;
         // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
@@ -145,4 +155,16 @@ public class QuizManager : MonoBehaviour
                 }
         }
     }
+
+    public void Countdown()
+    {
+        elapsedTime -= Time.deltaTime;
+        timerText.text = elapsedTime.ToString();
+    }
+
+    void Update()
+    {
+        Countdown();
+    }
+
 }

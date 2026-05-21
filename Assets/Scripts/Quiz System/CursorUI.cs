@@ -23,7 +23,7 @@ public class CursorUI : MonoBehaviour
     }
 
     void OnEnable()
-    {
+    {   
         Cursor.visible = false;
         pointerPositionAction.action.performed += OnPointerPositionChanged;
     }
@@ -46,4 +46,5 @@ public class CursorUI : MonoBehaviour
         }
 
     }
+
 }
