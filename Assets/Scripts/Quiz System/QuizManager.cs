@@ -1,4 +1,7 @@
+using System;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class QuizManager : MonoBehaviour
 {
@@ -21,11 +24,22 @@ public class QuizManager : MonoBehaviour
 
     int correctAnswersCount;
     int wrongAnswersCount;
+    String zeroMinutesString = "";
+    String zeroSecondsString = "";
+
+    [SerializeField] TextMeshProUGUI timerText;
 
     [SerializeField] ColliderActivator hubMapElevatorActivator;
 
+    [SerializeField] float minutes;
+
+    [SerializeField] float seconds;
+
+    float elapsedTime;
+
     void Awake()
     {
+        elapsedTime = minutes * 60 + seconds;
         correctAnswersCount = 0;
         wrongAnswersCount = 0;
         // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
@@ -145,4 +159,41 @@ public class QuizManager : MonoBehaviour
                 }
         }
     }
+
+    public void Countdown()
+    {
+        elapsedTime -= Time.deltaTime;
+        if(TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
+        {
+            zeroMinutesString = "0";    
+        }
+        else
+        {
+            zeroMinutesString = "";
+        }
+        if(TimeSpan.FromSeconds(elapsedTime).Seconds <= 9)
+        {
+            zeroSecondsString = "0";    
+        }
+        else
+        {
+            zeroSecondsString = "";
+        }
+        if(elapsedTime <= 0)
+        {
+            timerText.text = "00:00";
+            zeroMinutesString = "";
+            zeroSecondsString = "";
+        }
+        else
+        {
+            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);  
+        }
+    }
+
+    void Update()
+    {
+        Countdown();
+    }
+
 }
