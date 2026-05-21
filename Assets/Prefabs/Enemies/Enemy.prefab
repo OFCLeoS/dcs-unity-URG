@@ -1362,9 +1362,9 @@ MonoBehaviour:
   team: 2
   agentAttributes:
     minAgentHealth: 50
-    maxAgentHealth: 1000
+    maxAgentHealth: 300
     minMovementSpeed: 1.5
-    maxMovementSpeed: 7
+    maxMovementSpeed: 5
     minDamage: 15
     maxDamage: 1000
   movementModule: {fileID: 6305971138394580035}

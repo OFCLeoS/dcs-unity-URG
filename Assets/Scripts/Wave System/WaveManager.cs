@@ -19,10 +19,11 @@ public class WaveManager : MonoBehaviour
 
     public float WaveDifficultyModifier { get; private set; }
 
-    int waveNumber;
+    [SerializeField] int waveNumber;
     Wave currentWave;
     public Wave CurrentWave { get { return currentWave; } }
 
+    [SerializeField] float preperationTime = 20;
     float preperationTimeLeft;
     bool inPreperationPhase = true;
 
@@ -83,7 +84,7 @@ public class WaveManager : MonoBehaviour
     {
         inPreperationPhase = true;
         // TODO: MAKE THIS DYNAMIC?
-        preperationTimeLeft = 60;
+        preperationTimeLeft = preperationTime;
         enabled = true;
     }
 
@@ -160,6 +161,14 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Force Generate Wave")]
     public void DEBUG_FORCE_GENERATE_WAVE()
     {
+        GenerateNextWave();
+        enabled = true;
+        StartWave();
+    }
+    [ContextMenu("Force Generate +10 Wave")]
+    public void DEBUG_FORCE_GENERATE_P5WAVE()
+    {
+        waveNumber += 10;
         GenerateNextWave();
         enabled = true;
         StartWave();

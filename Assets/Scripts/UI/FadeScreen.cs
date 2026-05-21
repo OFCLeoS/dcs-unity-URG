@@ -32,7 +32,6 @@ public class FadeScreen : MonoBehaviour
     /// <returns>True if Fade Out was completed</returns>
     public bool FadeOutStep(float deltaTime)
     {
-        Debug.Log("FADING OUT!!");
         currentFadeProgress -= deltaTime;
         Color fadeScreenColour = fadeScreen.color;
         fadeScreenColour.a = Mathf.Lerp(0, 1, 1 - (currentFadeProgress / currentFadeTime));
@@ -48,7 +47,6 @@ public class FadeScreen : MonoBehaviour
     /// <returns>True if Fade In was completed</returns>
     public bool FadeInStep(float deltaTime)
     {
-        Debug.Log("FADING IN!!");
         currentFadeProgress -= deltaTime;
         Color fadeScreenColour = fadeScreen.color;
         fadeScreenColour.a = Mathf.Lerp(1, 0, 1 - (currentFadeProgress / currentFadeTime));

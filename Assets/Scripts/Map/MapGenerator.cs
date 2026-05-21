@@ -112,6 +112,7 @@ public class MapGenerator : MonoBehaviour
     void DestroyMap()
     {
         Destroy(generatedLayout.gameObject);
+        enemySpawningManager.DestroyAllWaveEnemies();
     }
 
     void HandleMapGen()

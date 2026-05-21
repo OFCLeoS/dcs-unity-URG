@@ -24,6 +24,8 @@ public class EnemySpawningManager : MonoBehaviour
 
     Wave currentWave;
 
+    [SerializeField] List<GameObject> enemiesInWave = new List<GameObject>();
+
     #region Initialization
     void Awake()
     {
@@ -59,6 +61,17 @@ public class EnemySpawningManager : MonoBehaviour
         currentWave = null;
     }
 
+    public void DestroyAllWaveEnemies()
+    {
+        for (int i = 0; i < enemiesInWave.Count; i++)
+        {
+            if (enemiesInWave[i] != null)
+            {
+                Destroy(enemiesInWave[i]);
+            }
+        }
+    }
+
     /// <summary>
     /// Randomly spawn an enemy in a random spawner
     /// </summary>
@@ -67,6 +80,7 @@ public class EnemySpawningManager : MonoBehaviour
         GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Count)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
         spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, waveManager);
         currentWave.SetupEnemyForWave(spawnedEnemy);
+        enemiesInWave.Add(spawnedEnemy);
     }
 
     void Update()
