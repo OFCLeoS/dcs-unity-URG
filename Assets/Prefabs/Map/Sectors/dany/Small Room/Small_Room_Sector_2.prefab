@@ -3612,6 +3612,7 @@ Transform:
   - {fileID: 7204368948459568479}
   - {fileID: 5373860954050719848}
   - {fileID: 9010167550115355616}
+  - {fileID: 2888060227950404904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4953862261039068605
@@ -7282,6 +7283,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1155264549380985687, guid: e0e8d8557f1971d4b94da1ea23a31384, type: 3}
   m_PrefabInstance: {fileID: 4771634701280747329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5075152616747531362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4734346803194274912}
+    m_Modifications:
+    - target: {fileID: 7793431934314681247, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_Name
+      value: Laundry Trolley
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.935
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.821
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.298
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9775604
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.00000002136526
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.21065567
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 24.322
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+--- !u!4 &2888060227950404904 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7960924965007235402, guid: d21e7a74cdf65d74ca2e1e5eac0666bc, type: 3}
+  m_PrefabInstance: {fileID: 5075152616747531362}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5152976506651009274
 PrefabInstance:
