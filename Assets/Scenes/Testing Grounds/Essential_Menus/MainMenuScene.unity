@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &203483708
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5105,6 +5105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1718200704}
   - component: {fileID: 1718200703}
+  - component: {fileID: 1718200705}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -5192,6 +5193,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1718200705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718200702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1790432402
 GameObject:
   m_ObjectHideFlags: 0
@@ -5589,7 +5619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: dcs-unity-URG
+  m_text: DCS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54aaf838e299b92439b46f57b452288f, type: 2}
   m_sharedMaterial: {fileID: -9140305616982281323, guid: 54aaf838e299b92439b46f57b452288f, type: 2}
@@ -6681,7 +6711,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.67058825, g: 0.78823537, b: 0.7490196, a: 1}
     m_PressedColor: {r: 0.7568628, g: 0.45098042, b: 0.3019608, a: 1}
     m_SelectedColor: {r: 0.7568628, g: 0.45098042, b: 0.3019608, a: 0.78431374}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.75686276, g: 0.4509804, b: 0.30588236, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -6695,7 +6725,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2066219248}
   m_OnClick:
     m_PersistentCalls:
@@ -6854,9 +6884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262830c48dab713429b3f0b36727b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  startGameScene: TESTStartGameScene
-  tutorialScene: TESTTutorialScene
-  creditsScene: TESTCreditsScene
+  startGameScene: Wave Survival
+  tutorialScene: 
+  creditsScene: CreditsScene
   settingsPanel: {fileID: 628876440}
   menuPanel: {fileID: 1419757850}
 --- !u!4 &2143134194

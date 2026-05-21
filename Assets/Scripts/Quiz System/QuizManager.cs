@@ -74,7 +74,6 @@ public class QuizManager : MonoBehaviour
         currentQuestion = QuestionList.GetQuestionFromIndex(randomQuestionIndex);
 
         quizActive = true;
-        hintLevel = HintLevel.NO_HINT;
 
         quizCanvas.SetActive(true);
 
@@ -149,9 +148,9 @@ public class QuizManager : MonoBehaviour
         switch (hintLevel)
         {
             case HintLevel.NO_HINT: return "No hint unlocked yet!";
-            case HintLevel.PARAGRAPH: return "Topic: " + currentQuestion.GetTopic();
+            case HintLevel.TOPIC: return "Topic: " + currentQuestion.GetTopic();
             case HintLevel.SUB_TOPIC: return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic();
-            case HintLevel.TOPIC: return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic() + ", Paragraph Number: " + currentQuestion.GetParagraphNumber();
+            case HintLevel.PARAGRAPH: return "Topic: " + currentQuestion.GetTopic() + ", SubTopic: " + currentQuestion.GetSubtopic() + ", Paragraph Number: " + currentQuestion.GetParagraphNumber();
             default:
                 {
                     Debug.LogError("INVALID HINT LEVEL!");
@@ -163,23 +162,23 @@ public class QuizManager : MonoBehaviour
     public void Countdown()
     {
         elapsedTime -= Time.deltaTime;
-        if(TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
+        if (TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
         {
-            zeroMinutesString = "0";    
+            zeroMinutesString = "0";
         }
         else
         {
             zeroMinutesString = "";
         }
-        if(TimeSpan.FromSeconds(elapsedTime).Seconds <= 9)
+        if (TimeSpan.FromSeconds(elapsedTime).Seconds <= 9)
         {
-            zeroSecondsString = "0";    
+            zeroSecondsString = "0";
         }
         else
         {
             zeroSecondsString = "";
         }
-        if(elapsedTime <= 0)
+        if (elapsedTime <= 0)
         {
             timerText.text = "00:00";
             zeroMinutesString = "";
@@ -187,7 +186,7 @@ public class QuizManager : MonoBehaviour
         }
         else
         {
-            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);  
+            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);
         }
     }
 

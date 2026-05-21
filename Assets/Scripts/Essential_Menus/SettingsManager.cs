@@ -179,13 +179,4 @@ public class SettingsManager : MonoBehaviour
         ApplySettingsToUI();
         ApplySettings();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame && settingsPanel.activeSelf)
-        {
-            OnCancel();
-        }
-    }
 }

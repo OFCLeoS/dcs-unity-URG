@@ -10,8 +10,10 @@ public class PauseMenuManager : MonoBehaviour
 
     private bool gamePaused = false;
 
+    [SerializeField] Player player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         pauseMenuPanel.SetActive(false);
         Time.timeScale = 1f;
@@ -22,6 +24,8 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
         gamePaused = true;
+        player.DisableControls();
+        player.CrosshairController.ShowCursor();
     }
 
     private void ResumeGame()
@@ -29,6 +33,8 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuPanel.SetActive(false);
         Time.timeScale = 1f;
         gamePaused = false;
+        player.EnableControls();
+        player.CrosshairController.HideCursor();
     }
 
     public void OnResume()

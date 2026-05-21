@@ -1633,8 +1633,9 @@ MonoBehaviour:
   player: {fileID: 0}
   timerText: {fileID: 5388253775230807243}
   hubMapElevatorActivator: {fileID: 0}
-  minutes: 2
-  seconds: 467
+  minutes: 3
+  seconds: 39
+  quizComputer: {fileID: 0}
 --- !u!1 &3289364991848484479
 GameObject:
   m_ObjectHideFlags: 0

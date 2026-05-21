@@ -118,16 +118,16 @@ public class WaveManager : MonoBehaviour
     public void FinishWave()
     {
         // DO SOMETHING WITH THIS
-        float waveCompletionPercenrtage = currentWave.GetCompletionPercentage();
-        if (waveCompletionPercenrtage >= (3.0f / 3.0f))
+        float waveCompletionPercentage = currentWave.GetCompletionPercentage();
+        if (waveCompletionPercentage >= (3.0f / 3.0f))
         {
             quizManager.SetHintLevel(HintLevel.PARAGRAPH);
         }
-        else if (waveCompletionPercenrtage >= (2.0f / 3.0f))
+        else if (waveCompletionPercentage >= (2.0f / 3.0f))
         {
             quizManager.SetHintLevel(HintLevel.SUB_TOPIC);
         }
-        else if (waveCompletionPercenrtage >= (1.0f / 3.0f))
+        else if (waveCompletionPercentage >= (1.0f / 3.0f))
         {
             quizManager.SetHintLevel(HintLevel.TOPIC);
         }
@@ -135,7 +135,7 @@ public class WaveManager : MonoBehaviour
         {
             quizManager.SetHintLevel(HintLevel.NO_HINT);
         }
-        Debug.Log("Wave " + waveNumber + " was Completed!");
+        Debug.Log("Wave " + waveNumber + " was Completed with a completion percentage of " +waveCompletionPercentage);
         DeactivateAllManagers();
 
         // Player go back to HUB once wave is done

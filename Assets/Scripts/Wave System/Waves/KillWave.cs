@@ -17,7 +17,7 @@ public class KillWave : Wave
 
     public override void InitializeWave()
     {
-        
+
     }
 
     public void EnemyKilled(AIAgent enemy)
@@ -38,7 +38,7 @@ public class KillWave : Wave
 
     public override float GetCompletionPercentage()
     {
-        return kills / _requiredKills * 1.0f;
+        return (kills * 1.0f) / (_requiredKills * 1.0f);
     }
 
     public override void SetupEnemyForWave(GameObject enemy)

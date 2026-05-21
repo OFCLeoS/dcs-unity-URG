@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4825205614392689625}
   - component: {fileID: 6969363712213230021}
+  - component: {fileID: 5345329592055373421}
   m_Layer: 0
   m_Name: HUDManager
   m_TagString: Untagged
@@ -54,4 +55,23 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  equippedWeaponIcon: {fileID: 0}
+  equippedIconImage: {fileID: 0}
+--- !u!114 &5345329592055373421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2798437451092051265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc094fbf2f41d664ebfb8881c5528e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIBehaviour
+  width: 296.8861
+  height: 8.2637
+  healthBar: {fileID: 0}
+  healthText: {fileID: 0}
+  waveTextNumber: {fileID: 0}
+  waveTimerText: {fileID: 0}
+  objectiveText: {fileID: 0}

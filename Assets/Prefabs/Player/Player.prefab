@@ -3356,6 +3356,7 @@ MonoBehaviour:
   inventory: {fileID: 5713546460329060553}
   statusEffectController: {fileID: 2262944743229980688}
   animationController: {fileID: 6464760698860852619}
+  playerUIBehaviour: {fileID: 0}
 --- !u!114 &3747362488655712602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3446,6 +3447,8 @@ MonoBehaviour:
   selectedWeapon: {fileID: 0}
   hand: {fileID: 1759867903557345321}
   animationController: {fileID: 6464760698860852619}
+  hUDManager: {fileID: 0}
+  empty: {fileID: 0}
   playerCameraShaker: {fileID: 6207870290314918143}
 --- !u!114 &5414667504170093248
 MonoBehaviour:
