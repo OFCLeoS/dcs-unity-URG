@@ -24,7 +24,10 @@ public class MapGenerator : MonoBehaviour
     bool isGenerating = false;
     bool playerOnTheMap = false;
 
-    [SerializeField] WaveElevatorButton waveMapElevatorButton;
+    [SerializeField] ColliderActivator waveMapElevatorActivator;
+    [SerializeField] ElevatorDoorsController waveMapElevatorController;
+
+    [SerializeField] ElevatorDoorsController hubMapElevatorController;
 
     [SerializeField] QuizComputer quizComputer;
 
@@ -55,7 +58,7 @@ public class MapGenerator : MonoBehaviour
         minimumTimeLeftToBeInElevator = _minimumElevatorTime;
 
         // Player can only go back to HUB once wave is done
-        waveMapElevatorButton.DisableElevatorButton();
+        waveMapElevatorActivator.DisableActivator();
 
         isGenerating = true;
         playerOnTheMap = false;
@@ -122,6 +125,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     waveManager.StartPreparationPhase();
                     elevator.StopElevatorSequence(wavePosition);
+                    waveMapElevatorController.OpenDoorSequence();
 
                     playerOnTheMap = true;
                     enabled = false;
@@ -147,6 +151,7 @@ public class MapGenerator : MonoBehaviour
             if (minimumTimeLeftToBeInElevator <= 0)
             {
                 elevator.StopElevatorSequence(hubPosition);
+                hubMapElevatorController.OpenDoorSequence();
                 quizComputer.EnableQuizComputer();
 
                 playerOnTheMap = true;
