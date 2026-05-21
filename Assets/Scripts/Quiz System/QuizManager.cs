@@ -1,5 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class QuizManager : MonoBehaviour
 {
@@ -22,6 +24,8 @@ public class QuizManager : MonoBehaviour
 
     int correctAnswersCount;
     int wrongAnswersCount;
+    String zeroMinutesString = "";
+    String zeroSecondsString = "";
 
     [SerializeField] TextMeshProUGUI timerText;
 
@@ -159,7 +163,33 @@ public class QuizManager : MonoBehaviour
     public void Countdown()
     {
         elapsedTime -= Time.deltaTime;
-        timerText.text = elapsedTime.ToString();
+        if(elapsedTime <= 0)
+        {
+            timerText.text = timerText.text = "00:00";
+            zeroMinutesString = "";
+            zeroSecondsString = "";
+        }
+        else
+        {
+            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);  
+        }
+
+        if(TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
+        {
+            zeroMinutesString = "0";    
+        }
+        else
+        {
+            zeroMinutesString = "";
+        }
+        if(TimeSpan.FromSeconds(elapsedTime).Seconds <= 9)
+        {
+            zeroSecondsString = "0";    
+        }
+        else
+        {
+            zeroSecondsString = "";
+        }
     }
 
     void Update()
