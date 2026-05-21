@@ -47,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (playerAttackController.GetSelectedWeapon() != null && playerAttackController.GetSelectedWeapon() == primaryWeapon)
         {
-            playerAttackController.SetSelectedWeapon(newPrimaryWeapon);
+            playerAttackController.SetSelectedWeapon(0, primaryWeapon.weaponIcon, newPrimaryWeapon);
         }
         if (primaryWeapon != null) Destroy(primaryWeapon.gameObject);
         newPrimaryWeapon.transform.SetParent(primaryWeaponSlot);
@@ -60,7 +60,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (playerAttackController.GetSelectedWeapon() != null && playerAttackController.GetSelectedWeapon() == secondaryWeapon)
         {
-            playerAttackController.SetSelectedWeapon(newSecondaryWeapon);
+            playerAttackController.SetSelectedWeapon(1, secondaryWeapon.weaponIcon, newSecondaryWeapon);
         }
         if (secondaryWeapon != null) Destroy(secondaryWeapon.gameObject);
         newSecondaryWeapon.transform.SetParent(secondaryWeaponSlot);
@@ -73,7 +73,7 @@ public class PlayerInventory : MonoBehaviour
     {
         if (playerAttackController.GetSelectedWeapon() != null && playerAttackController.GetSelectedWeapon() == meleeWeapon)
         {
-            playerAttackController.SetSelectedWeapon(newMeleeWeapon);
+            playerAttackController.SetSelectedWeapon(2, newMeleeWeapon.weaponIcon, newMeleeWeapon);
         }
         if (meleeWeapon != null) Destroy(meleeWeapon.gameObject);
         meleeAnimationEventRelay.SetMeleeWeapon(newMeleeWeapon);
@@ -112,17 +112,17 @@ public class PlayerInventory : MonoBehaviour
         if (primaryWeaponAction.WasPressedThisFrame() && primaryWeapon != null && playerAttackController.GetSelectedWeapon() != primaryWeapon)
         {
             HolsterEquippedWeapon();
-            playerAttackController.SetSelectedWeapon(primaryWeapon);
+            playerAttackController.SetSelectedWeapon(0, primaryWeapon.weaponIcon, primaryWeapon);
         }
         else if (secondaryWeaponAction.WasPressedThisFrame() && secondaryWeapon != null && playerAttackController.GetSelectedWeapon() != secondaryWeapon)
         {
             HolsterEquippedWeapon();
-            playerAttackController.SetSelectedWeapon(secondaryWeapon);
+            playerAttackController.SetSelectedWeapon(1, secondaryWeapon.weaponIcon, secondaryWeapon);
         }
         else if (meleeWeaponAction.WasPressedThisFrame() && meleeWeapon != null && playerAttackController.GetSelectedWeapon() != meleeWeapon)
         {
             HolsterEquippedWeapon();
-            playerAttackController.SetSelectedWeapon(meleeWeapon);
+            playerAttackController.SetSelectedWeapon(2, meleeWeapon.weaponIcon, meleeWeapon);
         }
     }
 
