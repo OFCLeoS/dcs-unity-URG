@@ -40,14 +40,7 @@ public class PlayerUIBehaviour : MonoBehaviour
     }
 
     public void ChangeWaveTimer(float waveTimerText)
-    {
-        if(waveTimerText <= 0)
-        {
-            this.waveTimerText.text = "00:00";
-            zeroMinutesString = "";
-            zeroSecondsString = "";
-        }
-        
+    {   
         if(TimeSpan.FromSeconds(waveTimerText).Minutes <= 9)
         {
             zeroMinutesString = "0";    
@@ -67,6 +60,16 @@ public class PlayerUIBehaviour : MonoBehaviour
 
         int minutes = TimeSpan.FromSeconds(waveTimerText).Minutes;
         int seconds = TimeSpan.FromSeconds(waveTimerText).Seconds;
-        this.waveTimerText.text = Convert.ToString(zeroMinutesString + minutes + ":" + zeroSecondsString + seconds);  
+        
+        if(waveTimerText <= 0)
+        {
+            this.waveTimerText.text = "00:00";
+            zeroMinutesString = "";
+            zeroSecondsString = "";
+        }
+        else
+        {
+            this.waveTimerText.text = Convert.ToString(zeroMinutesString + minutes + ":" + zeroSecondsString + seconds);     
+        }
     }
 }
