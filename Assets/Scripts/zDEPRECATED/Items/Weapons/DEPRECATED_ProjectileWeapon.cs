@@ -44,10 +44,11 @@ public class DEPRECATED_ProjectileWeapon : Weapon
     }
     #endregion
 
-    public override void Attack()
+    public override bool Attack(Team attackingTeam)
     {
+        return false;
         // fireDelay = 60f / rpm; UNCOMMENT FOR TESTING
-        if (!canFire) return;
+        if (!canFire) return false;
 
         muzzleFlashLight.SetActive(true);
         timeBeforeMuzzleFlashDeactivation = muzzleFlashActiveTime;

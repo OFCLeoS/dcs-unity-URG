@@ -12,9 +12,9 @@ AvatarMask:
   - m_Path: 
     m_Weight: 1
   - m_Path: Humanoid Rig
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Humanoid Rig/Root
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Humanoid Rig/Root/elbowPoleTarget.L
     m_Weight: 1
   - m_Path: Humanoid Rig/Root/elbowPoleTarget.R
@@ -32,7 +32,7 @@ AvatarMask:
   - m_Path: Humanoid Rig/Root/legIK.R
     m_Weight: 0
   - m_Path: Humanoid Rig/Root/spine
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: Humanoid Rig/Root/spine/pelvis.L
     m_Weight: 0
   - m_Path: Humanoid Rig/Root/spine/pelvis.R

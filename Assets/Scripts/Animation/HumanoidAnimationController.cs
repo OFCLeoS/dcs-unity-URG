@@ -8,12 +8,14 @@ public class HumanoidAnimationController : MonoBehaviour
 
     protected static readonly int dieTrigger = Animator.StringToHash("die");
 
+    protected static readonly int attackTrigger = Animator.StringToHash("attack");
+
     [SerializeField] protected Animator animator;
     protected float _maxXSpeed;
     protected float _maxZSpeed;
 
     #region Initialization
-    public void Initalize(float maxXSpeed,float maxZSpeed)
+    public void Initalize(float maxXSpeed, float maxZSpeed)
     {
         _maxXSpeed = maxXSpeed;
         _maxZSpeed = maxZSpeed;
@@ -22,11 +24,21 @@ public class HumanoidAnimationController : MonoBehaviour
 
     public void PlayerDeathAnimation()
     {
-        animator.SetBool(dieTrigger,true);
+        animator.SetTrigger(dieTrigger);
+    }
+
+    public void AttackAnimation()
+    {
+        animator.SetTrigger(attackTrigger);
+    }
+
+    public void ChangeAnimatorController(RuntimeAnimatorController newAnimatorController)
+    {
+        animator.runtimeAnimatorController = newAnimatorController;
     }
 
     void Update()
     {
-        
+
     }
 }
