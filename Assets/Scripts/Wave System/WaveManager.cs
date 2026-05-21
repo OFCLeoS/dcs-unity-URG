@@ -9,6 +9,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] EnemySpawningManager enemySpawningManager;
 
     [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+
+    [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
     public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
 
     [Tooltip("Quiz Manager reference in order to get tip level.")]
@@ -19,10 +21,11 @@ public class WaveManager : MonoBehaviour
 
     public float WaveDifficultyModifier { get; private set; }
 
-    int waveNumber;
+    [SerializeField] int waveNumber;
     Wave currentWave;
     public Wave CurrentWave { get { return currentWave; } }
 
+    [SerializeField] float preperationTime = 20;
     float preperationTimeLeft;
     bool inPreperationPhase = true;
 
@@ -74,6 +77,7 @@ public class WaveManager : MonoBehaviour
     public void GenerateNextWave()
     {
         waveNumber++;
+        playerUIBehaviour.ChangeWaveNumber(waveNumber);
         SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
         currentWave.InitializeWave();
@@ -83,7 +87,7 @@ public class WaveManager : MonoBehaviour
     {
         inPreperationPhase = true;
         // TODO: MAKE THIS DYNAMIC?
-        preperationTimeLeft = 60;
+        preperationTimeLeft = preperationTime;
         enabled = true;
     }
 
@@ -91,6 +95,7 @@ public class WaveManager : MonoBehaviour
     {
         inPreperationPhase = false;
         timeLeftForCurrentWave = currentWave.WaveDuration;
+        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
         enemySpawningManager.Activate(currentWave);
     }
 
@@ -151,6 +156,7 @@ public class WaveManager : MonoBehaviour
             timeLeftForCurrentWave -= Time.deltaTime;
             if (timeLeftForCurrentWave <= 0) FinishWave();
         }
+        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
     }
 
     void Update() => HandleWave();
@@ -160,6 +166,14 @@ public class WaveManager : MonoBehaviour
     [ContextMenu("Force Generate Wave")]
     public void DEBUG_FORCE_GENERATE_WAVE()
     {
+        GenerateNextWave();
+        enabled = true;
+        StartWave();
+    }
+    [ContextMenu("Force Generate +10 Wave")]
+    public void DEBUG_FORCE_GENERATE_P5WAVE()
+    {
+        waveNumber += 10;
         GenerateNextWave();
         enabled = true;
         StartWave();

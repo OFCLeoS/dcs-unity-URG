@@ -3071,6 +3071,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionsHandler
   player: {fileID: 8364414071149973058}
   playerHead: {fileID: 640793502971507624}
+  playerCamera: {fileID: 0}
+  interactionTextObject: {fileID: 0}
+  interactionText: {fileID: 0}
 --- !u!1 &8182750009606434172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3457,8 +3460,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrosshairController
   crosshair: {fileID: 0}
-  maximumXDistanceFromPlayerPerAxis: 25
-  maximumZDistanceFromPlayerPerAxis: 15
+  maximumXDistanceFromPlayerPerAxis: 15
+  maximumZDistanceFromPlayerPerAxis: 10
   playerFeet: {fileID: 9041668613120999707}
 --- !u!114 &6207870290314918143
 MonoBehaviour:

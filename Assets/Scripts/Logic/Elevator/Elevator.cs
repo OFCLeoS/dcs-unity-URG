@@ -163,6 +163,10 @@ public class Elevator : MonoBehaviour
             fadeInCompleted = false;
             fadeScreen.StartFade(fadeInTime);
         }
+        else
+        {
+            HandleElevator();
+        }
     }
 
     void Update()
