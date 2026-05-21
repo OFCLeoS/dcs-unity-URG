@@ -23,6 +23,7 @@ public class ProjectileWeapon : Weapon
     [SerializeField] GameObject muzzleFlashLight;
     [Tooltip("How long the muzzle flash will be active for upon firing.")]
     [SerializeField] float muzzleFlashActiveTime;
+    
     float timeBeforeMuzzleFlashDeactivation;
     bool muzzleFlashActive = false;
 
@@ -94,4 +95,5 @@ public class ProjectileWeapon : Weapon
             timeBeforeMuzzleFlashDeactivation -= Time.deltaTime;
         }
     }
+
 }
