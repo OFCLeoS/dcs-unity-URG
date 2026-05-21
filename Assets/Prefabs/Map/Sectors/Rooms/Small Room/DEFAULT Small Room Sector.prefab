@@ -2595,6 +2595,7 @@ GameObject:
   - component: {fileID: 2120998199852550180}
   - component: {fileID: 5893145779393525594}
   - component: {fileID: 1584016110447817747}
+  - component: {fileID: 4320035931012555080}
   m_Layer: 0
   m_Name: Small Room Floor
   m_TagString: Untagged
@@ -2674,6 +2675,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4320035931012555080
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076358046625587028}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8, y: 7.999999, z: 0.22999996}
+  m_Center: {x: -8.171241e-16, y: -0.00000047683716, z: 0.11500001}
 --- !u!1 &3358557705750505617
 GameObject:
   m_ObjectHideFlags: 0

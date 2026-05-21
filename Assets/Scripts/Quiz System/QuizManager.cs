@@ -35,6 +35,8 @@ public class QuizManager : MonoBehaviour
 
     [SerializeField] float seconds;
 
+    [SerializeField] QuizComputer quizComputer;
+
     float elapsedTime;
 
     void Awake()
@@ -90,10 +92,8 @@ public class QuizManager : MonoBehaviour
         quizActive = false;
         hintLevel = HintLevel.NO_HINT;
         quizCanvas.SetActive(false);
-
+        quizComputer.DisableQuizComputer();
         hubMapElevatorActivator.EnableActivator();
-
-        Debug.Log("Quiz Ended!");
     }
 
     public void SendAnswer(int choiceIndex)

@@ -60,7 +60,11 @@ public class PlayerInteractionsHandler : MonoBehaviour
         interactionTextObject.gameObject.SetActive(false);
     }
 
-    void MakeTextTrackCamera() => interactionTextObject.transform.LookAt(playerCamera, interactionTextObject.up);
+    void MakeTextTrackCamera()
+    {
+        //interactionTextObject.transform.LookAt(playerCamera, interactionTextObject.up);
+
+    }
 
     Collider lastHit;
     IInteractable lastHitInteractable;
