@@ -16,6 +16,10 @@ public class PlayerUIBehaviour : MonoBehaviour
     [SerializeField] private TMP_Text waveTimerText;
     [SerializeField] private TMP_Text objectiveText;
 
+    String zeroMinutesString = "";
+    String zeroSecondsString = "";
+    String zeroMilisecondsString = "";
+
     public void SetMaxHealth(float maxHealth)
     {
         this.maxHealth = maxHealth;
@@ -37,10 +41,32 @@ public class PlayerUIBehaviour : MonoBehaviour
 
     public void ChangeWaveTimer(float waveTimerText)
     {
+        if(waveTimerText <= 0)
+        {
+            this.waveTimerText.text = "00:00";
+            zeroMinutesString = "";
+            zeroSecondsString = "";
+        }
+        
+        if(TimeSpan.FromSeconds(waveTimerText).Minutes <= 9)
+        {
+            zeroMinutesString = "0";    
+        }
+        else
+        {
+            zeroMinutesString = "";
+        }
+        if(TimeSpan.FromSeconds(waveTimerText).Seconds <= 9)
+        {
+            zeroSecondsString = "0";    
+        }
+        else
+        {
+            zeroSecondsString = "";
+        }
+
         int minutes = TimeSpan.FromSeconds(waveTimerText).Minutes;
         int seconds = TimeSpan.FromSeconds(waveTimerText).Seconds;
-        int milliseconds = TimeSpan.FromSeconds(waveTimerText).Milliseconds;
-        this.waveTimerText.text = Convert.ToString(minutes + ":" + seconds + ":" + milliseconds);
+        this.waveTimerText.text = Convert.ToString(zeroMinutesString + minutes + ":" + zeroSecondsString + seconds);  
     }
-
 }
