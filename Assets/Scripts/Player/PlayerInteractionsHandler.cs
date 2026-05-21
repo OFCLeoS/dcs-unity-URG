@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,13 @@ public class PlayerInteractionsHandler : MonoBehaviour
     [Tooltip("A reference to the player's head to properly check if the player is looking at an interactible")]
     [SerializeField] Transform playerHead;
 
+    // Will be used for making the interaction description track the player cam.
+    [SerializeField] Transform playerCamera;
+
+    [SerializeField] Transform interactionTextObject;
+    [SerializeField] TMP_Text interactionText;
+    bool interactionDescriptionTextActive;
+
     #region Initialization
     void Awake()
     {
@@ -31,9 +39,35 @@ public class PlayerInteractionsHandler : MonoBehaviour
         maximumInteractionRange = interactibleChecker.radius; //The maximum interaction range will be the radius of the interaction sphere
 
         interactableLayerMask = LayerMask.GetMask("Interactable");
-    }
-    #endregion 
 
+        interactionTextObject.gameObject.SetActive(false);
+        interactionDescriptionTextActive = false;
+    }
+    #endregion
+
+
+    void EnableText(Vector3 position, string text)
+    {
+        interactionTextObject.position = position;
+        interactionTextObject.gameObject.SetActive(true);
+        interactionText.text = text;
+        interactionDescriptionTextActive = true;
+    }
+
+    void DisableText()
+    {
+        interactionDescriptionTextActive = false;
+        interactionTextObject.gameObject.SetActive(false);
+    }
+
+    void MakeTextTrackCamera()
+    {
+        //interactionTextObject.transform.LookAt(playerCamera, interactionTextObject.up);
+
+    }
+
+    Collider lastHit;
+    IInteractable lastHitInteractable;
     /// <summary>
     /// Casts a ray that checks whether or not the player is looking at an interactible, and allows interaction with it if true
     /// </summary>
@@ -42,17 +76,24 @@ public class PlayerInteractionsHandler : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(playerHead.position, playerHead.forward, out hit, maximumInteractionRange, interactableLayerMask, QueryTriggerInteraction.Collide))
         {
-            //DISPLAY MESSAGE...
-
-            if (interactAction.WasPressedThisFrame())
+            if (lastHit != hit.collider)
             {
-                IInteractable interactable = hit.collider.transform.GetComponent<IInteractable>();
-                interactable.OnInteract(player);
+                lastHit = hit.collider;
+                lastHitInteractable = hit.collider.transform.GetComponent<IInteractable>();
             }
+
+            if (!interactionDescriptionTextActive) EnableText(hit.transform.position, lastHitInteractable.InteractText);
+            else MakeTextTrackCamera();
+
+            if (interactAction.WasPressedThisFrame()) lastHitInteractable.OnInteract(player);
 
             Debug.DrawRay(playerHead.position, playerHead.forward * maximumInteractionRange, Color.green);
         }
-        else Debug.DrawRay(playerHead.position, playerHead.forward * maximumInteractionRange, Color.red);
+        else
+        {
+            if (interactionDescriptionTextActive) DisableText();
+            Debug.DrawRay(playerHead.position, playerHead.forward * maximumInteractionRange, Color.red);
+        }
     }
 
     void Update()
