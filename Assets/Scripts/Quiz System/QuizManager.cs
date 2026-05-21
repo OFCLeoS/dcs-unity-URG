@@ -163,17 +163,6 @@ public class QuizManager : MonoBehaviour
     public void Countdown()
     {
         elapsedTime -= Time.deltaTime;
-        if(elapsedTime <= 0)
-        {
-            timerText.text = timerText.text = "00:00";
-            zeroMinutesString = "";
-            zeroSecondsString = "";
-        }
-        else
-        {
-            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);  
-        }
-
         if(TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
         {
             zeroMinutesString = "0";    
@@ -189,6 +178,16 @@ public class QuizManager : MonoBehaviour
         else
         {
             zeroSecondsString = "";
+        }
+        if(elapsedTime <= 0)
+        {
+            timerText.text = "00:00";
+            zeroMinutesString = "";
+            zeroSecondsString = "";
+        }
+        else
+        {
+            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);  
         }
     }
 
