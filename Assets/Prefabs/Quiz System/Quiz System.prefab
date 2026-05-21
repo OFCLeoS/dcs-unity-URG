@@ -1494,6 +1494,7 @@ MonoBehaviour:
   quizCanvas: {fileID: 7218584534499169796}
   quizUI: {fileID: 1817382815195846119}
   player: {fileID: 0}
+  hubMapElevatorActivator: {fileID: 0}
 --- !u!1 &3289364991848484479
 GameObject:
   m_ObjectHideFlags: 0

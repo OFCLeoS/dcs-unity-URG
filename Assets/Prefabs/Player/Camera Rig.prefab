@@ -90,9 +90,9 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 2
+  m_YDamping: 2
+  m_ZDamping: 2
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
@@ -160,7 +160,7 @@ Transform:
   m_GameObject: {fileID: 5001456424917819366}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5681736, y: 0.000000056686446, z: -0.000000039138897, w: 0.8229088}
-  m_LocalPosition: {x: 2.103, y: 25.814098, z: -5.370575}
+  m_LocalPosition: {x: -2.7200012, y: 25.814098, z: -3.0935752}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 8568066969825451502}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5681736, y: 0.000000056686446, z: -0.000000039138897, w: 0.8229088}
-  m_LocalPosition: {x: 2.103, y: 25.814098, z: -5.370575}
+  m_LocalPosition: {x: -2.7200012, y: 25.814098, z: -3.0935752}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -348,8 +348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
   m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
+  m_RequiresDepthTextureOption: 0
+  m_RequiresOpaqueTextureOption: 0
   m_CameraType: 0
   m_Cameras: []
   m_RendererIndex: -1
@@ -358,7 +358,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

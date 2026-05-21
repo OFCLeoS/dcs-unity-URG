@@ -15,17 +15,36 @@ public class Elevator : MonoBehaviour
     [SerializeField] Vector3 playerCameraRotation;
 
     bool active;
+    bool endSequence = false;
 
     Vector3 startPoint;
     Vector3 endPoint;
+
+    Vector3 elevatorTPPoint;
+    bool playerStickingToElevator;
+
+    [Header("Fading")]
+    [SerializeField] FadeScreen fadeScreen;
+    bool fadeInCompleted = true;
+    bool fadeOutCompleted = false;
+    [SerializeField] float fadeInTime = 2;
+    [SerializeField] float fadeOutTime = 2;
 
     #region Y Pos Sticking
     Transform player;
     CharacterController playerCharacterController;
     #endregion
 
+    // TODO: VERY MESSY PROCESS, REFACTOR!
+
     public void StartElevatorSequence(Player player, bool goUp)
     {
+        endSequence = false;
+        fadeInCompleted = true;
+        fadeOutCompleted = false;
+        playerStickingToElevator = false;
+        fadeScreen.StartFade(fadeOutTime);
+
         if (goUp)
         {
             startPoint = _defaultEndPoint;
@@ -43,25 +62,18 @@ public class Elevator : MonoBehaviour
             this.player = player.transform;
             playerCharacterController = this.player.GetComponent<CharacterController>();
         }
-        AdaptCameraSettings(player.CameraDriver);
-        playerCharacterController.enabled = false;
-        player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2.0f));
-        playerCharacterController.enabled = true;
-        player.CrosshairController.ResetCrosshairPosition();
-#if UNITY_EDITOR
-        if (DEBUG_ACTIVE) DEBUG_SIMULATION_ACTIVE = true;
-#endif
     }
 
     public void StopElevatorSequence(Vector3 stopPosition)
     {
-        active = false;
-        Player player = this.player.GetComponent<Player>();
-        player.CameraDriver.ResetCameraSettings();
-        playerCharacterController.enabled = false;
-        player.transform.position = stopPosition;
-        playerCharacterController.enabled = true;
-        player.CrosshairController.ResetCrosshairPosition();
+        endSequence = true;
+
+        elevatorTPPoint = stopPosition;
+
+        fadeInCompleted = true;
+        fadeOutCompleted = false;
+
+        fadeScreen.StartFade(fadeOutTime);
     }
 
     /// <summary>
@@ -92,17 +104,102 @@ public class Elevator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// </summary>
+    /// <returns>True if Fde Out sequence is fully complete</returns>
+    bool HandleFadeOutSequence()
+    {
+        if (!fadeOutCompleted)
+        {
+            if (fadeScreen.FadeOutStep(Time.deltaTime))
+            {
+                fadeOutCompleted = true;
+                fadeScreen.StartFade(fadeInTime);
+                return true;
+            }
+            return false;
+        }
+        else return true;
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>True if Fade In sequence is fully complete</returns>
+    bool HandleFadeInSequence()
+    {
+        if (!fadeInCompleted)
+        {
+            if (fadeScreen.FadeInStep(Time.deltaTime))
+            {
+                fadeInCompleted = true;
+                return true;
+            }
+            return false;
+        }
+        else return true;
+    }
+
     void HandleElevator()
     {
         ProgressElevatorState();
         StickPlayerToElevatorFloor();
     }
 
+    /// <summary>
+    /// Handles the fading 
+    /// </summary>
+    void HandleStopSequence()
+    {
+        if (HandleFadeOutSequence())
+        {
+            active = false;
+            Player player = this.player.GetComponent<Player>();
+            player.CameraDriver.ResetCameraSettings();
+            playerCharacterController.enabled = false;
+            player.transform.position = elevatorTPPoint;
+            playerCharacterController.enabled = true;
+            player.CrosshairController.ResetCrosshairPosition();
+
+            fadeInCompleted = false;
+            fadeScreen.StartFade(fadeInTime);
+        }
+    }
+
     void Update()
     {
+        if (!fadeInCompleted) HandleFadeInSequence(); // This is not ideal at all
         if (active)
         {
-            HandleElevator();
+            if (!playerStickingToElevator)
+            {
+                if (HandleFadeOutSequence())
+                {
+                    Player player = this.player.GetComponent<Player>();
+                    AdaptCameraSettings(player.CameraDriver);
+                    playerCharacterController.enabled = false;
+                    player.transform.position = elevatorFloor.position + (Vector3.up * (playerCharacterController.height / 2.0f));
+                    playerCharacterController.enabled = true;
+                    player.CrosshairController.ResetCrosshairPosition();
+#if UNITY_EDITOR
+                    if (DEBUG_ACTIVE) DEBUG_SIMULATION_ACTIVE = true;
+#endif
+                    playerStickingToElevator = true;
+
+                    fadeInCompleted = false;
+                    fadeScreen.StartFade(fadeInTime);
+                }
+            }
+            else
+            {
+                if (!endSequence)
+                {
+                    HandleElevator();
+                }
+                else
+                {
+                    HandleStopSequence();
+                }
+            }
         }
 #if UNITY_EDITOR
         if (DEBUG_SIMULATION_ACTIVE)
@@ -114,6 +211,7 @@ public class Elevator : MonoBehaviour
 
     #region DEBUGGING
 #if UNITY_EDITOR
+    [Header("DEBUG")]
     public bool DEBUG_ACTIVE = false;
     float DEBUG_ELEVATOR_TIME = 5;
     bool DEBUG_SIMULATION_ACTIVE = false;
