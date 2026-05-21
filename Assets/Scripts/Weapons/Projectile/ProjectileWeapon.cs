@@ -72,7 +72,6 @@ public class ProjectileWeapon : Weapon
 
         projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread, attackingTeam);
 
-
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);
         shellCasingInstance.GetComponent<Rigidbody>().AddForce((-shellEjector.right * Random.Range(100, 176)) + (shellEjector.forward * Random.Range(-5, 5)));
         // TODO: THIS IS TEMPORARY, ADD A POOL?

@@ -8,6 +8,8 @@ public class LoadoutGiver : MonoBehaviour, IInteractable
     [SerializeField] Loadout loadout;
     [SerializeField] HUDManager hUDManager;
 
+    public string InteractText => "Grab Loadout";
+
     public void OnInteract(Player player)
     {
         ProjectileWeapon primaryWeapon = null;

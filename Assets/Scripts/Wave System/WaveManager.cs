@@ -30,7 +30,7 @@ public class WaveManager : MonoBehaviour
 
     float timeLeftForCurrentWave;
 
-    [SerializeField] WaveElevatorButton waveMapElevatorButton;
+    [SerializeField] ColliderActivator waveMapElevatorActivator;
 
 
     #region Initialization
@@ -138,7 +138,7 @@ public class WaveManager : MonoBehaviour
         DeactivateAllManagers();
 
         // Player go back to HUB once wave is done
-        waveMapElevatorButton.EnableElevatorButton();
+        waveMapElevatorActivator.EnableActivator();
 
         enabled = false;
     }

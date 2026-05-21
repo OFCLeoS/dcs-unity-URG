@@ -20,6 +20,7 @@ public class Player : DamageableEntity
     [SerializeField] PlayerInventory inventory;
 
     [SerializeField] StatusEffectController statusEffectController;
+    [SerializeField] HumanoidAnimationController animationController;
 
     [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
 
@@ -73,10 +74,8 @@ public class Player : DamageableEntity
 
     protected override void DestroyEntity()
     {
-        movement.enabled = false;
-        rotation.enabled = false;
-
-        Debug.Log("Player has died!");
+        DisableControls();
+        animationController.PlayerDeathAnimation();
     }
 
     // TODO: Remove this? Properties now available
