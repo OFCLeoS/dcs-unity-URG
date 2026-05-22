@@ -43,7 +43,6 @@ public class QuizManager : MonoBehaviour
 
     void Awake()
     {
-        timeLeft = minutes * 60 + seconds;
         correctAnswersCount = 0;
         wrongAnswersCount = 0;
         // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
@@ -53,14 +52,15 @@ public class QuizManager : MonoBehaviour
         QuestionList.LoadQuestionsFromFile(questionPath);
         QuestionList.LoadContentFromFile(contentPath);
 
-        Debug.Log("Question File exists: " + System.IO.File.Exists(questionPath));
-        Debug.Log("Content File exists: " + System.IO.File.Exists(contentPath));
+        //Debug.Log("Question File exists: " + System.IO.File.Exists(questionPath));
+        //Debug.Log("Content File exists: " + System.IO.File.Exists(contentPath));
 
         quizUI.CloseQuizUI();
     }
 
     public void StartQuiz() // Call this when the player interacts with the pc/quiz system
     {
+        timeLeft = minutes * 60 + seconds;
         if (quizActive) return;
         if (QuestionList.GetSize() == 0)
         {
@@ -78,8 +78,8 @@ public class QuizManager : MonoBehaviour
 
         quizCanvas.SetActive(true);
 
-        Debug.Log("Quiz Started!");
-        Debug.Log("Question: " + currentQuestion);
+        //Debug.Log("Quiz Started!");
+        //Debug.Log("Question: " + currentQuestion);
         quizUI.OpenQuizUI();
     }
 
@@ -108,14 +108,14 @@ public class QuizManager : MonoBehaviour
     void CorrectAnswerChosen()
     {
         correctAnswersCount++;
-        Debug.Log("Correct!");
+        //Debug.Log("Correct!");
         EndQuiz();
     }
 
     void WrongAnswerChosen()
     {
         wrongAnswersCount++;
-        Debug.Log("Wrong!");
+        //Debug.Log("Wrong!");
         player.StatusEffectController.AddDebuff(StatusEffectFactory.CreateRandomDebuff(player));
         EndQuiz();
     }
@@ -195,7 +195,7 @@ public class QuizManager : MonoBehaviour
 
     void Update()
     {
-        Countdown();
+        if (quizActive) Countdown();
     }
 
 }

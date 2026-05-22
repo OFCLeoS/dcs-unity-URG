@@ -26,10 +26,12 @@ public class SettingsManager : MonoBehaviour
     private SettingsData currentSettings;
     private Resolution[] availableResolutions;
 
+    [SerializeField] PlayerRotation playerRotation;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        ApplySettings();
     }
 
     private void OnEnable()
@@ -42,7 +44,7 @@ public class SettingsManager : MonoBehaviour
 
     private void PopulateResolutionDropdown()
     {
-        if (resolutionDropdown == null) 
+        if (resolutionDropdown == null)
         {
             return;
         }
@@ -54,8 +56,8 @@ public class SettingsManager : MonoBehaviour
         int currentResolutionIndex = 0;
         for (int i = 0; i < availableResolutions.Length; i++)
         {
-        //foreach (var res in availableResolutions)
-        //{
+            //foreach (var res in availableResolutions)
+            //{
             //options.Add(res.width + " x " + res.height);
             options.Add(availableResolutions[i].width + " x " + availableResolutions[i].height);
 
@@ -92,7 +94,7 @@ public class SettingsManager : MonoBehaviour
             masterVolumeLabel.text = Mathf.RoundToInt(currentSettings.masterVolume * 100f) + "%";
         }
         if (mouseSensitivityLabel != null)
-        {   
+        {
             mouseSensitivityLabel.text = Mathf.RoundToInt(currentSettings.mouseSensitivity).ToString();
         }
     }
@@ -108,11 +110,12 @@ public class SettingsManager : MonoBehaviour
             Resolution res = availableResolutions[currentSettings.resolutionIndex];
             Screen.SetResolution(res.width, res.height, currentSettings.fullscreen);
         }
+        playerRotation.SetSensitivity(SettingsData.Load().mouseSensitivity / 100f);
     }
 
     private void SetMixerVolume(string parameter, float linearValue)
     {
-        if (audioMixer == null) 
+        if (audioMixer == null)
         {
             return;
         }
@@ -161,6 +164,7 @@ public class SettingsManager : MonoBehaviour
         currentSettings.Save();
         menuPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        ApplySettings();
     }
 
     public void OnCancel()

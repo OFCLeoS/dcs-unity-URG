@@ -67,7 +67,7 @@ public class QuestionList
 
         foreach (string line in lines)
         {
-            if (line.Trim() == "") 
+            if (line.Trim() == "")
             {
                 continue;
             }
@@ -109,7 +109,7 @@ public class QuestionList
             AddQuestion(newQuestion);
         }
 
-        Debug.Log("Finished loading! Questions loaded: " + questionsList.Count);
+        //Debug.Log("Finished loading! Questions loaded: " + questionsList.Count);
     }
 
     public static void LoadContentFromFile(string filePath)
@@ -138,7 +138,7 @@ public class QuestionList
             contentList.Add(fields);
         }
 
-        Debug.Log("Finished loading! Paragraphs loaded: " + questionsList.Count);
+        //Debug.Log("Finished loading! Paragraphs loaded: " + questionsList.Count);
     }
 
     // returns all unique topic

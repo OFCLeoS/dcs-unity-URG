@@ -20,6 +20,10 @@ public class PlayerRotation : MonoBehaviour
     }
     #endregion
 
+    public void SetSensitivity(float mouseSensitivity)
+    {
+        this.mouseSensitivity = mouseSensitivity;
+    }
 
     void HandleRotation()
     {
