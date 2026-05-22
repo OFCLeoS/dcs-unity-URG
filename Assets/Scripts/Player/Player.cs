@@ -116,6 +116,45 @@ public class Player : DamageableEntity
         }
     }
 
+    public override void Heal(float healthToHeal)
+    {
+        base.Heal(healthToHeal);
+        if (currentHealth <= 0)
+        {
+            playerUIBehaviour.SetHealth(0);
+        }
+        else
+        {
+            playerUIBehaviour.SetHealth(currentHealth);
+        }
+    }
+
+    public override void SubtractMaxHealth(float maxHealthToSubtract)
+    {
+        base.SubtractMaxHealth(maxHealthToSubtract);
+        if (currentHealth <= 0)
+        {
+            playerUIBehaviour.SetHealth(0);
+        }
+        else
+        {
+            playerUIBehaviour.SetHealth(currentHealth);
+        }
+    }
+
+    public override void AddTakeMaxHealth(float maxHealthToAdd)
+    {
+        base.AddTakeMaxHealth(maxHealthToAdd);
+        if (currentHealth <= 0)
+        {
+            playerUIBehaviour.SetHealth(0);
+        }
+        else
+        {
+            playerUIBehaviour.SetHealth(currentHealth);
+        }
+    }
+
     #region DEBUG
 #if UNITY_EDITOR
 

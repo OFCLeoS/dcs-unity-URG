@@ -54,7 +54,7 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     /// <summary>
     /// Subtracts the given number from the Entity's max health and sets their current health to match the new maximum if necessary.
     /// </summary>
-    public void SubtractMaxHealth(float maxHealthToSubtract)
+    public virtual void SubtractMaxHealth(float maxHealthToSubtract)
     {
         maxHealth -= maxHealthToSubtract;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
@@ -63,7 +63,7 @@ public abstract class DamageableEntity : MonoBehaviour, IDamageable
     /// <summary>
     /// Adds the given number from the Entity's max health and sets their current health match the new maximum if their health was already at the maximum
     /// </summary>
-    public void AddTakeMaxHealth(float maxHealthToAdd)
+    public virtual void AddTakeMaxHealth(float maxHealthToAdd)
     {
         float oldMaxHealth = maxHealth;
         maxHealth += maxHealthToAdd;

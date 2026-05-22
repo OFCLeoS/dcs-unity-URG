@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public abstract class ElevatorButton : MonoBehaviour, IInteractable
 {
