@@ -40,6 +40,7 @@ public class QuizManager : MonoBehaviour
     float timeLeft;
 
     [SerializeField] PlayerUIBehaviour playerUIBehaviour;
+    [SerializeField] TextMeshProUGUI anwserEffectText;
 
     void Awake()
     {
@@ -108,14 +109,20 @@ public class QuizManager : MonoBehaviour
     void CorrectAnswerChosen()
     {
         correctAnswersCount++;
-        //Debug.Log("Correct!");
+        anwserEffectText.alpha = 255;
+        anwserEffectText.color = Color.green;
+        anwserEffectText.text = "Correct Anwser!";
+        Debug.Log("Correct!");
         EndQuiz();
     }
 
     void WrongAnswerChosen()
     {
         wrongAnswersCount++;
-        //Debug.Log("Wrong!");
+        anwserEffectText.alpha = 255;
+        anwserEffectText.color = Color.red;
+        anwserEffectText.text = "Wrong Anwser!\n-15 HP";
+        Debug.Log("Wrong!");
         player.StatusEffectController.AddDebuff(StatusEffectFactory.CreateRandomDebuff(player));
         EndQuiz();
     }

@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -32,6 +33,7 @@ public class WaveManager : MonoBehaviour
     float timeLeftForCurrentWave;
 
     [SerializeField] ColliderActivator waveMapElevatorActivator;
+    [SerializeField] TextMeshProUGUI anwserEffectText;
 
 
     #region Initialization
@@ -76,6 +78,7 @@ public class WaveManager : MonoBehaviour
 
     public void GenerateNextWave()
     {
+        anwserEffectText.alpha = 0;
         waveNumber++;
         playerUIBehaviour.ChangeWaveNumber(waveNumber);
         SetWaveDifficultyModifier();
