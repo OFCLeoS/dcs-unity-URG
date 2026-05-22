@@ -110,7 +110,7 @@ public class SettingsManager : MonoBehaviour
             Resolution res = availableResolutions[currentSettings.resolutionIndex];
             Screen.SetResolution(res.width, res.height, currentSettings.fullscreen);
         }
-        playerRotation.SetSensitivity(SettingsData.Load().mouseSensitivity / 100f);
+        if (playerRotation) playerRotation.SetSensitivity(SettingsData.Load().mouseSensitivity / 100f);
     }
 
     private void SetMixerVolume(string parameter, float linearValue)
