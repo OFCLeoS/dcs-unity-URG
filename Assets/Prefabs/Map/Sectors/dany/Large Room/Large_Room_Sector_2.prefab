@@ -4901,8 +4901,13 @@ MonoBehaviour:
   - {fileID: 4575188343073860517}
   - {fileID: 4898640344318715119}
   - {fileID: 9072048398174728275}
-  defendWaveObjectives: []
-  entitySpawners: []
+  defendWaveObjectives:
+  - objectives:
+    - {fileID: 6983158065091513716}
+  entitySpawners:
+  - {fileID: 2755106212699510553}
+  - {fileID: 2773375563675637349}
+  - {fileID: 5909223758023374037}
 --- !u!1 &4696976873655422431
 GameObject:
   m_ObjectHideFlags: 0

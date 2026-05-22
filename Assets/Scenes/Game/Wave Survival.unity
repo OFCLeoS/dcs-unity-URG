@@ -327,7 +327,7 @@ MonoBehaviour:
   hubPosition: {x: -69.466, y: 16.463, z: 2.7}
   wavePosition: {x: 4.85, y: 1.266, z: 3.5}
   layouts:
-  - {fileID: 8636167363458380459, guid: 8caedfde0fe360144a6bacbab44f1ba7, type: 3}
+  - {fileID: 246280990015417227, guid: 26a81f8e8bd8a64478fe85b1dd3525aa, type: 3}
   mapLayoutSpawnPoint: {fileID: 574984373}
   waveMapElevatorActivator: {fileID: 410226098}
   waveMapElevatorController: {fileID: 1702373244}
@@ -3217,7 +3217,27 @@ PrefabInstance:
     - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f6180dea98577c2499e6aed6554c68c4, type: 3}
+      objectReference: {fileID: 21300000, guid: e0c7db80965bf674caf6d0933c10d51e, type: 3}
+    - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
+      propertyPath: m_Color.a
+      value: 0.14901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.08018869
+      objectReference: {fileID: 0}
+    - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.37705898
+      objectReference: {fileID: 0}
+    - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 741984552952847897, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 913508474608010190, guid: f8a70775eb8f12542aff85c9d1ee3e8e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -23,7 +23,7 @@ public class MapRandomSector : MonoBehaviour
             Debug.LogError($"The Random Sector \"{transform.name}\" does not have any possible spawn sectors assigned to it. Generation of this Sector is impossible.");
         }
         int chosenSectorIndex = Random.Range(0, possibleSectors.Length);
-        MapSector chosenSector = Instantiate(possibleSectors[chosenSectorIndex], transform.position, possibleSectors[chosenSectorIndex].transform.rotation, transform);
+        MapSector chosenSector = Instantiate(possibleSectors[chosenSectorIndex], transform.position, transform.rotation, transform);
         // TODO: REMOVE THIS? Was for debugging
         chosenSector.gameObject.SetActive(true);
         chosenSector.Initialize();

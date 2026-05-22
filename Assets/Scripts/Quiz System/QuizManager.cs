@@ -180,7 +180,7 @@ public class QuizManager : MonoBehaviour
         }
         if (elapsedTime <= 0)
         {
-            timerText.text = "00:00";
+            timerText.text = "";
             zeroMinutesString = "";
             zeroSecondsString = "";
         }
