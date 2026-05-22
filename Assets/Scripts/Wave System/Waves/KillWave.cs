@@ -9,6 +9,8 @@ public class KillWave : Wave
     readonly int _requiredKills = 50;
     int kills = 0;
 
+    public override string WaveObjectiveDescription => $"Kill {_requiredKills} robots ({_requiredKills - kills} Left)";
+
     public KillWave(WaveManager waveManager, float waveDuration, int requiredKills) : base(waveManager, waveDuration)
     {
         _requiredKills = requiredKills;

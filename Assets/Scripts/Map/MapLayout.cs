@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 public class MapLayout : MonoBehaviour
 {
     [SerializeField] List<MapRandomSector> randomMapSectors = new List<MapRandomSector>();
+    [SerializeField] NavMeshSurface navMeshSurface;
 
     #region Initialization
     public void StartLayoutInitialization()
@@ -20,7 +22,11 @@ public class MapLayout : MonoBehaviour
     /// <returns>Null if not Sectors are left</returns>
     public MapSector LayoutInitalizationStep()
     {
-        if (currentGeneratedSectorIndex >= randomMapSectors.Count) return null;
+        if (currentGeneratedSectorIndex >= randomMapSectors.Count)
+        {
+            navMeshSurface.BuildNavMesh();
+            return null;   
+        }
 
         MapSector newGeneratedMapSector = randomMapSectors[currentGeneratedSectorIndex].Initialize();
         currentGeneratedSectorIndex++;

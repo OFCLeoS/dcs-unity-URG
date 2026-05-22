@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -53,6 +55,8 @@ public class DrawIOTranslator : MonoBehaviour
         string[] fileLines = File.ReadAllLines(filePath);
 
         MapLayout layoutParent = new GameObject().AddComponent<MapLayout>();
+        NavMeshSurface navMeshSurface = layoutParent.AddComponent<NavMeshSurface>();
+        navMeshSurface.useGeometry = UnityEngine.AI.NavMeshCollectGeometry.PhysicsColliders;
         layoutParent.gameObject.name = fileName;
         layoutParent.transform.position = Vector3.zero;
         layoutParent.transform.rotation = Quaternion.identity;

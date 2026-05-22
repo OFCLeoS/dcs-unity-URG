@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeleeWeapon
   animatorController: {fileID: 9100000, guid: 0ecdf136df9873744933f454dbd408b4, type: 2}
-  weaponAttackShakeIntensity: 0.1
+  weaponAttackShakeIntensity: 0.7
   positionInHolster: {x: -0.014, y: 0.098, z: -0.018}
   rotationInHolster: {x: 348.94495, y: 4.134441, z: 90.75762}
   positionInHand: {x: 0.021, y: 0.0778, z: 0.03}

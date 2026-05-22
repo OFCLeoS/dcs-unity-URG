@@ -37,11 +37,13 @@ public class QuizManager : MonoBehaviour
 
     [SerializeField] QuizComputer quizComputer;
 
-    float elapsedTime;
+    float timeLeft;
+
+    [SerializeField] PlayerUIBehaviour playerUIBehaviour;
 
     void Awake()
     {
-        elapsedTime = minutes * 60 + seconds;
+        timeLeft = minutes * 60 + seconds;
         correctAnswersCount = 0;
         wrongAnswersCount = 0;
         // TODO: STREAMING ASSET PATH NOT AVAILABLE ON RUNTIME?!
@@ -59,7 +61,6 @@ public class QuizManager : MonoBehaviour
 
     public void StartQuiz() // Call this when the player interacts with the pc/quiz system
     {
-
         if (quizActive) return;
         if (QuestionList.GetSize() == 0)
         {
@@ -93,6 +94,7 @@ public class QuizManager : MonoBehaviour
         quizCanvas.SetActive(false);
         quizComputer.DisableQuizComputer();
         hubMapElevatorActivator.EnableActivator();
+        playerUIBehaviour.SetObjectiveText("Take the Elevator");
     }
 
     public void SendAnswer(int choiceIndex)
@@ -161,8 +163,8 @@ public class QuizManager : MonoBehaviour
 
     public void Countdown()
     {
-        elapsedTime -= Time.deltaTime;
-        if (TimeSpan.FromSeconds(elapsedTime).Minutes <= 9)
+        timeLeft -= Time.deltaTime;
+        if (TimeSpan.FromSeconds(timeLeft).Minutes <= 9)
         {
             zeroMinutesString = "0";
         }
@@ -170,7 +172,7 @@ public class QuizManager : MonoBehaviour
         {
             zeroMinutesString = "";
         }
-        if (TimeSpan.FromSeconds(elapsedTime).Seconds <= 9)
+        if (TimeSpan.FromSeconds(timeLeft).Seconds <= 9)
         {
             zeroSecondsString = "0";
         }
@@ -178,15 +180,16 @@ public class QuizManager : MonoBehaviour
         {
             zeroSecondsString = "";
         }
-        if (elapsedTime <= 0)
+        if (timeLeft <= 0)
         {
             timerText.text = "";
             zeroMinutesString = "";
             zeroSecondsString = "";
+            WrongAnswerChosen();
         }
         else
         {
-            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(elapsedTime).Seconds);
+            timerText.text = timerText.text = zeroMinutesString + Convert.ToString(TimeSpan.FromSeconds(timeLeft).Minutes) + ":" + zeroSecondsString + Convert.ToString(TimeSpan.FromSeconds(timeLeft).Seconds);
         }
     }
 

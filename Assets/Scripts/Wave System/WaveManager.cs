@@ -81,6 +81,8 @@ public class WaveManager : MonoBehaviour
         SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
         currentWave.InitializeWave();
+        playerUIBehaviour.SetTimerColour(true);
+        playerUIBehaviour.SetObjectiveText(currentWave.WaveObjectiveDescription);
     }
 
     public void StartPreparationPhase()
@@ -97,6 +99,7 @@ public class WaveManager : MonoBehaviour
         timeLeftForCurrentWave = currentWave.WaveDuration;
         playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
         enemySpawningManager.Activate(currentWave);
+        playerUIBehaviour.SetTimerColour(false);
     }
 
     /// <summary>
@@ -107,6 +110,11 @@ public class WaveManager : MonoBehaviour
     public void EnemyKilled(AIAgent enemy)
     {
         OnEnemyKilled?.Invoke(enemy);
+        // We check for enabled in case a last enemy is killed and the HUD is not properly updated
+        if (enabled)
+        {
+            playerUIBehaviour.SetObjectiveText(currentWave.WaveObjectiveDescription);
+        }
     }
 
     void DeactivateAllManagers()
@@ -135,28 +143,31 @@ public class WaveManager : MonoBehaviour
         {
             quizManager.SetHintLevel(HintLevel.NO_HINT);
         }
-        Debug.Log("Wave " + waveNumber + " was Completed with a completion percentage of " +waveCompletionPercentage);
+        Debug.Log("Wave " + waveNumber + " was Completed with a completion percentage of " + waveCompletionPercentage);
         DeactivateAllManagers();
 
         // Player go back to HUB once wave is done
         waveMapElevatorActivator.EnableActivator();
 
         enabled = false;
+        playerUIBehaviour.SetObjectiveText("Complete the next quiz");
+        playerUIBehaviour.ChangeWaveTimer(0);
     }
 
     void HandleWave()
     {
         if (inPreperationPhase)
         {
+            playerUIBehaviour.ChangeWaveTimer(preperationTimeLeft);
             preperationTimeLeft -= Time.deltaTime;
             if (preperationTimeLeft <= 0) StartWave();
         }
         else
         {
+            playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
             timeLeftForCurrentWave -= Time.deltaTime;
             if (timeLeftForCurrentWave <= 0) FinishWave();
         }
-        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
     }
 
     void Update() => HandleWave();

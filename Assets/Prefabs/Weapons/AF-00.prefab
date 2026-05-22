@@ -5200,7 +5200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileWeapon
   animatorController: {fileID: 22100000, guid: 11137920ca0c0a0409003baad7b3c73f, type: 2}
-  weaponAttackShakeIntensity: 0.5
+  weaponAttackShakeIntensity: 0.75
   positionInHolster: {x: 0.101, y: 0.009, z: 0.0233}
   rotationInHolster: {x: 293.10016, y: 269.99994, z: 270.00006}
   positionInHand: {x: 0.019535823, y: 0.08157153, z: -0.006963657}

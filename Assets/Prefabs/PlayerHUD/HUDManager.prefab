@@ -75,3 +75,6 @@ MonoBehaviour:
   waveTextNumber: {fileID: 0}
   waveTimerText: {fileID: 0}
   objectiveText: {fileID: 0}
+  uiCanvas: {fileID: 0}
+  preperationPeriodColour: {r: 0.6556604, g: 1, b: 0.877815, a: 1}
+  wavePeriodColour: {r: 1, g: 0.33416474, b: 0.0141509175, a: 1}

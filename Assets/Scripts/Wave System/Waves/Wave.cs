@@ -6,6 +6,7 @@ public abstract class Wave
 
     protected float waveDuration;
     public float WaveDuration { get { return waveDuration; } }
+    public abstract string WaveObjectiveDescription { get; }
 
     public Wave(WaveManager waveManager, float waveDuration)
     {

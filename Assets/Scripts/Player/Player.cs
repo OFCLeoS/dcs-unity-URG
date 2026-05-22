@@ -22,7 +22,7 @@ public class Player : DamageableEntity
     [SerializeField] StatusEffectController statusEffectController;
     [SerializeField] HumanoidAnimationController animationController;
 
-    [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
+    [SerializeField] PlayerUIBehaviour playerUIBehaviour;
 
     #region Properties
     public PlayerMovement Movement { get { return movement; } }
@@ -36,7 +36,11 @@ public class Player : DamageableEntity
     public PlayerInventory Inventory { get { return inventory; } }
 
     public StatusEffectController StatusEffectController { get { return statusEffectController; } }
+
+    public PlayerUIBehaviour PlayerUIBehaviour { get { return playerUIBehaviour; } }
     #endregion
+
+    [SerializeField] PlayerDeathHandler deathHandler;
 
     #region Initialization
     protected override void Awake()
@@ -72,9 +76,17 @@ public class Player : DamageableEntity
         inventory.enabled = false;
     }
 
+    // TODO: TEMP!!!
+    bool ranDestroy = false;
     protected override void DestroyEntity()
     {
-        DisableControls();
+        if (!ranDestroy)
+        {
+            DisableControls();
+            playerUIBehaviour.DisableUI();
+            deathHandler.StartDeathSequence();
+            ranDestroy = true;
+        }
         animationController.PlayerDeathAnimation();
     }
 
@@ -88,19 +100,19 @@ public class Player : DamageableEntity
     void Start()
     {
         playerUIBehaviour.SetMaxHealth(_defaultMaxHealth);
-        playerUIBehaviour.SetHealth(currentHealth);  
+        playerUIBehaviour.SetHealth(currentHealth);
     }
 
     public override void TakeDamage(float damageAmount, Team attackingTeam)
     {
         base.TakeDamage(damageAmount, attackingTeam);
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
-            playerUIBehaviour.SetHealth(0);  
+            playerUIBehaviour.SetHealth(0);
         }
         else
         {
-            playerUIBehaviour.SetHealth(currentHealth);  
+            playerUIBehaviour.SetHealth(currentHealth);
         }
     }
 

@@ -30,9 +30,12 @@ public class Elevator : MonoBehaviour
     [SerializeField] float fadeInTime = 2;
     [SerializeField] float fadeOutTime = 2;
 
+    [SerializeField] float shakeIntensity = 0.5f;
+
     #region Y Pos Sticking
     Transform player;
     CharacterController playerCharacterController;
+    CameraShaker playerCameraShaker;
     #endregion
 
     // TODO: VERY MESSY PROCESS, REFACTOR!
@@ -61,6 +64,7 @@ public class Elevator : MonoBehaviour
         {
             this.player = player.transform;
             playerCharacterController = this.player.GetComponent<CharacterController>();
+            playerCameraShaker = this.player.GetComponent<CameraShaker>();
         }
     }
 
@@ -195,6 +199,7 @@ public class Elevator : MonoBehaviour
             }
             else
             {
+                playerCameraShaker.ShakeCamera(0.1f,shakeIntensity);
                 if (!endSequence)
                 {
                     HandleElevator();

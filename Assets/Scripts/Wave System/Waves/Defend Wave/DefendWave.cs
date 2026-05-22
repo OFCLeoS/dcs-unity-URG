@@ -9,6 +9,8 @@ public class DefendWave : Wave
     DefendWaveObjective[] objectives;
     List<DefendWaveObjective> remainingObjectives = new List<DefendWaveObjective>();
 
+    public override string WaveObjectiveDescription => "Do not let the Objectives be destroyed";
+
     public DefendWave(WaveManager waveManager, float waveDuration) : base(waveManager, waveDuration)
     {
     }
