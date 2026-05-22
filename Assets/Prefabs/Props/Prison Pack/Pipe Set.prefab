@@ -43,6 +43,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5283927805329631995}
     m_Modifications:
+    - target: {fileID: 1944185546605505069, guid: 57ef1b677500ccf4a937ee735ad87f78, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 04714c22950a6214f8f6d90e49ec1e1c, type: 2}
     - target: {fileID: 7134463355845973520, guid: 57ef1b677500ccf4a937ee735ad87f78, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.2905035
@@ -105,6 +109,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5283927805329631995}
     m_Modifications:
+    - target: {fileID: 3532190189563616326, guid: 34be7454a55282145900707c726da51d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 04714c22950a6214f8f6d90e49ec1e1c, type: 2}
     - target: {fileID: 6230132319677517339, guid: 34be7454a55282145900707c726da51d, type: 3}
       propertyPath: m_Name
       value: Pipe Piece 4
@@ -167,6 +175,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5283927805329631995}
     m_Modifications:
+    - target: {fileID: 23342870603046485, guid: 1b84d96ea0020d543a263423caf14f9f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2c976d07810401642b0b68863a224fe5, type: 2}
     - target: {fileID: 951871216440654233, guid: 1b84d96ea0020d543a263423caf14f9f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.2905035
@@ -229,6 +241,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5283927805329631995}
     m_Modifications:
+    - target: {fileID: 2260421250221508238, guid: e92dd09e7389115439a121d6c70b950d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 04714c22950a6214f8f6d90e49ec1e1c, type: 2}
     - target: {fileID: 7001744890939589018, guid: e92dd09e7389115439a121d6c70b950d, type: 3}
       propertyPath: m_Name
       value: Pipe Piece 2

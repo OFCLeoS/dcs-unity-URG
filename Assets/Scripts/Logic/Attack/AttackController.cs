@@ -11,7 +11,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] Transform hand;
     [SerializeField] HumanoidAnimationController animationController;
     [SerializeField] HUDManager hUDManager;
-    [SerializeField] Sprite empty = null;
+    Sprite empty = null;
 
 
     protected virtual void Awake()
