@@ -85,7 +85,7 @@ public class PlayerUIBehaviour : MonoBehaviour
 
         if (waveTimerText <= 0)
         {
-            this.waveTimerText.text = "00:00";
+            this.waveTimerText.text = "";
             zeroMinutesString = "";
             zeroSecondsString = "";
         }
