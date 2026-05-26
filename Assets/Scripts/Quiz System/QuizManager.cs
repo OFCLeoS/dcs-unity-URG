@@ -111,7 +111,7 @@ public class QuizManager : MonoBehaviour
         correctAnswersCount++;
         anwserEffectText.alpha = 255;
         anwserEffectText.color = Color.green;
-        anwserEffectText.text = "Correct Anwser!";
+        anwserEffectText.text = "Correct Answer!";
         Debug.Log("Correct!");
         EndQuiz();
     }
@@ -121,7 +121,7 @@ public class QuizManager : MonoBehaviour
         wrongAnswersCount++;
         anwserEffectText.alpha = 255;
         anwserEffectText.color = Color.red;
-        anwserEffectText.text = "Wrong Anwser!\n-15 HP";
+        anwserEffectText.text = "Wrong Answer!\n-15 HP";
         Debug.Log("Wrong!");
         player.StatusEffectController.AddDebuff(StatusEffectFactory.CreateRandomDebuff(player));
         EndQuiz();
