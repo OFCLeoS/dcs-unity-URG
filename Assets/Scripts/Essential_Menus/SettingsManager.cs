@@ -32,12 +32,12 @@ public class SettingsManager : MonoBehaviour
     void Start()
     {
         ApplySettings();
+        PopulateResolutionDropdown();
     }
 
     private void OnEnable()
     {
         currentSettings = SettingsData.Load() ?? new SettingsData();
-        PopulateResolutionDropdown();
         ApplySettingsToUI();
         ApplySettings();
     }
@@ -110,7 +110,7 @@ public class SettingsManager : MonoBehaviour
             Resolution res = availableResolutions[currentSettings.resolutionIndex];
             Screen.SetResolution(res.width, res.height, currentSettings.fullscreen);
         }
-        if (playerRotation) playerRotation.SetSensitivity(SettingsData.Load().mouseSensitivity / 100f);
+        if (playerRotation) playerRotation.SetSensitivity(currentSettings.mouseSensitivity / 100f);
     }
 
     private void SetMixerVolume(string parameter, float linearValue)
