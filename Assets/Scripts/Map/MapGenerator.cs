@@ -171,7 +171,87 @@ public class MapGenerator : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
+        if (showcaseMode)
+        {
+            HandleShowcase();
+            return;
+        }
+#endif
         if (!goingToHUB) HandleMapGen();
         else HandleGotoHUB();
     }
+
+    // This should 100% goto another script
+    #region Showcasing
+#if UNITY_EDITOR
+    bool showcaseMode = false;
+    int mapsToGen = 0;
+    float timeBetweenMaps = 0;
+
+    int generatedMaps = 0;
+    float timeLeftForNextMap = 0;
+    void HandleShowcase()
+    {
+        if (!isGenerating)
+        {
+            if (generatedMaps >= mapsToGen)
+            {
+                showcaseMode = false;
+                enabled = false;
+            }
+            else
+            {
+                timeLeftForNextMap -= Time.deltaTime;
+                if (timeLeftForNextMap <= 0)
+                {
+                    GenerateNextMap();
+                }
+            }
+        }
+        else MapGenShowcaseStep();
+    }
+
+    void MapGenShowcaseStep()
+    {
+        MapSector newGeneratedSector = generatedLayout.LayoutInitalizationStep();
+        if (newGeneratedSector != null)
+        {
+            generatedMapSectors.Add(newGeneratedSector);
+        }
+        else
+        {
+            timeLeftForNextMap = timeBetweenMaps;
+            generatedMaps++;
+            isGenerating = false;
+        }
+    }
+
+    void GenerateNextMap()
+    {
+        if (generatedMapSectors.Count > 0)
+        {
+            Destroy(generatedMapSectors[0].transform.root.gameObject);
+            generatedMapSectors.Clear();
+        }
+
+        generatedLayout = Instantiate(layouts[Random.Range(0, layouts.Length)], mapLayoutSpawnPoint.position, mapLayoutSpawnPoint.rotation);
+
+        generatedLayout.StartLayoutInitialization();
+
+        isGenerating = true;
+        enabled = true;
+    }
+
+    public void StartMapGenShowcase(int mapsToGen, float timeBetweenMaps)
+    {
+        this.mapsToGen = mapsToGen;
+        this.timeBetweenMaps = timeBetweenMaps;
+        showcaseMode = true;
+        generatedMaps = 0;
+        generatedMapSectors = new List<MapSector>();
+        GenerateNextMap();
+    }
+#endif
+    #endregion
 }

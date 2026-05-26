@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="YBIH7SBfCNIYQehhxjzM">
-    <mxGraphModel dx="4585" dy="3285" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="3266" dy="2514" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -22,11 +22,6 @@
         <mxCell id="s1nynRkTOLW_L3WE06vY-22" edge="1" parent="1" source="s1nynRkTOLW_L3WE06vY-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="240" y="75.00671140939596" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="s1nynRkTOLW_L3WE06vY-23" edge="1" parent="1" source="s1nynRkTOLW_L3WE06vY-26" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="300" y="75.00671140939596" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="s1nynRkTOLW_L3WE06vY-24" edge="1" parent="1" source="s1nynRkTOLW_L3WE06vY-26" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;">
@@ -400,16 +395,6 @@
         <object label="SMALL ROOM" Sector_Type="ROOM" id="s1nynRkTOLW_L3WE06vY-275">
           <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.2,0,0,0],[0,0.5,0,0,0],[0,0.8,0,0,0],[0.2,0,0,0,0],[0.2,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.8,0,0,0,0],[0.8,1,0,0,0],[1,0.2,0,0,0],[1,0.5,0,0,0],[1,0.8,0,0,0]];" vertex="1">
             <mxGeometry height="80" width="80" x="375" y="170" as="geometry" />
-          </mxCell>
-        </object>
-        <mxCell id="s1nynRkTOLW_L3WE06vY-282" edge="1" parent="1" source="s1nynRkTOLW_L3WE06vY-284" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="280" y="75.03508771929819" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;NARROW SMALL HALLWAY&lt;/font&gt;" Sector_Type="HALLWAY" id="s1nynRkTOLW_L3WE06vY-284">
-          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];" vertex="1">
-            <mxGeometry height="30" width="100" x="290" y="60" as="geometry" />
           </mxCell>
         </object>
         <mxCell id="s1nynRkTOLW_L3WE06vY-312" edge="1" parent="1" source="s1nynRkTOLW_L3WE06vY-318" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.2;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;align=center;verticalAlign=middle;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;endArrow=none;endFill=0;">
