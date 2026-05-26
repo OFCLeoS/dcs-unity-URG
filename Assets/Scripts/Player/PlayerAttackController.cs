@@ -11,8 +11,9 @@ public class PlayerAttackController : AttackController
     [SerializeField] CameraShaker playerCameraShaker;
 
     #region Initialization
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         attackAction = InputSystem.actions.FindAction("Attack");
         if (!playerCameraShaker)
         {
@@ -23,7 +24,7 @@ public class PlayerAttackController : AttackController
 
     void HandleAttack()
     {
-        if (attackAction.IsPressed())
+        if (attackAction.IsPressed() && GetSelectedWeapon() != null)
         {
             // TODO: CHECK IF ATTACK WAS SUCCESSFUL!
             playerCameraShaker.ShakeCamera(0.1f, GetSelectedWeapon().WeaponAttackShakeIntensity);

@@ -16,12 +16,9 @@ public class CameraShaker : MonoBehaviour
     bool isShaking = true;
 
     #region Initialization
-    void Awake()
-    {
-        virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-    }
     void Start()
     {
+        virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         virtualCameraNoise.enabled = false;
         enabled = false;
     }
@@ -33,7 +30,6 @@ public class CameraShaker : MonoBehaviour
 
     public void ShakeCamera(float shakeTime, float amplitudeGain, float frequencyGain)
     {
-        Debug.Log("HIIIII");
         virtualCameraNoise.m_AmplitudeGain = amplitudeGain;
         virtualCameraNoise.m_FrequencyGain = frequencyGain;
         shakeTimer = shakeTime;
@@ -49,7 +45,6 @@ public class CameraShaker : MonoBehaviour
     {
         if (isShaking)
         {
-            Debug.Log("WASSAP");
             shakeTimer -= Time.deltaTime;
             if (shakeTimer <= 0)
             {

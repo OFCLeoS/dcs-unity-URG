@@ -3,33 +3,36 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 public class QuestionList
 {
-    private static List<Question> lQuestions = new List<Question>();
+    private static List<Question> questionsList = new List<Question>();
+
+    // TODO: Replace foreach loops with for due to this being run countless times at runtime?
 
     // [0] = topic, [1] = subtopic, [2] = paragraph number, [3] = paragraph text
-    private static List<string[]> lContent = new List<string[]>();
+    private static List<string[]> contentList = new List<string[]>();
 
     public static void AddQuestion(Question question)
     {
-        lQuestions.Add(question);
+        questionsList.Add(question);
     }
 
     public static int GetSize()
     {
-        return lQuestions.Count;
+        return questionsList.Count;
     }
 
     public static Question GetQuestionFromIndex(int index)
     {
-        return lQuestions[index];
+        return questionsList[index];
     }
 
     public static List<Question> GetTopicQuestions(string topic)
     {
         List<Question> result = new List<Question>();
-        foreach (Question question in lQuestions)
+        foreach (Question question in questionsList)
         {
             if (question.GetTopic() == topic)
             {
@@ -42,7 +45,7 @@ public class QuestionList
     public static List<Question> GetSubtopicQuestions(string topic, string subtopic)
     {
         List<Question> result = new List<Question>();
-        foreach (Question question in lQuestions)
+        foreach (Question question in questionsList)
         {
             if (question.GetTopic() == topic && question.GetSubtopic() == subtopic)
             {
@@ -56,7 +59,7 @@ public class QuestionList
     {
         if (!File.Exists(filePath))
         {
-            System.Console.WriteLine("ERROR! No file at: " + filePath);
+            Debug.LogError("ERROR! No file at: " + filePath);
             return;
         }
 
@@ -64,7 +67,7 @@ public class QuestionList
 
         foreach (string line in lines)
         {
-            if (line.Trim() == "") 
+            if (line.Trim() == "")
             {
                 continue;
             }
@@ -74,7 +77,7 @@ public class QuestionList
 
             if (fields.Length != 6)
             {
-                System.Console.WriteLine("ERROR: Expected 6 fields! But found: " + fields.Length);
+                Debug.LogError("ERROR: Expected 6 fields! But found: " + fields.Length);
                 continue;
             }
 
@@ -90,14 +93,14 @@ public class QuestionList
 
             if (choices.Length != 6)
             {
-                System.Console.WriteLine("ERROR! Expected 6 choices! But found: " + choices.Length);
+                Debug.LogError("ERROR! Expected 6 choices! But found: " + choices.Length);
                 continue;
             }
 
             // check if correct index is in the right range
             if (correctIndex < 0 || correctIndex > 5)
             {
-                System.Console.WriteLine("ERROR! correctIndex is out of bounds!");
+                Debug.LogError("ERROR! correctIndex is out of bounds!");
                 continue;
             }
 
@@ -106,14 +109,14 @@ public class QuestionList
             AddQuestion(newQuestion);
         }
 
-        System.Console.WriteLine("Finished loading! Questions loaded: " + lQuestions.Count);
+        //Debug.Log("Finished loading! Questions loaded: " + questionsList.Count);
     }
 
     public static void LoadContentFromFile(string filePath)
     {
         if (!File.Exists(filePath))
         {
-            System.Console.WriteLine("ERROR! No file at: " + filePath);
+            Debug.LogError("ERROR! No file at: " + filePath);
             return;
         }
 
@@ -128,21 +131,21 @@ public class QuestionList
 
             if (fields.Length != 4)
             {
-                System.Console.WriteLine("ERROR: Expected 4 fields! But found: " + fields.Length);
+                Debug.LogError("ERROR: Expected 4 fields! But found: " + fields.Length);
                 continue;
             }
 
-            lContent.Add(fields);
+            contentList.Add(fields);
         }
 
-        System.Console.WriteLine("Finished loading! Paragraphs loaded: " + lQuestions.Count);
+        //Debug.Log("Finished loading! Paragraphs loaded: " + questionsList.Count);
     }
 
     // returns all unique topic
     public static List<string> GetTopics()
     {
         List<string> topics = new List<string>();
-        foreach (string[] uniqueTopic in lContent)
+        foreach (string[] uniqueTopic in contentList)
         {
             string topic = uniqueTopic[0].Trim();
             if (!topics.Contains(topic))
@@ -155,7 +158,7 @@ public class QuestionList
     public static List<string> GetSubtopics(string topic)
     {
         List<string> subtopics = new List<string>();
-        foreach (string[] uniqueSubopic in lContent)
+        foreach (string[] uniqueSubopic in contentList)
         {
             if (uniqueSubopic[0].Trim() == topic)
             {
@@ -171,7 +174,7 @@ public class QuestionList
     public static string GetParagraphs(string topic, string subtopic)
     {
         string result = "";
-        foreach (string[] entry in lContent)
+        foreach (string[] entry in contentList)
         {
             if (entry[0].Trim() == topic && entry[1].Trim() == subtopic)
             {

@@ -29,7 +29,7 @@ public class DEPRECATED_ProjectileBehaviour : MonoBehaviour
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(damage,Team.NEUTRAL);
             Destroy(gameObject);
         }
     }

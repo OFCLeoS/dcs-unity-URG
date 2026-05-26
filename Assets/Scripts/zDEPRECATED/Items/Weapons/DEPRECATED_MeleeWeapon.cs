@@ -14,8 +14,9 @@ public class DEPRECATED_MeleeWeapon : Weapon
         attackCollider = GetComponent<BoxCollider>();
     }
 
-    public override void Attack()
+    public override bool Attack(Team attackingTeam)
     {
+        return false;
         if (DEBUG_CAN_ATTACK)
         {
             DEBUG_CAN_ATTACK = false;
@@ -33,7 +34,7 @@ public class DEPRECATED_MeleeWeapon : Weapon
     void HandleMeleeCollision(Collider collider)
     {
         IDamageable damageable = collider.GetComponent<IDamageable>();
-        if (damageable != null) damageable.TakeDamage(damage);
+        if (damageable != null) damageable.TakeDamage(damage,Team.NEUTRAL);
     }
 
     #region DEBUGGING
@@ -77,5 +78,10 @@ public class DEPRECATED_MeleeWeapon : Weapon
     void Update()
     {
         DEBUG_ATTACK_SYSTEM();
+    }
+
+    public override void SetDamage(float newDamage)
+    {
+        throw new System.NotImplementedException();
     }
 }

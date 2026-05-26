@@ -23,6 +23,7 @@ public class ProjectileWeapon : Weapon
     [SerializeField] GameObject muzzleFlashLight;
     [Tooltip("How long the muzzle flash will be active for upon firing.")]
     [SerializeField] float muzzleFlashActiveTime;
+    
     float timeBeforeMuzzleFlashDeactivation;
     bool muzzleFlashActive = false;
 
@@ -45,10 +46,13 @@ public class ProjectileWeapon : Weapon
     public void SetProjectilePool(ProjectilePool projectilePool) => this.projectilePool = projectilePool;
     #endregion
 
-    public override void Attack()
+    public override void SetDamage(float newDamage) => projectileAttributes.damage = newDamage;
+
+    public override bool Attack(Team attackingTeam)
     {
+        this.attackingTeam = attackingTeam;
         // fireDelay = 60f / rpm; UNCOMMENT FOR TESTING
-        if (!canFire) return;
+        if (!canFire) return false;
 
         muzzleFlashLight.SetActive(true);
         timeBeforeMuzzleFlashDeactivation = muzzleFlashActiveTime;
@@ -59,14 +63,14 @@ public class ProjectileWeapon : Weapon
 
         canFire = false;
         timeBeforeAbleToFire = fireDelay;
+        return true;
     }
 
     void SpawnProjectile()
     {
         float randomSpread = Random.Range(-bulletSpreadability, bulletSpreadability);
 
-        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread);
-
+        projectilePool.RequestProjectile(projectileAttributes, weaponBarrel.position, weaponBarrel.rotation, randomSpread, attackingTeam);
 
         GameObject shellCasingInstance = Instantiate(shellCasing, shellEjector.position, shellEjector.transform.rotation);
         shellCasingInstance.GetComponent<Rigidbody>().AddForce((-shellEjector.right * Random.Range(100, 176)) + (shellEjector.forward * Random.Range(-5, 5)));
@@ -91,4 +95,5 @@ public class ProjectileWeapon : Weapon
             timeBeforeMuzzleFlashDeactivation -= Time.deltaTime;
         }
     }
+
 }

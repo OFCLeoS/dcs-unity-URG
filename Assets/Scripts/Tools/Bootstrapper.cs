@@ -9,7 +9,7 @@ static class Bootstrapper
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
-        Debug.LogWarning("FIX BOOTSTRAP!!!");
+        //Debug.LogWarning("FIX BOOTSTRAP!!!");
         // LoadEssentialRessources();
         // CreateBaseDirectories();
         // CreateBaseFiles();

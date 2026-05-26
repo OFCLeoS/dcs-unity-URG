@@ -20,13 +20,19 @@ public class PlayerRotation : MonoBehaviour
     }
     #endregion
 
+    public void SetSensitivity(float mouseSensitivity)
+    {
+        this.mouseSensitivity = mouseSensitivity;
+    }
 
     void HandleRotation()
     {
         Vector2 mouseDelta = mouseDeltaAction.ReadValue<Vector2>();
         crosshairController.MoveCrosshair(mouseDelta * mouseSensitivity);
-    
-        transform.rotation = Quaternion.LookRotation(crosshairController.GetDirectionToCrosshair(transform.position), transform.up);
+        Vector3 directionToCrosshair = crosshairController.GetDirectionToCrosshair(transform.position);
+        directionToCrosshair.y = 0;
+
+        transform.rotation = Quaternion.LookRotation(directionToCrosshair, transform.up);
     }
 
     // TODO: PERFORMANCE CHECK

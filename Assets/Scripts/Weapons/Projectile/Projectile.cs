@@ -1,5 +1,5 @@
 using UnityEngine;
-
+[RequireComponent(typeof(SphereCollider), typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
     /// <summary>
@@ -13,9 +13,26 @@ public class Projectile : MonoBehaviour
 
     Vector3 lastPosition;
 
+    Team attackingTeam;
+
+    SphereCollider startingTrigger;
+    [Tooltip("How long the inital trigger will stay active for upon activation to make sure colliders inside projectile at spawn are registered (Should be very small)")]
+    [SerializeField] float activeTriggerTime = 0.015f;
+    float triggerTimeLeft;
+
+    bool triggerEnabled = true;
+
     #region Initialization
     void Awake()
     {
+        startingTrigger = GetComponent<SphereCollider>();
+        startingTrigger.isTrigger = true;
+        startingTrigger.enabled = false;
+
+        Rigidbody projectileRB = GetComponent<Rigidbody>();
+        projectileRB.isKinematic = true;
+        projectileRB.useGravity = false;
+
         gameObject.SetActive(false);
     }
     public void SetProjectilePool(ProjectilePool projectilePool)
@@ -28,13 +45,19 @@ public class Projectile : MonoBehaviour
     {
         velocity = Vector3.forward * projectileBlueprint.velocity;
         velocity.x += spread;
-        
+
         destroyProjectileTime = projectileBlueprint.destroyProjectileTime;
         damage = projectileBlueprint.damage;
     }
 
-    public void Activate(ProjectileBlueprint projectileBlueprint, float spread)
+    public void Activate(ProjectileBlueprint projectileBlueprint, float spread, Team attackingTeam)
     {
+        this.attackingTeam = attackingTeam;
+
+        triggerTimeLeft = activeTriggerTime;
+        triggerEnabled = true;
+        startingTrigger.enabled = true;
+
         SetProjectileAttributes(projectileBlueprint, spread);
         lastPosition = transform.position;
         gameObject.SetActive(true);
@@ -45,17 +68,24 @@ public class Projectile : MonoBehaviour
         transform.Translate(Time.deltaTime * velocity);
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        HandleProjectileCollision(other);
+    }
+
     void HandleProjectileCollision(Collider collider)
     {
         if (collider.CompareTag("Wall")) // TODO: CHANGE THIS!
         {
+#if UNITY_EDITOR
             Debug.Log($"Projectile {GetInstanceID()} hit {collider.name}");
+#endif
             Deactivate();
         }
         IDamageable damageable = collider.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(damage, attackingTeam);
             Deactivate();
         }
     }
@@ -65,7 +95,9 @@ public class Projectile : MonoBehaviour
     /// </summary>
     void CheckProjectileTrajectory()
     {
+#if UNITY_EDITOR
         Debug.DrawLine(lastPosition, transform.position, Color.red, 0.5f);
+#endif
         RaycastHit hit;
         // TODO: LAYER MASK FOR BETTER PERFORMANCE?
         if (Physics.Linecast(lastPosition, transform.position, out hit))
@@ -82,6 +114,15 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
+        if (triggerEnabled)
+        {
+            triggerTimeLeft -= Time.deltaTime;
+            if (triggerTimeLeft <= 0)
+            {
+                startingTrigger.enabled = false;
+                triggerEnabled = false;
+            }
+        }
         TranslateProjectile();
         CheckProjectileTrajectory();
         lastPosition = transform.position;

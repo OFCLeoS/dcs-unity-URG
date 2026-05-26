@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -5,22 +6,25 @@ using UnityEngine;
 /// </summary>
 public class EnemySpawningManager : MonoBehaviour
 {
-    const float MIN_TIME_BETWEEN_SPAWNS = 1;
+    [SerializeField] float maximumTimeBetweenSpawns = 7;
+    [SerializeField] float minimumTimeBetweenSpawns = 1;
 
     float timeBetweenSpawns = 1;
-    float timeSinceLastSpawn = 0;
+    float timeUntilNextSpawn = 1;
 
     bool isActive = false;
 
     [SerializeField] WaveManager waveManager;
 
-    [SerializeField] EntitySpawner[] enemySpawners;
+    [SerializeField] List<EntitySpawner> enemySpawners;
 
     [SerializeField] GameObject[] enemies;
 
     [SerializeField] Transform player;
 
     Wave currentWave;
+
+    [SerializeField] List<GameObject> enemiesInWave = new List<GameObject>();
 
     #region Initialization
     void Awake()
@@ -34,25 +38,20 @@ public class EnemySpawningManager : MonoBehaviour
             }
         }
     }
+
+    public void InitializNewMapSpawners(List<EntitySpawner> newEntitySpawners)
+    {
+        enemySpawners.Clear();
+        enemySpawners.AddRange(newEntitySpawners);
+    }
     #endregion
-
-    public void SetTimeBetweenSpawns(float time)
-    {
-        if (time <= MIN_TIME_BETWEEN_SPAWNS) time = MIN_TIME_BETWEEN_SPAWNS;
-
-        timeBetweenSpawns = time;
-    }
-
-    public void Activate(float timeBetweenSpawns, Wave currentWave)
-    {
-        SetTimeBetweenSpawns(timeBetweenSpawns);
-        Activate(currentWave);
-    }
 
     public void Activate(Wave currentWave)
     {
         this.currentWave = currentWave;
-        timeSinceLastSpawn = 0;
+        timeBetweenSpawns = Mathf.Lerp(maximumTimeBetweenSpawns, minimumTimeBetweenSpawns, waveManager.WaveDifficultyModifier);
+
+        timeUntilNextSpawn = timeBetweenSpawns;
         isActive = true;
     }
 
@@ -62,25 +61,37 @@ public class EnemySpawningManager : MonoBehaviour
         currentWave = null;
     }
 
+    public void DestroyAllWaveEnemies()
+    {
+        for (int i = 0; i < enemiesInWave.Count; i++)
+        {
+            if (enemiesInWave[i] != null)
+            {
+                Destroy(enemiesInWave[i]);
+            }
+        }
+    }
+
     /// <summary>
     /// Randomly spawn an enemy in a random spawner
     /// </summary>
     void RandomSpawn()
     {
-        GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Length)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
+        GameObject spawnedEnemy = enemySpawners[Random.Range(0, enemySpawners.Count)].SpawnEntity(enemies[Random.Range(0, enemies.Length)]);
         spawnedEnemy.GetComponent<AIBootstrapper>().Initialize(player, waveManager);
         currentWave.SetupEnemyForWave(spawnedEnemy);
+        enemiesInWave.Add(spawnedEnemy);
     }
 
     void Update()
     {
         if (isActive)
         {
-            timeSinceLastSpawn += Time.deltaTime;
-            if (timeSinceLastSpawn >= timeBetweenSpawns)
+            timeUntilNextSpawn -= Time.deltaTime;
+            if (timeUntilNextSpawn <= 0)
             {
                 RandomSpawn();
-                timeSinceLastSpawn = 0;
+                timeUntilNextSpawn = timeBetweenSpawns;
             }
         }
     }

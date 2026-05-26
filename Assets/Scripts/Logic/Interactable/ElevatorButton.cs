@@ -1,12 +1,22 @@
 using UnityEngine;
+using TMPro;
 
-public class ElevatorButton : MonoBehaviour, IInteractable
+public abstract class ElevatorButton : MonoBehaviour, IInteractable
 {
-    [SerializeField] Elevator elevator;
+    [SerializeField] protected MapGenerator mapGenerator;
+    [SerializeField] protected ElevatorDoorsController elevatorDoorsController;
 
+    public abstract string InteractText { get; }
 
-    public void OnInteract(Player player)
+    protected Collider elevatorButtonCollider;
+
+    protected virtual void Awake()
     {
-        elevator.StartElevatorSequence(player);
+        elevatorButtonCollider = GetComponent<Collider>();
+    }
+
+    public virtual void OnInteract(Player player)
+    {
+        elevatorDoorsController.CloseDoorSequence();
     }
 }

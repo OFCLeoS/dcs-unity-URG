@@ -1,27 +1,46 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Is responsible for wave related tasks such as Difficulty Scaling and Wave Creation
+/// Is responsible for wave related tasks such as Difficulty Scaling and Wave Creation. Should only be active during waves.
 /// </summary>
 public class WaveManager : MonoBehaviour
 {
-    int wave;
+    [SerializeField] EnemySpawningManager enemySpawningManager;
+
+    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+
+    [SerializeField] private PlayerUIBehaviour playerUIBehaviour;
+    public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
+
+    [Tooltip("Quiz Manager reference in order to get tip level.")]
+    [SerializeField] QuizManager quizManager;
+
+    [Tooltip("Wave that has the highest difficulty. (Anything above this is for bragging rights only)")]
+    [SerializeField] int maxDifficultyWave = 50;
+
+    public float WaveDifficultyModifier { get; private set; }
+
+    [SerializeField] int waveNumber;
     Wave currentWave;
     public Wave CurrentWave { get { return currentWave; } }
 
-    float currentWaveTimeLimit;
-    float currentWaveTime;
+    [SerializeField] float preperationTime = 20;
+    float preperationTimeLeft;
+    bool inPreperationPhase = true;
 
-    [SerializeField] EnemySpawningManager enemySpawningManager;
-    [SerializeField] DefendWaveObjectsManager defendWaveObjectsManager;
+    float timeLeftForCurrentWave;
 
-    public DefendWaveObjectsManager GetDefendWaveObjectsManager => defendWaveObjectsManager;
+    [SerializeField] ColliderActivator waveMapElevatorActivator;
+    [SerializeField] TextMeshProUGUI anwserEffectText;
+
 
     #region Initialization
     void Awake()
     {
         CheckComponentsExistence();
+        enabled = false;
     }
 
     void CheckComponentsExistence()
@@ -45,21 +64,45 @@ public class WaveManager : MonoBehaviour
             }
         }
     }
-
-    void Start()
-    {
-        // TODO: THIS IS TEMPORARY!
-        StartNextWave();
-    }
     #endregion
 
-    public void StartNextWave()
+    void SetWaveDifficultyModifier()
     {
-        wave++;
+        float x = waveNumber * 1.0f / maxDifficultyWave * 1.0f;
+        WaveDifficultyModifier = Mathf.Pow(
+            (Mathf.Exp(x / 2 * 1.0f) - 1.0f)
+            /
+            (Mathf.Exp(1 * 1.0f / 2 * 1.0f) - 1.0f)
+            , 1.5f);
+    }
+
+    public void GenerateNextWave()
+    {
+        anwserEffectText.alpha = 0;
+        waveNumber++;
+        playerUIBehaviour.ChangeWaveNumber(waveNumber);
+        SetWaveDifficultyModifier();
         currentWave = WaveFactory.CreateRandomWave(this);
-        currentWaveTimeLimit = currentWave.GetWaveTimeLimit();
-        currentWaveTime = 0;
-        enemySpawningManager.Activate(5f, currentWave);
+        currentWave.InitializeWave();
+        playerUIBehaviour.SetTimerColour(true);
+        playerUIBehaviour.SetObjectiveText(currentWave.WaveObjectiveDescription);
+    }
+
+    public void StartPreparationPhase()
+    {
+        inPreperationPhase = true;
+        // TODO: MAKE THIS DYNAMIC?
+        preperationTimeLeft = preperationTime;
+        enabled = true;
+    }
+
+    void StartWave()
+    {
+        inPreperationPhase = false;
+        timeLeftForCurrentWave = currentWave.WaveDuration;
+        playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
+        enemySpawningManager.Activate(currentWave);
+        playerUIBehaviour.SetTimerColour(false);
     }
 
     /// <summary>
@@ -70,6 +113,11 @@ public class WaveManager : MonoBehaviour
     public void EnemyKilled(AIAgent enemy)
     {
         OnEnemyKilled?.Invoke(enemy);
+        // We check for enabled in case a last enemy is killed and the HUD is not properly updated
+        if (enabled)
+        {
+            playerUIBehaviour.SetObjectiveText(currentWave.WaveObjectiveDescription);
+        }
     }
 
     void DeactivateAllManagers()
@@ -80,13 +128,80 @@ public class WaveManager : MonoBehaviour
 
     public void FinishWave()
     {
-        Debug.Log("Wave " + wave + " was Completed!");
+        // DO SOMETHING WITH THIS
+        float waveCompletionPercentage = currentWave.GetCompletionPercentage();
+        if (waveCompletionPercentage >= (3.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.PARAGRAPH);
+        }
+        else if (waveCompletionPercentage >= (2.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.SUB_TOPIC);
+        }
+        else if (waveCompletionPercentage >= (1.0f / 3.0f))
+        {
+            quizManager.SetHintLevel(HintLevel.TOPIC);
+        }
+        else
+        {
+            quizManager.SetHintLevel(HintLevel.NO_HINT);
+        }
+        Debug.Log("Wave " + waveNumber + " was Completed with a completion percentage of " + waveCompletionPercentage);
         DeactivateAllManagers();
+
+        // Player go back to HUB once wave is done
+        waveMapElevatorActivator.EnableActivator();
+
+        enabled = false;
+        playerUIBehaviour.SetObjectiveText("Complete the next quiz");
+        playerUIBehaviour.ChangeWaveTimer(0);
     }
 
-    void Update()
+    void HandleWave()
     {
-        currentWaveTime += Time.deltaTime;
-        if(currentWaveTime >= currentWaveTimeLimit) FinishWave();
+        if (inPreperationPhase)
+        {
+            playerUIBehaviour.ChangeWaveTimer(preperationTimeLeft);
+            preperationTimeLeft -= Time.deltaTime;
+            if (preperationTimeLeft <= 0) StartWave();
+        }
+        else
+        {
+            playerUIBehaviour.ChangeWaveTimer(timeLeftForCurrentWave);
+            timeLeftForCurrentWave -= Time.deltaTime;
+            if (timeLeftForCurrentWave <= 0) FinishWave();
+        }
     }
+
+    void Update() => HandleWave();
+
+    #region DEBUGGING
+#if UNITY_EDITOR
+    [ContextMenu("Force Generate Wave")]
+    public void DEBUG_FORCE_GENERATE_WAVE()
+    {
+        GenerateNextWave();
+        enabled = true;
+        StartWave();
+    }
+    [ContextMenu("Force Generate +10 Wave")]
+    public void DEBUG_FORCE_GENERATE_P5WAVE()
+    {
+        waveNumber += 10;
+        GenerateNextWave();
+        enabled = true;
+        StartWave();
+    }
+    [ContextMenu("Force Start Wave")]
+    public void DEBUG_FORCE_START_WAVE()
+    {
+        StartWave();
+    }
+    [ContextMenu("Force Finish Wave")]
+    public void DEBUG_FORCE_FINISH_WAVE()
+    {
+        FinishWave();
+    }
+#endif
+    #endregion
 }
