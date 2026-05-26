@@ -16,12 +16,9 @@ public class CameraShaker : MonoBehaviour
     bool isShaking = true;
 
     #region Initialization
-    void Awake()
-    {
-        virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-    }
     void Start()
     {
+        virtualCameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         virtualCameraNoise.enabled = false;
         enabled = false;
     }

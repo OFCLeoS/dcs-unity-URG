@@ -77,7 +77,9 @@ public class Projectile : MonoBehaviour
     {
         if (collider.CompareTag("Wall")) // TODO: CHANGE THIS!
         {
+#if UNITY_EDITOR
             Debug.Log($"Projectile {GetInstanceID()} hit {collider.name}");
+#endif
             Deactivate();
         }
         IDamageable damageable = collider.GetComponent<IDamageable>();
@@ -93,7 +95,9 @@ public class Projectile : MonoBehaviour
     /// </summary>
     void CheckProjectileTrajectory()
     {
+#if UNITY_EDITOR
         Debug.DrawLine(lastPosition, transform.position, Color.red, 0.5f);
+#endif
         RaycastHit hit;
         // TODO: LAYER MASK FOR BETTER PERFORMANCE?
         if (Physics.Linecast(lastPosition, transform.position, out hit))
