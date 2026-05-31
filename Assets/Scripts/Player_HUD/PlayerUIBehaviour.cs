@@ -27,7 +27,7 @@ public class PlayerUIBehaviour : MonoBehaviour
 
     void Awake()
     {
-        SetObjectiveText("Take the Elevator");
+        SetObjectiveText("Grab a Loadout and Take the Elevator");
     }
 
     public void SetMaxHealth(float maxHealth)
