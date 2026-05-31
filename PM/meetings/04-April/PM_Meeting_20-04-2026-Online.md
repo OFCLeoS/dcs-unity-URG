@@ -13,12 +13,12 @@
 - Manuel Sousa Lourenço ✓
 
 ## Topics Discussed
-- Review of all Sprint Items from all Team Members
-- Game Theme and Lore
+- Review of all Sprint Items from all Team Members.
+- Game Theme and Lore.
 
 ## Decisions / Conclusions
 - All members outputed satisfactory results in relation to their tasks.
-- Theme will be an Underground Decrepit Old Facility
+- Theme will be an Underground Decrepit Old Facility.
 
 ## Issues
 - Integration is still needed between the components, but should be easily feasible quickly.

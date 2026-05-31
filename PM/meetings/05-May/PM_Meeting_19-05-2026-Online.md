@@ -1,9 +1,9 @@
 # Meeting Log
 
 ## Meeting Details
-- **Date: 19/04/2026** 
-- **Start Time: 14:30** 
-- **End Time: 15:00** 
+- **Date: 19/05/2026** 
+- **Start Time: 20:30** 
+- **End Time: 23:30** 
 - **Platform: Discord**
 
 ## Participants
@@ -13,13 +13,13 @@
 - Manuel Sousa Lourenço ✓
 
 ## Topics Discussed
-- Summary of work done.
+- Final project overview
 
 ## Decisions / Conclusions
-N/A
+- Continue project work, since new deadline
 
 ## Issues
 N/A
 
 ## Notes
-N/A
+- extended deadline, gave us extra time
