@@ -9,4 +9,7 @@ Enemies must be able to attack the player, either with a short or long ranged we
 ### Health
 Enemies must have limited health, and should be able to take damage, eventually leading to their deaths.
 ### Behaviour
-Enemies must be able to act differently depending on the current wave's objective.
+#### Hunt
+Enemies must have a Hunt Behaviour where they actively seek out the player and attempt to kill them
+#### Destroy
+Enemies must have a Destroy Behaviour where they actively seek out objectives and attempt to destroy them

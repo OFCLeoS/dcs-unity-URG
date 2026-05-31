@@ -10,3 +10,6 @@ A Follow Module script will be used to make it so that an Agent is able to follo
 ## Attacking
 Enemies will attack by using our Attack System (same as the player, see SPEC_AT-01-AttackingSystem).
 ## Health
+Enemies will be "DamageableEntities", and will use their system in order to take damage.
+## Behaviour
+Behaviour will be implemented using Unity's Behaviour Package, and using their Behaviour Trees. A single tree will be used for all agents. They will act depending on their current Mission Enum.
