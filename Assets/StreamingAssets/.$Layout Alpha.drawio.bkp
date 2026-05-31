@@ -1,0 +1,150 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="dR8FIw8NsMLaiFg5qiBY">
+    <mxGraphModel dx="1746" dy="1031" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <object label="GIANT ROOM" Sector_Type="ROOM" id="KQLGTqRWCBSTxog5qAvC-20">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="390" width="390" x="1640" y="130" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-5" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="80.03774193548387" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="MEDIUM ROOM" Sector_Type="ROOM" id="3ECnbKPbVydTGBfUZhh2-13">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.2,0,0,0],[0,0.5,0,0,0],[0,0.8,0,0,0],[0.2,0,0,0,0],[0.2,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.8,0,0,0,0],[0.8,1,0,0,0],[1,0.2,0,0,0],[1,0.5,0,0,0],[1,0.8,0,0,0]];" vertex="1">
+            <mxGeometry height="160" width="160" y="0.06999999999996831" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-17" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="80.21285714285708" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-18" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="80.21285714285708" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;NARROW LARGE HALLWAY&lt;/font&gt;" Sector_Type="HALLWAY" id="3ECnbKPbVydTGBfUZhh2-19">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];" vertex="1">
+            <mxGeometry height="40" width="200" x="160" y="60.069999999999965" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-28" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="90.06999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-29" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="310.07000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;NARROW LARGE HALLWAY&lt;/font&gt;" Sector_Type="HALLWAY" id="3ECnbKPbVydTGBfUZhh2-27">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];rotation=90;" vertex="1">
+            <mxGeometry height="40" width="200" x="280" y="180.07" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-30" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.2;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="285.06999999999994" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-32" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.8;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="476" y="285.06999999999994" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-34" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="518" y="380.03774193548384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="MEDIUM ROOM" Sector_Type="ROOM" id="3ECnbKPbVydTGBfUZhh2-42">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.2,0,0,0],[0,0.5,0,0,0],[0,0.8,0,0,0],[0.2,0,0,0,0],[0.2,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.8,0,0,0,0],[0.8,1,0,0,0],[1,0.2,0,0,0],[1,0.5,0,0,0],[1,0.8,0,0,0]];" vertex="1">
+            <mxGeometry height="160" width="160" x="348" y="300.06999999999994" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-51" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.2;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="476" y="315.06999999999994" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="SMALL ROOM" Sector_Type="ROOM" id="3ECnbKPbVydTGBfUZhh2-55">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.2,0,0,0],[0,0.5,0,0,0],[0,0.8,0,0,0],[0.2,0,0,0,0],[0.2,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.8,0,0,0,0],[0.8,1,0,0,0],[1,0.2,0,0,0],[1,0.5,0,0,0],[1,0.8,0,0,0]];" vertex="1">
+            <mxGeometry height="80" width="80" x="460" y="220.07" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-56" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="488" y="380.21285714285705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-57" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="728" y="380.21285714285705" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;NARROW LARGE HALLWAY&lt;/font&gt;" Sector_Type="HALLWAY" id="3ECnbKPbVydTGBfUZhh2-58">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];" vertex="1">
+            <mxGeometry height="40" width="200" x="508" y="360.06999999999994" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-75" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="692.9999999999999" y="380.03774193548384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="LARGE ROOM" Sector_Type="ROOM" id="3ECnbKPbVydTGBfUZhh2-79">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.15,0,0,0],[0,0.3,0,0,0],[0,0.5,0,0,0],[0,0.7,0,0,0],[0,0.85,0,0,0],[0.15,0,0,0,0],[0.15,1,0,0,0],[0.3,0,0,0,0],[0.3,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.7,0,0,0,0],[0.7,1,0,0,0],[0.85,0,0,0,0],[0.85,1,0,0,0],[1,0.15,0,0,0],[1,0.3,0,0,0],[1,0.5,0,0,0],[1,0.7,0,0,0],[1,0.85,0,0,0]];" vertex="1">
+            <mxGeometry height="250" width="250" x="708" y="305.06999999999994" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-189" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="360" y="80.06999999999996" />
+              <mxPoint x="360" y="80.06999999999996" />
+            </Array>
+            <mxPoint x="360" y="80.06999999999996" as="sourcePoint" />
+            <mxPoint x="350" y="80.06999999999996" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-190" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="110.07" />
+              <mxPoint x="380" y="110.07" />
+            </Array>
+            <mxPoint x="380" y="100.06999999999996" as="sourcePoint" />
+            <mxPoint x="380" y="110.07" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-194" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-196" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="349.99999999999994" y="80.07142857142861" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="3ECnbKPbVydTGBfUZhh2-195" edge="1" parent="1" source="3ECnbKPbVydTGBfUZhh2-196" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="379.99999999999994" y="115.07142857142861" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <object label="&lt;font style=&quot;font-size: 9px;&quot;&gt;TINY ROOM&lt;/font&gt;" Sector_Type="ROOM" id="3ECnbKPbVydTGBfUZhh2-196">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.5,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[1,0.5,0,0,0]];" vertex="1">
+            <mxGeometry height="40" width="40" x="359.99999999999994" y="60.07142857142861" as="geometry" />
+          </mxCell>
+        </object>
+        <object label="LARGE ROOM" Sector_Type="ROOM" id="bhN9Km0S8I8xOx6SxFVT-1">
+          <mxCell parent="1" style="rounded=0;whiteSpace=wrap;html=1;points=[[0,0.15,0,0,0],[0,0.3,0,0,0],[0,0.5,0,0,0],[0,0.7,0,0,0],[0,0.85,0,0,0],[0.15,0,0,0,0],[0.15,1,0,0,0],[0.3,0,0,0,0],[0.3,1,0,0,0],[0.5,0,0,0,0],[0.5,1,0,0,0],[0.7,0,0,0,0],[0.7,1,0,0,0],[0.85,0,0,0,0],[0.85,1,0,0,0],[1,0.15,0,0,0],[1,0.3,0,0,0],[1,0.5,0,0,0],[1,0.7,0,0,0],[1,0.85,0,0,0]];" vertex="1">
+            <mxGeometry height="250" width="250" x="1140" y="55.06999999999999" as="geometry" />
+          </mxCell>
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

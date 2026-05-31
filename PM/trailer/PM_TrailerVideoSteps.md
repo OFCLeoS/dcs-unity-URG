@@ -1,0 +1,12 @@
+- MC Wakes Up
+ - First Person
+- MC Looks at Computer
+ - Third Person
+- Cuts into MC going to the Elevator
+- Gameplay Showcase Starts (Show wave survival AND Kill)
+- MC Goes back to HUB
+- Quiz Gameplay Showcase Starts
+ - Reward and Punishment showcase
+- Show Level Gen!
+- MC Goes to the elevator whilst gameplay is in the background
+- Game Title
