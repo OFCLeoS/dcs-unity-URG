@@ -5,4 +5,4 @@ The Player must be able to move throughout the map.
 ### Movement
 By pressing a key the player will move to a direction.
 ### Rotation
-The Player will rotate to the direction of the mouse.
+The Player will rotate to the direction of the crosshair.

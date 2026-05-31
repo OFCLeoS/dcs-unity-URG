@@ -8,3 +8,5 @@ Enemies must be able to navigate throughout the map. They should be able to go a
 Enemies must be able to attack the player, either with a short or long ranged weapon.
 ### Health
 Enemies must have limited health, and should be able to take damage, eventually leading to their deaths.
+### Behaviour
+Enemies must be able to act differently depending on the current wave's objective.
