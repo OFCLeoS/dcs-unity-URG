@@ -42,7 +42,7 @@ The repository contains documentation produced throughout the development proces
 * Software architecture
 * Development practices
 
-These documents provide additional context on the development process and technical decisions behind the project. The task-division can be found at the [URG Requirements](https://github.com/users/OFCLeoS/projects/8) GitHub Project
+These documents provide additional context on the development process and technical decisions behind the project. The task-division can be found at the [URG Requirements](https://github.com/users/OFCLeoS/projects/8) GitHub Project.
 
 ## Running the Game
 
