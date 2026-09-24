@@ -1,2 +1,2 @@
 # PRAC
-This is everything related to the best practices for this project.
+This is everything related to the practices used for this project.
