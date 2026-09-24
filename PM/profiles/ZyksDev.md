@@ -1,1 +1,0 @@
-Manuel Lourenço, ZyksDev, darkestzyks@gmail.com, Zyks
